@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
+		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
+		<script type="text/javascript" src="js/d3/d3.js"></script>
+		<style type="text/css">
+		</style>
+		<script type="text/javascript">
+			$(function() {
+				var ingredients
+				var ingredientRanks
+
+				$('#startupLoading').dialog()
+				$('#startupLoading').dialog('open')
+				$.getJSON('testdata/ingredients.json', function(d) {
+					ingredients = d
+				})
+				$.getJSON('testdata/ingredientRanks.json', function(d) {
+					ingredientRanks = d
+				})
+				checkData(function() {return [ingredientRanks,ingredients]},500,function() { 
+					$('#startupLoading').dialog('close') 
+					for (var k in ingredientRanks) {
+					}
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<div style="display:none;" id="startupLoading">
+			<p>Please wait while data is loaded...</p>
+		</div>
+		<div id='neweaterform'>
+			<form>
+				<input id="eatername" type="text">
+				<select id="alergies"></select>
+				<select id="favorites"></select>
+				<input action="submit">
+			</form>
+		</div>
+	</body>
+</html>
