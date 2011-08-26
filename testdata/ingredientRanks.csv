@@ -24,8 +24,8 @@ St. Dalfour 100% Black Raspberry Fruit Spread,1,Raspberry(ies) Black,,10 oz.
 St. Dalfour 100% Black Raspberry Fruit Spread,2,Grape(s) Juice Concentrated,,10 oz.
 St. Dalfour 100% Black Raspberry Fruit Spread,3,Fruit Pectin,,10 oz.
 St. Dalfour 100% Black Raspberry Fruit Spread,4,Lemon(s) Juice,,10 oz.
-Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,1,Rice Toasted Cereal,,12.4 oz.
-Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,2,Rice,,12.4 oz.
+Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,1,Rice Toasted Cereal,Rice,12.4 oz.
+Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,2,Rice,Rice,12.4 oz.
 Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,3,Sugar,Sugar,12.4 oz.
 Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,4,Corn Syrup High Fructose,Sugar,12.4 oz.
 Kellogg's Rice Krispies Treats Crispy Marshmallow Squares,5,Flavoring Malt,,12.4 oz.
@@ -390,7 +390,7 @@ Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,9,Folic Acid (Vitamin aB)
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,10,Wheat Flour Whole,Flour,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,11,Safflower Oil Expeller Pressed High Oleic,Oil,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,12,Sugar,Sugar,4.62 oz
-Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,13,Rice Brown Syrup,Sugar,4.62 oz
+Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,13,Rice Brown Syrup,Sugar|Rice,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,14,Salt,Salt,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,15,Leavening,,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,16,Calcium Phosphate,,4.62 oz
@@ -564,7 +564,7 @@ Carb Options Ranch Salad Dressing,21,Sucralose,,16 fl oz
 Quaker Chocolatey Drizzle Multigrain Cakes,1,Multi Grain Cake,Flour,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,2,Wheat Flour Whole Grain,Flour,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,3,Corn Yellow Whole Grain,Corn,4.2 oz.
-Quaker Chocolatey Drizzle Multigrain Cakes,4,Rice Brown Flour Whole Grain,,4.2 oz.
+Quaker Chocolatey Drizzle Multigrain Cakes,4,Rice Brown Flour Whole Grain,Rice,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,5,Sugar,Sugar,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,6,Salt,Salt,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,7,Tocopherol Natural,,4.2 oz.
@@ -892,7 +892,7 @@ Good Sense Canyon Mix Fruit 'N Nut Snack Mix,15,Almond(s),,10 oz.
 Good Sense Canyon Mix Fruit 'N Nut Snack Mix,16,Sulfer Dioxide,,10 oz.
 Newman's Own Organics Traditional Thin Pretzels,1,Wheat Flour Unbleached ( Organic ),Flour,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,2,Rye Flour ( Organic ),,7.5 oz
-Newman's Own Organics Traditional Thin Pretzels,3,Rice Brown Syrup ( Organic ),Sugar,7.5 oz
+Newman's Own Organics Traditional Thin Pretzels,3,Rice Brown Syrup ( Organic ),Sugar|Rice,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,4,Sunflower Oil ( Organic ),Oil,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,5,Barley Malt ( Organic ),,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,6,Yeast,,7.5 oz
@@ -1339,7 +1339,7 @@ Brummel &amp; Brown Vegetable Oil Spread made with Yogurt,18,Flavor(s) Artificia
 Brummel &amp; Brown Vegetable Oil Spread made with Yogurt,19,Vitamin A Palmitate,,15 oz
 Brummel &amp; Brown Vegetable Oil Spread made with Yogurt,20,Beta Carotene,,15 oz
 Uncle Ben's Ready Rice Original Long Grain,1,Water,Water,8.8 oz
-Uncle Ben's Ready Rice Original Long Grain,2,Rice Long Grain Parboiled,,8.8 oz
+Uncle Ben's Ready Rice Original Long Grain,2,Rice Long Grain Parboiled,Rice,8.8 oz
 Uncle Ben's Ready Rice Original Long Grain,3,Canola Oil,Oil,8.8 oz
 Uncle Ben's Ready Rice Original Long Grain,4,Soybean(s) Oil Partially Hydrogenated,Soy|Oil,8.8 oz
 S &amp; W Premium Quality Whole Green Beans,1,Bean(s) Green,,14.5 oz.
@@ -1529,9 +1529,9 @@ Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,14,Caroten
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,15,Flavor(s) Natural,Flavoring,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,16,Mono and Diglycerides,,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,17,Salt,Salt,6.8 oz.
-Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,19,Sugar Isometric,,6.8 oz.
+Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,19,Sugar Isometric,Sugar,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,20,Yeast,,6.8 oz.
-Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,21,Rice Starch,,6.8 oz.
+Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,21,Rice Starch,Rice,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,22,Flavor(s) Natural &amp;amp; Artificial,,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,23,Trisodium Phosphate,,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,24,Monosodium Glutamate,,6.8 oz.
@@ -1840,7 +1840,7 @@ Ore-Ida Extra Crispy Fast Food French Fries,2,Vegetable(s) Oil Partially Hydroge
 Ore-Ida Extra Crispy Fast Food French Fries,3,Soybean(s) Oil Partially Hydrogenated,Oil|Soy,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,5,Canola Oil Partially Hydrogenated,Oil,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,6,Food Starch Modified,,26 oz
-Ore-Ida Extra Crispy Fast Food French Fries,7,Rice Flour,Flour,26 oz
+Ore-Ida Extra Crispy Fast Food French Fries,7,Rice Flour,Flour|Rice,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,8,Dextrin,,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,9,Salt,Salt,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,10,Corn Starch,Corn,26 oz
@@ -1860,10 +1860,10 @@ Honey Bunchs of Oats Cereal with Almonds,6,Sugar Brown,Sugar,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,7,Vegetable(s) Oil High Oleic,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,8,Canola Oil,Oil,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,10,Sunflower Oil,Oil,14.5 oz
-Honey Bunchs of Oats Cereal with Almonds,11,Rice Flour,Flour,14.5 oz
+Honey Bunchs of Oats Cereal with Almonds,11,Rice Flour,Flour|Rice,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,12,Corn Syrup,Sugar,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,13,Wheat Flour,Flour,14.5 oz
-Honey Bunchs of Oats Cereal with Almonds,14,Rice,,14.5 oz
+Honey Bunchs of Oats Cereal with Almonds,14,Rice,Rice,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,15,Barley Malted Flour,Flour,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,16,Salt,Salt,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,17,Fructose,Sugar,14.5 oz
@@ -1889,7 +1889,7 @@ Honey Bunchs of Oats Cereal with Almonds,43,Vitamin D,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,44,Zinc Oxide,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,45,Zinc,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,46,Vitamin A Palmitate,,14.5 oz
-Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,1,Rice Aromatic ( Organic ),,5.6 oz
+Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,1,Rice Aromatic ( Organic ),Rice,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,2,Pasta ( Organic ),Flour,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,3,Semolina Durum ( Organic ),Flour,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,4,Water,Water,5.6 oz
@@ -1939,7 +1939,7 @@ Lifestream Organic 8 Grain Sesame Toaster Waffles,8,Sesame Seed(s) ( Organic ),,
 Lifestream Organic 8 Grain Sesame Toaster Waffles,9,Flax Seed ( Organic ),,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,10,Oat(s) Flour ( Organic ),,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,11,Corn Flour ( Organic ),Corn,11 oz.
-Lifestream Organic 8 Grain Sesame Toaster Waffles,12,Rice Brown Flour ( Organic ),,11 oz.
+Lifestream Organic 8 Grain Sesame Toaster Waffles,12,Rice Brown Flour ( Organic ),Rice,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,13,Oat(s) Bran ( Organic ),,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,14,Millet ( Organic ),,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,15,Buckwheat Flour ( Organic ),,11 oz.
@@ -2097,7 +2097,7 @@ ShopRite Hashbrowns,6,Salt,Salt,45 oz
 ShopRite Hashbrowns,7,Dextrose,,45 oz
 ShopRite Hashbrowns,8,Disodium Dihydrogen Pyrophosphate,,45 oz
 Pirate Brands Real Wisconsin Cheese Smart Puffs Snack,1,Corn Meal,Corn,1.38 oz
-Pirate Brands Real Wisconsin Cheese Smart Puffs Snack,2,Rice,,1.38 oz
+Pirate Brands Real Wisconsin Cheese Smart Puffs Snack,2,Rice,Rice,1.38 oz
 Pirate Brands Real Wisconsin Cheese Smart Puffs Snack,3,Oil,Oil,1.38 oz
 Pirate Brands Real Wisconsin Cheese Smart Puffs Snack,4,Sunflower Oil,Oil,1.38 oz
 Pirate Brands Real Wisconsin Cheese Smart Puffs Snack,5,Canola Oil Expeller Pressed,Oil,1.38 oz
@@ -2164,7 +2164,7 @@ Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,55,Folic Acid (Vitamin aB),
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,56,Cyanocobalamin,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,57,Vitamin B12,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,58,Soy Lecithin,Soy,10.4 oz.
-Bob's Red Mill Wheat Free Biscuit &amp; Baking Mix,1,Rice White Flour Stone Ground,,24 oz.
+Bob's Red Mill Wheat Free Biscuit &amp; Baking Mix,1,Rice White Flour Stone Ground,Rice,24 oz.
 Bob's Red Mill Wheat Free Biscuit &amp; Baking Mix,2,Bean(s) Garbanzo Flour,,24 oz.
 Bob's Red Mill Wheat Free Biscuit &amp; Baking Mix,3,Baking Powder,,24 oz.
 Bob's Red Mill Wheat Free Biscuit &amp; Baking Mix,4,Sodium Acid Pyrophosphate,,24 oz.
@@ -2228,7 +2228,7 @@ KC Masterpiece Honey Barbecue Sauce,14,Onion(s),,18 oz.
 KC Masterpiece Honey Barbecue Sauce,15,Sodium Benzoate,,18 oz.
 KC Masterpiece Honey Barbecue Sauce,16,Garlic,,18 oz.
 KC Masterpiece Honey Barbecue Sauce,17,Caramel Color,Coloring,18 oz.
-Luzianne Cajun Stew Etouffee Dinner Kit,1,Rice,,8 oz.
+Luzianne Cajun Stew Etouffee Dinner Kit,1,Rice,Rice,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,2,Pepper(s) Bell Red,,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,3,Pepper(s) Bell Green,,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,4,Food Starch Modified,,8 oz.
@@ -2247,9 +2247,9 @@ President's Choice Blue Menu Barley Risotto with Herbed Chicken,1,Risotto,,10.2 
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,2,Barley,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,3,Lemon(s) Juice from Concentrate,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,4,Onion(s),,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,5,Rice Wild,,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,5,Rice Wild,Rice,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,6,Tomato(es),,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,7,Rice Brown,,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,7,Rice Brown,Rice,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,8,Celery,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,9,Garlic,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,10,Tapioca Starch Modified,,10.2 oz.
@@ -2337,7 +2337,7 @@ Genisoy Diet Chocolate Mint Supplement Protein Bar,7,Whey,Dairy,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,8,Milk Non-Fat Dry,Dairy,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,9,Lecithin,Dairy,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,10,Flavor(s) Vanilla,,2.2 oz
-Genisoy Diet Chocolate Mint Supplement Protein Bar,11,Rice Flour,Flour,2.2 oz
+Genisoy Diet Chocolate Mint Supplement Protein Bar,11,Rice Flour,Flour|Rice,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,12,Cocoa,,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,13,Cookies,Flour,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,14,Wheat Flour Enriched,Flour,2.2 oz
@@ -2394,7 +2394,7 @@ Cento Ready to Serve Split Pea Soup with Prosciuto Ham,23,Flavor(s) Natural,Flav
 Cento Ready to Serve Split Pea Soup with Prosciuto Ham,24,Silicon Dioxide,,15 oz
 Cento Ready to Serve Split Pea Soup with Prosciuto Ham,25,Parsley Dried,,15 oz
 Cento Ready to Serve Split Pea Soup with Prosciuto Ham,26,Flavor(s) Natural,Flavoring,15 oz
-Uncle Ben's Country In Broccoli Rice Au Gratin,1,Rice Long Grain Enriched Parboiled,,6 oz
+Uncle Ben's Country In Broccoli Rice Au Gratin,1,Rice Long Grain Enriched Parboiled,Rice,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,2,Niacin,,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,3,Ferric Orthophosphate,,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,4,Thiamine Mononitrate (Vitamin B1),,6 oz
@@ -2453,15 +2453,15 @@ Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,6,Thiamine Mo
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,7,Canola,Oil,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,8,Cottonseed Oil,Oil,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,9,Folic Acid (Vitamin aB),,11 oz
-Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,10,Sugar Invert,,11 oz
+Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,10,Sugar Invert,Sugar,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,11,Milk Non-Fat,Dairy,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,12,Vegetable(s) Shortening Partially Hydrogenated,Oil,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,13,Soybean(s) Oil,Oil,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,14,Sugar,Sugar,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,15,Ammonium Bicarbonate,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,16,Baking Soda,,11 oz
-Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,17,Butter,Oil,11 oz
-Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,18,Corn,,11 oz
+Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,17,Butter,Dairy|Oil,11 oz
+Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,18,Corn,Corn,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,19,Dextrose,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,20,Leavening,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,21,Malt Syrup,Sugar,11 oz

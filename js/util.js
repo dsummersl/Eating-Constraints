@@ -1,7 +1,105 @@
 
-function drawLitmus(eater,element) {
+function drawLitmusForEater(eater,element) {
 	// TODO generate the data points and widths
 	// draw a line underneath...so the entire area of the box equals the total serving size of the container
+}
+
+/*
+   element = target element 
+
+   // things that we need a % goal for a 2k diet:
+   percentages = [
+      {
+	  	'percent': 80,
+		'description': 'Salt',
+		'smalldescription': 'Sl'
+	  },
+	  ...
+   ]
+
+   // things that we eat with no goals (just grams):
+   amounts = [ 
+      {
+	  	'grams': 30,
+		'description': 'Sugar',
+		'smalldescription': 'Sg'
+	  }
+   ]
+
+   // the actual foods that were consumed
+   foods = [ 
+      {
+		'description': 'St. Dalfour 100% Black Raspberry Fruit Spread',
+		'calories': 30,
+		'servings': 5, // number of servings actual ate.
+		'cluster': 'name of cluster'
+	  }
+   ]
+
+   clusters = [
+   	  {
+	  	'cluster': 'name of cluster',
+		'description': 'A Cluster',
+      }
+   ]
+*/
+function drawLitmus(element,percentages,amounts,foods,clusters) {
+	var boxHeight = 100;
+	var boxWidth = 0;
+	$.each(foods,function (i,v) { boxWidth += v.calories*v.servings });
+	console.log("box width = "+ boxWidth);
+
+	var widths = d3.scale.linear().domain([0,boxWidth]).range([0,boxWidth/4]);
+	var heights = d3.scale.linear().domain([0,boxHeight]).range([0,100]);
+
+	// generate x,y points and widths
+	var vis = d3.select(element)
+		.append("svg:svg")
+		.attr("width", widths(boxWidth))
+		.attr("height", heights(boxHeight))
+	;
+	/*
+	vis.selectAll("text")
+		.data([1])
+		.enter()
+		.append("svg:text")
+		.attr("x", 0)
+		.attr("y", 0)
+	*/
+	vis.selectAll("rect")
+		.data([1])
+		.enter()
+		.append("svg:rect")
+		.attr('class','border')
+		.attr("x", 0)
+		.attr("y", 0)
+		.attr("rx", 5)
+		.attr("ry", 5)
+		.attr("width", function() { return widths(boxWidth) })
+		.attr("height", heights(boxHeight))
+	;
+	var yOffset=10;
+	var xOffset=0;
+	vis.selectAll(".foodrect")
+		.data(foods)
+		.enter()
+		.append("svg:rect")
+		.attr('class',function(d) {return "foodrect "+ d.cluster})
+		.attr('x',function(d) {
+			var offset = xOffset;
+			xOffset += d.calories*d.servings;
+			return widths(offset);
+		})
+		.attr('y',yOffset)
+		.attr('width',function(d) {return widths(d.calories*d.servings)})
+		.attr('height',heights(boxHeight/2))
+		.on('mouseover',function(d) {return d.description})
+	;
+}
+function finishLitmus(parentElement) {
+	// make rectangles of alternating color that travel along the top spanning the entire width
+	//vis.selectAll(".calorieAxis")
+	// TODO have a button that hilights all items that have corn in them or...
 }
 
 function combineIngredientsAndRanks(food) {
@@ -18,6 +116,11 @@ function combineIngredientsAndRanks(food) {
 		newfood.push(food.ingredientRanks[k]);
 	}
 	food.ingredientRanks = newfood;
+	newfood = [];
+	for (k in food.clusters) {
+		newfood.push(food.clusters[k]);
+	}
+	food.clusters = newfood;
 	$.each(food.ingredients,function(i,k) {
 		//console.log("look in key = "+ k.Description);
 		var matches = food.ingredientRanks.filter(function(v) { return v.Description == k.Description });
@@ -25,6 +128,11 @@ function combineIngredientsAndRanks(food) {
 		//console.log($.sprintf("%30s = %s",k.Description,JSON.stringify(matches)));
 		k.Ranks = matches;
 		k.Categories = justRanks;
+		matches = food.clusters.filter(function(v) { return v.productName == k.Description });
+		if (matches.length == 0) {
+			alert("no cluster for: "+ k.Description);
+		}
+		k.cluster = matches[0].cluster;
 	});
 	delete food.ingredientRanks;
 	return food;
@@ -101,7 +209,9 @@ function intersect_safe(a, b)
 }
 
 var eaterMethods = {
-	'default': function(foods) {
+	'default': function(eater) {
+		foods = eater.toEat;
+		// TODO if toEat is empty, eat something from avoided.
 		return foods.shift()
 	}
 }
@@ -130,6 +240,7 @@ function Eater(description,alergies,favorites,pickFood) {
 	this.eaten = [];
 	this.denied = [];
 	this.toEat = [];
+	this.avoided = [];
 }
 // setup the internal state for a whole bunch of the foods.
 // Parameters:
@@ -156,7 +267,7 @@ Eater.prototype.eat = function(calories) {
 	var calsAte = 0;
 	var ate = [];
 	while (calsAte < calories) {
-		var f = this.pickFood(this.toEat);
+		var f = this.pickFood(this);
 		if (f) {
 			this.eaten.push(f);
 			ate.push(f);
@@ -184,4 +295,7 @@ Eater.prototype.calsDenied = function() {
 }
 Eater.prototype.calsToEat = function() {
 	return computeCalorieCount(this.toEat);
+}
+Eater.prototype.calsAvoided = function() {
+	return computeCalorieCount(this.avoided);
 }

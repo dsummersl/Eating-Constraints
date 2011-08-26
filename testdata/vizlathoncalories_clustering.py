@@ -52,7 +52,7 @@ class TagClustering(object):
         
         # cluster the items
         #labels, error, nfound = kcluster(data, nclusters=20, dist='e') # 20 clusters, euclidean distance
-        labels, error, nfound = kcluster(data, nclusters=50, dist='e',npass=20)
+        labels, error, nfound = kcluster(data, nclusters=8, dist='e',npass=20)
         #labels, error, nfound = kcluster(data, nclusters=20, dist='j',npass=10) # 30 clusters, abs val of the correlation distance, iterate 10 times
         #labels, error, nfound = kcluster(data, nclusters=30, dist='a',npass=10) # 30 clusters, abs val of the correlation distance, iterate 10 times
         
@@ -66,21 +66,22 @@ class TagClustering(object):
             i += 1
             
         #print "Labels: %s" % labels
-        print "Error: %s" % error
-        print "NFound: %d" % nfound
-        print "Products:"
-        titleBar = "["
-        bodyBar = "["
+        print "#To get a real CSV file, delete all lines that start with #"
+        print "#Error: %s" % error
+        print "#NFound: %d" % nfound
+        print "#Products:"
+        titleBar = "cluster,"
+        bodyBar = ""
         for u in all_tags:
             titleBar = titleBar + u + ","
             bodyBar = bodyBar +"%("+ u +")2.2f,"
-        titleBar = titleBar + "]"
-        bodyBar = bodyBar + "]"
+        titleBar = titleBar + "productName"
+        bodyBar = bodyBar + ""
+        print titleBar
         for cluster_id,urls in clustered_urls.items():
-            print "Cluster %s: %s" % (cluster_id,len(urls))
-            print titleBar
+            #print "Cluster %s: %s" % (cluster_id,len(urls))
             for u in urls:
-              print "%30s: %s" % (self.tags_to_string(bodyBar,tag_data[u]),u)
+              print "cluster%s,%s\"%s\"" % (cluster_id,self.tags_to_string(bodyBar,tag_data[u]),u)
 		
     def tags_to_string(self,bodyBar,dat):
         return bodyBar % dat
