@@ -1,32 +1,112 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- jquery and jquery UI -->
 		<link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
 		<script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+
+		<!-- testing frameworks -->
+		<link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
+		<script src="test/vizlathon/spec/lib/jspec.js"></script>
+		<script src="test/vizlathon/spec/lib/jspec.xhr.js"></script>
+		<script src="test/vizlathon/spec/lib/jspec.jquery.js"></script>
+
+		<!-- graphing -->
+		<script type="text/javascript" src="js/d3/d3.js"></script>
+
+		<!-- my special magic libs -->
 		<script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
-		<script type="text/javascript" src="js/d3/d3.js"></script>
+		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
+
 		<style type="text/css">
 		</style>
 		<script type="text/javascript">
+			var debug = true;
+			var food = {};
+			var uniqueRankCategories;
+			function processEaterForm() {
+				try {
+					//var eater = new Eater($('#eatername').val(),$('#alergies').val(),$('#favorites').val())
+					var eater = new Eater($('#eatername').val(),['Sugar'],$('#favorites').val());
+					eater.setupFoodStore(food.ingredients);
+					console.log($.sprintf("denied food = %d (%d)",eater.calsDenied(),eater.denied.length));
+					console.log($.sprintf("left   food = %d (%d)",eater.calsToEat(),eater.toEat.length));
+					console.log($.sprintf("ate    food = %d (%d)",eater.calsAte(),eater.eaten.length));
+					$('#eatingFood').dialog();
+					$('#eatingFood').dialog('open');
+					var eatCount = 0;
+				//	while (eater.toEat.length > 0) {
+						var whatIAte = eater.eat();
+						//$('#results').empty();
+						$('#results').append("<ul>");
+						$.each(whatIAte,function(i,v) {
+							$('#results').append($.sprintf('<li>%s</li>',v.Description));
+						})
+						$('#results').append($.sprintf('<li><div id="eat-%d"></div></li>',eatCount));
+						$('#results').append("</ul>");
+						console.log($.sprintf("denied food = %d (%d)",eater.calsDenied(),eater.denied.length));
+						console.log($.sprintf("left   food = %d (%d)",eater.calsToEat(),eater.toEat.length));
+						console.log($.sprintf("ate    food = %d (%d)",eater.calsAte(),eater.eaten.length));
+						drawLitmus(eater,$.sprintf('eat-%d',eatCount));
+						eatCount++;
+				//	}
+					$('#eatingFood').dialog('close')
+				} catch(e) {
+					console.log(printStackTrace({e:e}).join('\n'));
+					console.trace();
+					alert(e)
+				}
+				return false
+			}
 			$(function() {
-				var ingredients
-				var ingredientRanks
+				window.onerror = function(msg, file, line) {
+					alert(printStackTrace().join('\n\n'));
+				}
 
 				$('#startupLoading').dialog()
 				$('#startupLoading').dialog('open')
 				$.getJSON('testdata/ingredients.json', function(d) {
-					ingredients = d
+					food['ingredients'] = d
 				})
 				$.getJSON('testdata/ingredientRanks.json', function(d) {
-					ingredientRanks = d
+					food['ingredientRanks'] = d
 				})
-				checkData(function() {return [ingredientRanks,ingredients]},500,function() { 
-					$('#startupLoading').dialog('close') 
-					for (var k in ingredientRanks) {
+				checkData(function() {return [food['ingredientRanks'],food['ingredients']]},500,function() { 
+					food = combineIngredientsAndRanks(food);
+					$.each(['#alergies','#favorites'],function(i,field) {
+						$(field).empty()
+						$(field).append($.sprintf('<option value="%s">%s</option>',"none","none"))
+						$.each(food['uniqueRankCategories'],function(i,v) {
+							$(field).append($.sprintf('<option value="%s">%s</option>',v,v))
+						})
+					})
+					$('#startupLoading').dialog('close')
+					processEaterForm();
+				})
+
+				$('#neweaterform').submit(processEaterForm)
+				if (debug) { // {{{
+					var jspec = JSpec.exec('test/vizlathon/spec/unit/spec.js')
+					.run({ fixturePath: 'test/vizlathon/spec/fixtures' });
+
+					if (jspec.stats.failures > 0) {
+						var html = '';
+						html += '<ul>';
+						html += '<li>';
+						html += '<div id="jspec-top"><h2 id="jspec-title">JSpec <em>'+ JSpec.version +'</em></h2></div>';
+						html += '<div id="jspec"></div>';
+						html += '<div id="jspec-bottom"></div>';
+						html += '</li>';
+						html += '</ul>';
+						html += '<br/><br/><br/>';
+						html += '<br/><br/><br/>';
+						html += '<br/><br/><br/>';
+						$('#testresults').append($(html));
+						jspec.report();
 					}
-				})
+				} // }}}
 			});
 		</script>
 	</head>
@@ -34,13 +114,29 @@
 		<div style="display:none;" id="startupLoading">
 			<p>Please wait while data is loaded...</p>
 		</div>
+		<div style="display:none;" id="eatingFood">
+			<p>Please wait while I eat some food...</p>
+		</div>
 		<div id='neweaterform'>
 			<form>
+				Description:
 				<input id="eatername" type="text">
-				<select id="alergies"></select>
-				<select id="favorites"></select>
-				<input action="submit">
+				<br/>
+				Alergies:
+				<select multiple id="alergies"></select>
+				<br/>
+				Favorites:
+				<select multiple id="favorites"></select>
+				<br/>
+				Submit:
+				<input type="submit" href="#" />
+				<br/>
 			</form>
 		</div>
+		<hr/>
+		<div id="results">
+		</div>
+		<div id="testresults"> </div>
 	</body>
+	<!-- vim: set fdm=marker ai: -->
 </html>
