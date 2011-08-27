@@ -6,143 +6,31 @@
 		<script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
 
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css">
+
 		<link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
 		<script src="test/vizlathon/spec/lib/jspec.js"></script>
 		<script src="test/vizlathon/spec/lib/jspec.xhr.js"></script>
 		<script src="test/vizlathon/spec/lib/jspec.jquery.js"></script>
 
 		<script type="text/javascript" src="js/d3/d3.js"></script>
+		<script type="text/javascript" src="js/d3/d3.layout.js"></script>
 
 		<script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
+        <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
 		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
-		<style type="text/css">
-			#results p {
-				font-weight: bold;
-			}
-
-			.graphic {
-			}
-
-			rect.border {
-				fill: #eeeeee;
-				fill-opacity: .5;
-				stroke: #dddddd;
-				stroke-width: 2px;
-			}
-
-			.cluster0 {
-				fill: red;
-			}
-			.cluster1 {
-				fill: green;
-			}
-			.cluster2 {
-				fill: yellow;
-			}
-			.cluster3 {
-				fill: blue;
-			}
-			.cluster4 {
-				fill: black;
-			}
-			.cluster5 {
-				fill: white;
-			}
-			.cluster6 {
-				fill: pink;
-			}
-			.cluster7 {
-				fill: cyan;
-			}
-
-			.toEat {
-				fill-opacity: .05;
-			}
-
-			.evenCalorieAxis {
-				fill: #eeeeee;
-			}
-			.oddCalorieAxis {
-				fill: #aaaaaa;
-			}
-		</style>
 <!--}}}-->
 		<script type="text/javascript">
 			var debug = true;
 			var food = {};
 			var uniqueRankCategories;
-			function startupWithData(onstarted) { //<!--{{{-->
-				$('#startupLoading').dialog()
-				$('#startupLoading').dialog('open')
-				$.getJSON('testdata/ingredients.json', function(d) {
-					food['ingredients'] = d
-				})
-				$.getJSON('testdata/ingredientRanks.json', function(d) {
-					food['ingredientRanks'] = d
-				})
-				$.getJSON('testdata/calorieclusters.json', function(d) {
-					food['clusters'] = d
-				})
-				checkData(function() {return [food['ingredientRanks'],food['ingredients'],food['clusters']]},500,function() { 
-					food = combineIngredientsAndRanks(food);
-					$.each(['#alergies','#favorites'],function(i,field) {
-						$(field).empty()
-						$(field).append($.sprintf('<option value="%s">%s</option>',"none","none"))
-						$.each(food['uniqueRankCategories'],function(i,v) {
-							$(field).append($.sprintf('<option value="%s">%s</option>',v,v))
-						})
-					})
-					$('#startupLoading').dialog('close')
-					onstarted();
-				})
-
-				$('#neweaterform').submit(processEaterForm)
-			} //<!--}}}-->
-			function processEaterForm() { //<!--{{{-->
-				try {
-					//var eater = new Eater($('#eatername').val(),$('#alergies').val(),$('#favorites').val())
-					var eater = new Eater($('#eatername').val(),['Sugar'],$('#favorites').val());
-					eater.setupFoodStore(food.ingredients);
-					console.log($.sprintf("denied food = %d (%d)",eater.calsDenied(),eater.denied.length));
-					console.log($.sprintf("left   food = %d (%d)",eater.calsToEat(),eater.toEat.length));
-					console.log($.sprintf("ate    food = %d (%d)",eater.calsAte(),eater.eaten.length));
-					$('#eatingFood').dialog();
-					$('#eatingFood').dialog('open');
-					var eatCount = 0;
-				//	while (eater.toEat.length > 0) {
-						var whatIAte = eater.eat();
-						//$('#results').empty();
-						$('#results').append("<ul>");
-						$.each(whatIAte,function(i,v) {
-							$('#results').append($.sprintf('<li>%s</li>',v.Description));
-						})
-						$('#results').append($.sprintf('<li><div id="eat-%d"></div></li>',eatCount));
-						$('#results').append("</ul>");
-						console.log($.sprintf("denied food = %d (%d)",eater.calsDenied(),eater.denied.length));
-						console.log($.sprintf("left   food = %d (%d)",eater.calsToEat(),eater.toEat.length));
-						console.log($.sprintf("ate    food = %d (%d)",eater.calsAte(),eater.eaten.length));
-						drawLitmusForEater(eater,$.sprintf('eat-%d',eatCount));
-						eatCount++;
-				//	}
-					$('#eatingFood').dialog('close')
-				} catch(e) {
-					console.log(printStackTrace({e:e}).join('\n'));
-					console.trace();
-					alert(e)
-				}
-				return false
-			}//<!--}}}-->
 			$(function() {
-				window.onerror = function(msg, file, line) {
-					alert(printStackTrace().join('\n\n'));
-				}
-				//generate the actual graphic:
-				//startupWithDataAndGenerateGraphics();
-
 				// test litmus drawing<!--{{{-->
 				startupWithData(function() {
 					try {
+						var vis = drawTreeMap(food,'#results');
+					/*
 						var eaters = [
 							new Eater('Omnivore'),
 							new Eater('SugarFree',['Sugar']),
@@ -157,14 +45,16 @@
 							v.setupFoodStore(food.ingredients);
 							v.eat(2000);
 							v.eat(2000);
+							v.eat(2000);
 							$('#results').append(
 								$.sprintf(
 									'<div id="%s"><div class="breakdown"></div><div class="litmus"></div></div>',
 									v.description,v.description
 							));
-							drawLitmusForEater(v,'#'+ v.description +" .litmus");
+							viz = drawLitmusForEater(v,'#'+ v.description +" .litmus");
 							drawOveralStatsForEater(v,'#'+ v.description +' .breakdown');
 						});
+						*/
 					} catch(e) {
 						console.log(printStackTrace({e:e}).join('\n'));
 						console.trace();
@@ -196,7 +86,44 @@
 		</script>
 	</head>
 	<body>
-		<div style="display:none;" id="startupLoading">
+        <div class="container">
+            <h1>Eating Constraints
+                <small>How food restrictions affect the diet</small>
+            </h1>
+            <hr/>
+			<div class="row">
+				<div class="span8 columns">
+					<h3>Motivation</h3>
+					<p>
+					When it comes to food in the US, we've got a whole variety of packaged foods to choose from. But in this 
+					sea of food, is it all accessible? What if you are alergic to Soy? Or Wheat? What if you're a vegitarian?
+					</p>
+
+					<p>
+					This page explores the topic of food access. Given a random assortment of foods commonly found in the 
+					supermarket, what would various dietary restrictions be able to eat?
+					</p>
+				</div>
+				<div class="span8 columns">
+					<h2></h2>
+					<h3>Colors</h3>
+					<br/>
+					This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
+					contest in August, 2011.
+				</div>
+			</div>
+			<div id="results">
+      <button id="size" class="first active">
+        Size
+      </button
+      ><button id="count" class="last">
+        Count
+      </button><p>
+			</div>
+			<div id="testresults"></div>
+        </div>
+		<!-- popups and forms -->
+		<div style="display:none;" id="startupLoading"><!--{{{-->
 			<p>Please wait while data is loaded...</p>
 		</div>
 		<div style="display:none;" id="eatingFood">
@@ -217,10 +144,7 @@
 				<input type="submit" href="#" />
 				<br/>
 			</form>
-		</div>
-		<div id="results">
-		</div>
-		<div id="testresults"> </div>
+		</div><!--}}}-->
 	</body>
 	<!-- vim: set fdm=marker ai: -->
 </html>

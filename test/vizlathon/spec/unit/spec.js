@@ -49,6 +49,9 @@ describe 'Util.js - utils'
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Nuts' })[0].cluster.should.eql 'cluster0'
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Bolts' })[0].Ranks.length.should.eql 0
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Bolts' })[0].cluster.should.eql 'cluster1'
+
+        result.clusters.cluster0.children.length.should.eql 2
+        result.clusters.cluster1.children.length.should.eql 1
     end
 end
 
