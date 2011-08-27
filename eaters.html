@@ -17,6 +17,13 @@
 		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
 		<style type="text/css">
+			#results p {
+				font-weight: bold;
+			}
+
+			.graphic {
+			}
+
 			rect.border {
 				fill: #eeeeee;
 				fill-opacity: .5;
@@ -47,6 +54,10 @@
 			}
 			.cluster7 {
 				fill: cyan;
+			}
+
+			.toEat {
+				fill-opacity: .05;
 			}
 
 			.evenCalorieAxis {
@@ -130,97 +141,36 @@
 				//startupWithDataAndGenerateGraphics();
 
 				// test litmus drawing<!--{{{-->
-				try {
-					startupWithData(function() {
-						alert('ready');
-					});
-				/*
-					clusters = [ // clusters
-							{ 'cluster': 'cluster1', 'description': 'Froggy Things'},
-							{ 'cluster': 'cluster2', 'description': 'Wheaty Things'}
-						]
-						percentages = [ // percentages
-							{ 'percent': 80,
-							'description': 'Salt',
-							'smalldescription': 'Sl' },
-							{ 'percent': 20,
-							'description': 'Phosphor',
-							'smalldescription': 'Ph' },
-							{ 'percent': 180,
-							'description': 'Saturated Fat',
-							'smalldescription': 'SF' }
-						]
-						amounts = [ // amounts
-							{ 'grams': 30,
-							  'description': 'Sugar',
-							  'smalldescription': 'Sg'
-							},
-							{ 'grams': 52,
-							  'description': 'Protein',
-							  'smalldescription': 'Pt'
-							}
-						]
-					drawLitmus(
-						'#results',
-						percentages,amounts,
-						[ // foods
-							{ 'description': 'St. Dalfour 100% Black Raspberry Fruit Spread',
-							  'calories': 30,
-							  'servings': 3,
-							  'cluster': 'cluster2'
-							},
-							{ 'description': 'FoggleTone',
-							  'calories': 80,
-							  'servings': 2,
-							  'cluster': 'cluster1'
-							},
-							{ 'description': 'Mock Turtle Soup',
-							  'calories': 75,
-							  'servings': 1,
-							  'cluster': 'cluster1'
-							},
-							{ 'description': 'Mashed Frock Coat',
-							  'calories': 70,
-							  'servings': 1,
-							  'cluster': 'cluster3'
-							}
-						],
-						clusters
-					);
-					drawLitmus(
-						'#results',
-						percentages,amounts,
-						[ // foods
-							{ 'description': 'St. Dalfour 100% Black Raspberry Fruit Spread',
-							  'calories': 30,
-							  'servings': 5,
-							  'cluster': 'cluster1'
-							},
-							{ 'description': 'FoggleTone',
-							  'calories': 95,
-							  'servings': 1,
-							  'cluster': 'cluster3'
-							},
-							{ 'description': 'Mock Turtle Soup',
-							  'calories': 150,
-							  'servings': 1,
-							  'cluster': 'cluster2'
-							},
-							{ 'description': 'Mashed Frock Coat',
-							  'calories': 70,
-							  'servings': 2,
-							  'cluster': 'cluster1'
-							}
-						],
-						clusters
-					);
-					finishLitmus('#results');
-					*/
-				} catch(e) {
-					console.log(printStackTrace({e:e}).join('\n'));
-					console.trace();
-					alert(e);
-				}
+				startupWithData(function() {
+					try {
+						var eaters = [
+							new Eater('Omnivore'),
+							new Eater('SugarFree',['Sugar']),
+							new Eater('Vegitarian',['Meat']),
+							new Eater('Vegan',['Meat','Dairy']),
+							new Eater('DairyFree',['Dairy']),
+							new Eater('CornFree',['Corn']),
+							new Eater('SoyFree',['Soy']),
+							new Eater('FlourFree',['Flour'])
+						];
+						$.each(eaters,function(i,v) {
+							v.setupFoodStore(food.ingredients);
+							v.eat(2000);
+							v.eat(2000);
+							$('#results').append(
+								$.sprintf(
+									'<div id="%s"><div class="breakdown"></div><div class="litmus"></div></div>',
+									v.description,v.description
+							));
+							drawLitmusForEater(v,'#'+ v.description +" .litmus");
+							drawOveralStatsForEater(v,'#'+ v.description +' .breakdown');
+						});
+					} catch(e) {
+						console.log(printStackTrace({e:e}).join('\n'));
+						console.trace();
+						alert(e);
+					}
+				});
 				// <!--}}}-->
 				if (debug) { // {{{
 					var jspec = JSpec.exec('test/vizlathon/spec/unit/spec.js')
@@ -268,7 +218,6 @@
 				<br/>
 			</form>
 		</div>
-		<hr/>
 		<div id="results">
 		</div>
 		<div id="testresults"> </div>

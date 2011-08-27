@@ -1,105 +1,63 @@
 
-function drawLitmusForEater(eater,element) {
-	// TODO generate the data points and widths
-	// draw a line underneath...so the entire area of the box equals the total serving size of the container
+function drawOveralStatsForEater(eater,element) {
 }
 
-/*
-   element = target element 
-
-   // things that we need a % goal for a 2k diet:
-   percentages = [
-      {
-	  	'percent': 80,
-		'description': 'Salt',
-		'smalldescription': 'Sl'
-	  },
-	  ...
-   ]
-
-   // things that we eat with no goals (just grams):
-   amounts = [ 
-      {
-	  	'grams': 30,
-		'description': 'Sugar',
-		'smalldescription': 'Sg'
-	  }
-   ]
-
-   // the actual foods that were consumed
-   foods = [ 
-      {
-		'description': 'St. Dalfour 100% Black Raspberry Fruit Spread',
-		'calories': 30,
-		'servings': 5, // number of servings actual ate.
-		'cluster': 'name of cluster'
-	  }
-   ]
-
-   clusters = [
-   	  {
-	  	'cluster': 'name of cluster',
-		'description': 'A Cluster',
-      }
-   ]
-*/
-function drawLitmus(element,percentages,amounts,foods,clusters) {
+function drawLitmusForEater(eater,element) {
 	var boxHeight = 100;
-	var boxWidth = 0;
-	$.each(foods,function (i,v) { boxWidth += v.calories*v.servings });
-	console.log("box width = "+ boxWidth);
+	var litmusWidth = computeCalorieCount(eater.eaten);
+	litmusWidth += computeCalorieCount(eater.toEat);
+	litmusWidth += computeCalorieCount(eater.denied);
 
-	var widths = d3.scale.linear().domain([0,boxWidth]).range([0,boxWidth/4]);
+	// dunno why I can't do [100,window.innerWidth-100]
+	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,window.innerWidth-200]);
 	var heights = d3.scale.linear().domain([0,boxHeight]).range([0,100]);
 
-	// generate x,y points and widths
 	var vis = d3.select(element)
 		.append("svg:svg")
-		.attr("width", widths(boxWidth))
-		.attr("height", heights(boxHeight))
-	;
-	/*
-	vis.selectAll("text")
-		.data([1])
-		.enter()
-		.append("svg:text")
-		.attr("x", 0)
-		.attr("y", 0)
-	*/
-	vis.selectAll("rect")
-		.data([1])
-		.enter()
-		.append("svg:rect")
-		.attr('class','border')
-		.attr("x", 0)
-		.attr("y", 0)
-		.attr("rx", 5)
-		.attr("ry", 5)
-		.attr("width", function() { return widths(boxWidth) })
+		.attr("width", widths(litmusWidth))
 		.attr("height", heights(boxHeight))
 	;
 	var yOffset=10;
 	var xOffset=0;
-	vis.selectAll(".foodrect")
-		.data(foods)
+	$.each(eater.eatingSessions,function (i,v) {
+		v.boxWidth = computeCalorieCount(v);
+		v.xOffset = xOffset;
+		//console.log("i = "+ xOffset +" "+ v.boxWidth)
+		xOffset += v.boxWidth;
+	})
+	vis.selectAll("rect")
+		.data(eater.eatingSessions)
 		.enter()
 		.append("svg:rect")
-		.attr('class',function(d) {return "foodrect "+ d.cluster})
-		.attr('x',function(d) {
-			var offset = xOffset;
-			xOffset += d.calories*d.servings;
-			return widths(offset);
-		})
-		.attr('y',yOffset)
-		.attr('width',function(d) {return widths(d.calories*d.servings)})
-		.attr('height',heights(boxHeight/2))
-		.on('mouseover',function(d) {return d.description})
+		.attr('class','border')
+		.attr("x", function(d) { return widths(d.xOffset)+100; })
+		.attr("y", heights(yOffset))
+		.attr("rx", 5)
+		.attr("ry", 5)
+		.attr("width", function(d) { return widths(d.boxWidth) })
+		.attr("height", heights(boxHeight-yOffset))
 	;
-}
-function finishLitmus(parentElement) {
-	// make rectangles of alternating color that travel along the top spanning the entire width
-	//vis.selectAll(".calorieAxis")
-	// TODO have a button that hilights all items that have corn in them or...
+	xOffset=0;
+	$.each(['eaten','toEat','denied'], function(i,foodCat) {
+		$.each(eater[foodCat],function (i,v) {
+			v.boxWidth = v['Servings Per Container'] * v.Calories;
+			v.xOffset = xOffset;
+			//console.log("i = "+ xOffset +" "+ v.boxWidth)
+			xOffset += v.boxWidth;
+		})
+		vis.selectAll(element +" ."+ foodCat)
+			.data(eater[foodCat])
+			.enter()
+			.append("svg:rect")
+			.attr('class',function(d) {return foodCat +" "+ d.cluster})
+			.attr('x', function(d) { return widths(d.xOffset)+100 })
+			.attr('y', heights(yOffset))
+			.attr('width',function(d) {return widths(d.boxWidth)})
+			.attr('height',heights(boxHeight/2))
+			.on('mouseover',function(d) {return d.Description})
+		;
+	});
+	return vis;
 }
 
 function combineIngredientsAndRanks(food) {
@@ -129,9 +87,6 @@ function combineIngredientsAndRanks(food) {
 		k.Ranks = matches;
 		k.Categories = justRanks;
 		matches = food.clusters.filter(function(v) { return v.productName == k.Description });
-		if (matches.length == 0) {
-			alert("no cluster for: "+ k.Description);
-		}
 		k.cluster = matches[0].cluster;
 	});
 	delete food.ingredientRanks;
@@ -211,7 +166,6 @@ function intersect_safe(a, b)
 var eaterMethods = {
 	'default': function(eater) {
 		foods = eater.toEat;
-		// TODO if toEat is empty, eat something from avoided.
 		return foods.shift()
 	}
 }
@@ -237,10 +191,14 @@ function Eater(description,alergies,favorites,pickFood) {
 			return result
 		});
 	};
+	// what I ate:
 	this.eaten = [];
+	// the eating sessions is the same as 'eaten' but it breaks it out per 'eating session' (call to eat)
+	this.eatingSessions = [];
+	// won't ever eat this:
 	this.denied = [];
+	// want to eat this:
 	this.toEat = [];
-	this.avoided = [];
 }
 // setup the internal state for a whole bunch of the foods.
 // Parameters:
@@ -272,12 +230,13 @@ Eater.prototype.eat = function(calories) {
 			this.eaten.push(f);
 			ate.push(f);
 			calsAte += f['Servings Per Container'] * f.Calories;
-			console.log($.sprintf("Ate up to %6d calories for %s",calsAte,f.Description));
+			//console.log($.sprintf("Ate up to %6d calories for %s",calsAte,f.Description));
 		}
 		else {
 			break;
 		}
 	}
+	this.eatingSessions.push(ate);
 	return ate;
 }
 
@@ -295,7 +254,4 @@ Eater.prototype.calsDenied = function() {
 }
 Eater.prototype.calsToEat = function() {
 	return computeCalorieCount(this.toEat);
-}
-Eater.prototype.calsAvoided = function() {
-	return computeCalorieCount(this.avoided);
 }

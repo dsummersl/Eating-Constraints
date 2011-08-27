@@ -98,6 +98,8 @@ describe 'Util.js - Eater'
         eater.toEat.length.should.eql 0
         meal = eater.eat()
         meal.length.should.eql 0
+        computeCalorieCount(eater.eatingSessions[0]).should.eql 1800
+        computeCalorieCount(eater.eatingSessions[1]).should.eql 0
         eater.calsAte().should.eql 1800
         eater.calsDenied().should.eql 0
         eater.calsToEat().should.eql 0
