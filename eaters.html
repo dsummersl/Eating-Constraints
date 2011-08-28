@@ -38,13 +38,14 @@
 						var vis = drawTreeMap(food,'#mapresults');
 						var eaters = [
 							new Eater('Omnivore'),
-							//new Eater('SugarFree',['Sugar']),
 							new Eater('Vegitarian',['Meat']),
-							//new Eater('Vegan',['Meat','Dairy']),
 							new Eater('DairyFree',['Dairy']),
+							new Eater('FlourFree',['Flour']),
+
+							//new Eater('Vegan',['Meat','Dairy']),
+							//new Eater('SugarFree',['Sugar']),
 							//new Eater('CornFree',['Corn']),
 							//new Eater('SoyFree',['Soy']),
-							new Eater('FlourFree',['Flour'])
 						];
 						$.each(eaters,function(i,v) {
 							v.setupFoodStore(food.ingredients);
