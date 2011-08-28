@@ -29,32 +29,30 @@
 				// test litmus drawing<!--{{{-->
 				startupWithData(function() {
 					try {
-						var vis = drawTreeMap(food,'#results');
-					/*
+						$.each(buttonOptions,function(i,bo) {
+							options = "";
+							if (i == 0) { options = "first active" }
+							if (i == buttonOptions.length-1) { options = "last" }
+							$('#mapbuttons').append($.sprintf('<button id="%s" class="%s">%s</button>',bo.id,options,bo.name));
+						});
+						var vis = drawTreeMap(food,'#mapresults');
 						var eaters = [
 							new Eater('Omnivore'),
-							new Eater('SugarFree',['Sugar']),
+							//new Eater('SugarFree',['Sugar']),
 							new Eater('Vegitarian',['Meat']),
-							new Eater('Vegan',['Meat','Dairy']),
+							//new Eater('Vegan',['Meat','Dairy']),
 							new Eater('DairyFree',['Dairy']),
-							new Eater('CornFree',['Corn']),
-							new Eater('SoyFree',['Soy']),
+							//new Eater('CornFree',['Corn']),
+							//new Eater('SoyFree',['Soy']),
 							new Eater('FlourFree',['Flour'])
 						];
 						$.each(eaters,function(i,v) {
 							v.setupFoodStore(food.ingredients);
-							v.eat(2000);
-							v.eat(2000);
-							v.eat(2000);
-							$('#results').append(
-								$.sprintf(
-									'<div id="%s"><div class="breakdown"></div><div class="litmus"></div></div>',
-									v.description,v.description
-							));
-							viz = drawLitmusForEater(v,'#'+ v.description +" .litmus");
-							drawOveralStatsForEater(v,'#'+ v.description +' .breakdown');
+							v.eat(2000); v.eat(2000);
+							$('#eaterresults').append($.sprintf('<div class="row"><h3>%s</h3><hr/><div id="%sLitmus" class="litmus"></div></div>',v.description,v.description));
+							drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus');
+							//viz = drawLitmusForEater(v,'#'+ v.description +'Litmus');
 						});
-						*/
 					} catch(e) {
 						console.log(printStackTrace({e:e}).join('\n'));
 						console.trace();
@@ -95,12 +93,12 @@
 				<div class="span8 columns">
 					<h3>Motivation</h3>
 					<p>
-					When it comes to food in the US, we've got a whole variety of packaged foods to choose from. But in this 
-					sea of food, is it all accessible? What if you are alergic to Soy? Or Wheat? What if you're a vegitarian?
+					When it comes to food in the US we've got a whole variety of packaged foods to choose from. But in this 
+					sea of food, is it all accessible? What if you are alergic to soy, or wheat? What if you're vegitarian?
 					</p>
 
 					<p>
-					This page explores the topic of food access. Given a random assortment of foods commonly found in the 
+					This page explores the topic of food access. Given a random sampling of foods commonly found in the 
 					supermarket, what would various dietary restrictions be able to eat?
 					</p>
 				</div>
@@ -111,14 +109,34 @@
 					This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
 					contest in August, 2011.
 				</div>
+				<div class="span16 columns">
+					<hr/>
+				</div>
 			</div>
-			<div id="results">
-      <button id="size" class="first active">
-        Size
-      </button
-      ><button id="count" class="last">
-        Count
-      </button><p>
+			<div>
+				<div class="row">
+					<div class="span11 columns" id="mapbuttons">
+						<!--TODO cluster by food category (snack, condiment, etc)-->
+					</div>
+					<div class="span11 columns" id="mapresults">
+					</div>
+					<div class="span5 columns" id="eaterresults">
+						<!--
+						<div class="row">
+							<h3>Eater 1</h3>
+							<hr/>
+						</div>
+						-->
+					</div>
+				</div>
+				<!--
+				<div class="row">
+					<div class="span16 columns">
+						<h3>Custom Eater</h3>
+						<hr/>
+					</div>
+				</div>
+				-->
 			</div>
 			<div id="testresults"></div>
         </div>

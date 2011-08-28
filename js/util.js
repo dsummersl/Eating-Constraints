@@ -1,27 +1,74 @@
 // graph functions//{{{
-//
-function drawOveralStatsForEater(eater,element) {
-}
-
-function drawLitmusForEater(eater,element) {
-	var height = 100
+function drawFoodOverviewLitmus(eater,element) { //{{{
+	/*
+	 Draws a litmus bar showing categories that the eater can eat, and what they can't
+	*/
+	var height = 50
 	var litmusWidth = computeCalorieCount(eater.eaten);
 	litmusWidth += computeCalorieCount(eater.toEat);
 	litmusWidth += computeCalorieCount(eater.denied);
 
 	// dunno why I can't do [100,window.innerWidth-100]
-	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,window.innerWidth-200]);
+	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,$(element).width()]);
 	var heights = d3.scale.linear().domain([0,1]).range([0,50]);
 
 	var vis = d3.select(element)
 		.append("svg:svg")
-		.attr("width", window.innerWidth-100)
+		.attr("width", $(element).width())
 		.attr("height", height)
 	;
+	var xOffset=0;
+	$.each(eater.eatingSessions,function (i,v) {
+		v.boxWidth = computeCalorieCount(v);
+		v.xOffset = xOffset;
+		xOffset += v.boxWidth;
+	})
+	xOffset=0;
+	$.each(['eaten','toEat','denied'], function(i,foodCat) {
+		$.each(eater[foodCat],function (i,v) {
+			v.boxWidth = v['Servings Per Container'] * v.Calories;
+			v.xOffset = xOffset;
+			xOffset += v.boxWidth;
+		})
+		vis.selectAll(element +" ."+ foodCat)
+			.data(eater[foodCat])
+			.enter()
+			.append("svg:rect")
+			.attr('class',function(d) {return foodCat +" "+ d.cluster})
+			.attr('x', function(d) { return widths(d.xOffset) })
+			.attr('y', heights(.05))
+			.attr('width',function(d) {return widths(d.boxWidth)})
+			.attr('height',heights(.5))
+			.on('mouseover',function(d) {return d.Description})
+		;
+	});
+	return vis;
+}//}}}
+
+function drawLitmusForEater(eater,element) {//{{{
+	/*
+	 Draws a litmus bar showing what the customer 'would' eat and then what they can't eat, 
+	 and what they have eaten.
+	*/
+	var height = 50
+	var litmusWidth = computeCalorieCount(eater.eaten);
+	litmusWidth += computeCalorieCount(eater.toEat);
+	litmusWidth += computeCalorieCount(eater.denied);
+
+	// dunno why I can't do [100,window.innerWidth-100]
+	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,$(element).width()]);
+	var heights = d3.scale.linear().domain([0,1]).range([0,50]);
+
+	var vis = d3.select(element)
+		.append("svg:svg")
+		.attr("width", $(element).width())
+		.attr("height", height)
+	;
+	/*
 	vis.append("svg:rect")
 		.attr('x',widths(0)+100)
 		.attr('y',0.5)
-		.attr('width',widths(litmusWidth))
+		.attr('width',$(element).width())
 		.attr('height',50)
 		.attr('fill','white')
 		.attr('stroke','gray')
@@ -32,6 +79,7 @@ function drawLitmusForEater(eater,element) {
 		.attr('dx','5em')
 		.text(eater.description)
 	;
+	*/
 	var xOffset=0;
 	$.each(eater.eatingSessions,function (i,v) {
 		v.boxWidth = computeCalorieCount(v);
@@ -43,12 +91,12 @@ function drawLitmusForEater(eater,element) {
 		.enter()
 		.append("svg:rect")
 		.attr('class','border')
-		.attr("x", function(d) { return widths(d.xOffset)+100 })
-		.attr("y", 50+heights(.1))
+		.attr("x", function(d) { return widths(d.xOffset) })
+		.attr("y", heights(.1))
 		.attr("rx", 5)
 		.attr("ry", 5)
 		.attr("width", function(d) { return widths(d.boxWidth) })
-		.attr("height", heights(.85))
+		.attr("height", heights(.9))
 	;
 	xOffset=0;
 	$.each(['eaten','toEat','denied'], function(i,foodCat) {
@@ -62,19 +110,22 @@ function drawLitmusForEater(eater,element) {
 			.enter()
 			.append("svg:rect")
 			.attr('class',function(d) {return foodCat +" "+ d.cluster})
-			.attr('x', function(d) { return widths(d.xOffset)+100 })
-			.attr('y', 50+heights(.05))
+			.attr('x', function(d) { return widths(d.xOffset) })
+			.attr('y', heights(.05))
 			.attr('width',function(d) {return widths(d.boxWidth)})
 			.attr('height',heights(.5))
 			.on('mouseover',function(d) {return d.Description})
 		;
 	});
 	return vis;
-}
+}//}}}
 
-function drawFoodOverviewLitmus() {
-}
-
+buttonOptions = [
+	{ name: 'Calories/Package', id:'mapCaloriesPerPackage', calc: function(f) { return f['Servings Per Container']*f.Calories}},
+	{ name: 'Calories/Serving', id:'mapCaloriesPerServing', calc: function(f) { return f.Calories}},
+	{ name: 'Servings/Container', id:'mapServings', calc: function(f) { return f['Servings Per Container']}},
+];
+function drawTreeMap(food,element) {//{{{
 /*
 
 TreeMap:
@@ -85,54 +136,48 @@ Each cluster can be sized in the following ways:
  - contents = show counts for each type (nut, meat, etc)
  - nutrient type = show counts for each type by its nutrient type (fat, cholesteral, etc)
 
+ Return list of button IDs we need
  */
-function drawTreeMap(food,element) {
-try {
-	//food.ingredients.
-	foodMap = {
- "name": "TopLevel",
- "children": [{
-   "name": "One",
-   "children": [{
-     "name": "cluster",
-     "children": [
-      {"name": "AgglomerativeCluster", "size": 3938},
-      {"name": "CommunityStructure", "size": 3812},
-      {"name": "HierarchicalCluster", "size": 6714},
-      {"name": "MergeEdge", "size": 743}
-     ]}, {
-     "name": "graph",
-     "children": [
-      {"name": "BetweennessCentrality", "size": 3534},
-      {"name": "LinkDistance", "size": 5731},
-      {"name": "MaxFlowMinCut", "size": 7840},
-      {"name": "ShortestPaths", "size": 5914},
-      {"name": "SpanningTree", "size": 3416}
-     ]}, {
-     "name": "optimization",
-	 "size": 5
-    }]
-  }]
-}
-	foodMap = {
-		name: "Top",
-		children: []
-	}
+	foodMap = { name:'top', children: [] }
 	for (k in food.clusters) {
-		foodMap.children.push(food.clusters[k])
+		el = {};
+		el.cluster = food.clusters[k].cluster;
+		el.name = el.cluster;
+		el.children = [];
+		$.each(food.clusters[k].children,function(i,v) {
+			ch = {
+				cluster: el.cluster,
+				name: v.productName,
+			};
+			$.each(buttonOptions,function(i,bo) {
+				ch[bo.id] = 0;
+				var f = findFoodFromFoodName(food,v.productName);
+				ch[bo.id] += bo.calc(f);
+				//console.log($.sprintf("%s: %s = %s",ch.name,bo.id,ch[bo.id]));
+			});
+			el.children.push(ch);
+		});
+		/*
+		$.each(buttonOptions,function(i,bo) {
+			el[bo.id] = 0;
+			$.each(food.clusters[k].children,function(i,v) {
+				//console.log("looking for "+ v.productName)
+				var f = findFoodFromFoodName(food,v.productName);
+				el[bo.id] += bo.calc(f);
+			});
+		});
+		*/
+		foodMap.children.push(el);
 	}
-	//console.log("len = "+ foodMap.children.length);
-	//console.log("map = "+ JSON.stringify(foodMap));
 
-	var w = 600,
-	h = 400,
-	color = d3.scale.category20c();
+	var w = 600;
+	var h = 400;
 
 	var treemap = d3.layout.treemap()
 		.size([w, h])
 		.sticky(true)
-		//.value(function(d) { return d.size; });
-		.value(function(d) { return 1; });
+		.value(function(d) { return d[buttonOptions[0].id]; })
+	;
 
 	var div = d3.select(element).append("div")
 		.style("position", "relative")
@@ -142,39 +187,27 @@ try {
 	div.data([foodMap]).selectAll("div")
 		.data(treemap.nodes)
 		.enter().append("div")
-		.attr("class", "cell")
-		.style("background", function(d) { return d.children ? color(d.cluster) : null; })
+		.attr("class", function(d) { return "cell "+ d.cluster})
 		.call(cell)
-		.text(function(d) { return d.children ? null : d.cluster; });
+		.text(function(d) { return d.children ? null : d.name; })
+	;
 
-	  d3.select("#size").on("click", function() {
-		div.selectAll("div")
-			//.data(treemap.value(function(d) { return d.size; }))
-			.data(treemap.value(function(d) { return 1; }))
-		  .transition()
-			.duration(1500)
-			.call(cell);
+	$.each(buttonOptions,function(i,bo) {
+		d3.select("#"+ bo.id).on("click", function() {
+			div.selectAll("div")
+				.data(treemap.value(function(d) { return d[bo.id]; }))
+				.transition()
+				.duration(1000)
+				.call(cell)
+				.text(function(d) { return d.children ? null : d.name; })
+			;
 
-		d3.select("#size").classed("active", true);
-		d3.select("#count").classed("active", false);
-	  });
-
-	  d3.select("#count").on("click", function() {
-		div.selectAll("div")
-			.data(treemap.value(function(d) { return 1; }))
-		  .transition()
-			.duration(1500)
-			.call(cell);
-
-		d3.select("#size").classed("active", false);
-		d3.select("#count").classed("active", true);
-	  });
-} catch(e) {
-	console.log(printStackTrace({e:e}).join('\n'));
-	console.trace();
-	alert(e);
-}
-}
+			$.each(buttonOptions,function(i,bo2) { // disable everybody but my id.
+				d3.select("#"+ bo2.id).classed("active", bo2.id == bo.id);
+			});
+		});
+	});
+}//}}}
 
 function cell() {
   this
@@ -440,6 +473,12 @@ Eater.prototype.eat = function(calories) {
 	}
 	this.eatingSessions.push(ate);
 	return ate;
+}
+
+function findFoodFromFoodName(foods,foodName) {
+	var food;
+	$.each(foods.ingredients,function(i,v) { if (v.Description == foodName) { food = v; }});
+	return food;
 }
 
 // given a list of foods, computer the calories * servings
