@@ -3,12 +3,13 @@
 	<head>
 <!-- scripts and css includes {{{-->
 		<link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-1.1.1.min.css">
+		<link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
+		<link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
+
 		<script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
 
-        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css">
-
-		<link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
 		<script src="test/vizlathon/spec/lib/jspec.js"></script>
 		<script src="test/vizlathon/spec/lib/jspec.xhr.js"></script>
 		<script src="test/vizlathon/spec/lib/jspec.jquery.js"></script>
@@ -17,7 +18,6 @@
 		<script type="text/javascript" src="js/d3/d3.layout.js"></script>
 
 		<script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
-        <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
 		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
 <!--}}}-->
@@ -26,6 +26,7 @@
 			var food = {};
 			var uniqueRankCategories;
 			$(function() {
+				window.onerror = function(msg, file, line) { alert(printStackTrace().join('\n\n')); }
 				// test litmus drawing<!--{{{-->
 				startupWithData(function() {
 					try {
@@ -33,9 +34,15 @@
 							options = "";
 							if (i == 0) { options = "first active" }
 							if (i == buttonOptions.length-1) { options = "last" }
-							$('#mapbuttons').append($.sprintf('<button id="%s" class="%s">%s</button>',bo.id,options,bo.name));
+							$('#groupByMenu').append($.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name));
+							$('#'+bo.id).click(function() {
+								// TODO make all the other ones non-active
+								$('#currentGroupBy').text("Arranged by "+ bo.name);
+								return false;
+							});
 						});
-						var vis = drawTreeMap(food,'#mapresults');
+						$('#currentGroupBy').text("Arranged by "+ buttonOptions[0].name);
+						drawTreeMap(food,'#mapresults');
 						var eaters = [
 							new Eater('Omnivore'),
 							new Eater('Vegitarian',['Meat']),
@@ -61,6 +68,15 @@
 					}
 				});
 				// <!--}}}-->
+				// bootstrap menu<!--{{{-->
+				$("body").bind("click", function (e) {
+					$('a.menu').parent("li").removeClass("open");
+				});
+				$("a.menu").click(function (e) {
+					var $li = $(this).parent("li").toggleClass('open');
+					return false;
+				}); 
+				//<!--}}}-->
 				if (debug) { // {{{
 					var jspec = JSpec.exec('test/vizlathon/spec/unit/spec.js')
 					.run({ fixturePath: 'test/vizlathon/spec/fixtures' });
@@ -85,6 +101,22 @@
 		</script>
 	</head>
 	<body>
+		<div class="topbar">
+			<div class="fill">
+				<div class="container">
+					<h3><a href="#">Eating Constraints</a></h3>
+					<ul class="nav secondary-nav">
+						<li class="menu">
+							<a class="menu" href="#">Arrange By...</a>
+							<ul id="groupByMenu" class="menu-dropdown">
+								<li><a id="menuReset" href="#">Reset</a></li>
+								<li class="divider"></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
         <div class="container">
             <h1>Eating Constraints
                 <small>How food restrictions affect the diet</small>
@@ -117,17 +149,12 @@
 			<div>
 				<div class="row">
 					<div class="span11 columns" id="mapbuttons">
+						<h3 id="currentGroupBy"></h3>
 						<!--TODO cluster by food category (snack, condiment, etc)-->
 					</div>
 					<div class="span11 columns" id="mapresults">
 					</div>
 					<div class="span5 columns" id="eaterresults">
-						<!--
-						<div class="row">
-							<h3>Eater 1</h3>
-							<hr/>
-						</div>
-						-->
 					</div>
 				</div>
 				<!--
