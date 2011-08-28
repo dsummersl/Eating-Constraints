@@ -373,16 +373,17 @@ function processEaterForm() { //<!--{{{-->
 }//<!--}}}-->
 
 function startupWithData(onstarted) { //<!--{{{-->
-	$('#startupLoading').dialog()
-	$('#startupLoading').dialog('open')
+	$('#startupLoading').dialog();
+	$('#startupLoading').dialog('close');
+	$('#startupLoading').dialog('open');
 	$.getJSON('testdata/ingredients.json', function(d) {
-		food['ingredients'] = d
+		food['ingredients'] = d;
 	})
 	$.getJSON('testdata/ingredientRanks.json', function(d) {
-		food['ingredientRanks'] = d
+		food['ingredientRanks'] = d;
 	})
 	$.getJSON('testdata/calorieclusters.json', function(d) {
-		food['clusters'] = d
+		food['clusters'] = d;
 	})
 	checkData(function() {return [food['ingredientRanks'],food['ingredients'],food['clusters']]},500,function() { 
 		food = combineIngredientsAndRanks(food);
