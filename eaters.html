@@ -30,16 +30,23 @@
 				// test litmus drawing<!--{{{-->
 				startupWithData(function() {
 					try {
+						$.each(d3.keys(clusterDefinitions),function(i,v) {
+							$('#colorKey').append($.sprintf('<a class="btn large %s">%s</a>',v,clusterDefinitions[v]));
+						});
 						$.each(buttonOptions,function(i,bo) {
 							options = "";
 							if (i == 0) { options = "first active" }
 							if (i == buttonOptions.length-1) { options = "last" }
 							$('#groupByMenu').append($.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name));
 							$('#'+bo.id).click(function() {
-								// TODO make all the other ones non-active
 								$('#currentGroupBy').text("Arranged by "+ bo.name);
 								return false;
 							});
+						});
+						$('#menuReset').click(function() {
+							//$('#currentGroupBy').text("Arranged by "+ buttonOptions[0].name);
+							$('#'+ buttonOptions[0].id).click();
+							return false;
 						});
 						$('#currentGroupBy').text("Arranged by "+ buttonOptions[0].name);
 						drawTreeMap(food,'#mapresults');
@@ -136,8 +143,11 @@
 					</p>
 				</div>
 				<div class="span8 columns">
-					<h2></h2>
 					<h3>Colors</h3>
+					<p>
+					Foods colored by their nutritional content:
+					<p>
+					<div id="colorKey"></div>
 					<br/>
 					This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
 					contest in August, 2011.

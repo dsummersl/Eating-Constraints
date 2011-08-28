@@ -1,10 +1,48 @@
 // graph functions//{{{
 //
+
+clusterDefinitions = {
+	cluster0: 'Fatty',
+	cluster1: 'Salty',
+	cluster2: 'Extremely Salty',
+	cluster3: 'cluster3',
+	cluster4: 'Very Salty',
+	cluster5: 'cluster5',
+	cluster6: 'Sugary',
+	cluster7: 'Fatty & Salty',
+}
+
 buttonOptions = [
-	{ name: 'Calories/Package', id:'mapCaloriesPerPackage', calc: function(f) { return parseInt(f['Servings Per Container'])*f.Calories}},
-	{ name: 'Calories/Serving', id:'mapCaloriesPerServing', calc: function(f) { return parseInt(f.Calories)}},
-	{ name: 'Servings/Container', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
+	{ name : 'Calories/Serving', id     : 'mapCaloriesPerServing', calc : function(f) { return checkBadNum(parseInt(f.Calories))}},
+	{ name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(parseInt(f['Servings Per Container'])*f.Calories)}},
+	{ name : 'Carbs(g)/Serving', id     : 'mapCarbsPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']))}},
+	{ name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']*f['Servings Per Container']))}},
+	{ name : 'Sugar(g)/Serving', id     : 'mapSugarPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams']))}},
+	{ name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams']*f['Servings Per Container']))}},
+	{ name : 'Fiber(g)/Serving', id     : 'mapFiberPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams']))}},
+	{ name : 'Fiber(g)/Package', id     : 'mapFiberPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams']*f['Servings Per Container']))}},
+	{ name : 'Total Fat(g)/Serving', id : 'mapFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams']))}},
+	{ name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams']*f['Servings Per Container']))}},
+	{ name : 'Sat Fat(g)/Serving', id   : 'mapFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']))}},
+	{ name : 'Sat Fat(g)/Package', id   : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']*f['Servings Per Container']))}},
+	{ name : 'Salt(mg)/Serving', id     : 'mapSaltPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']))}},
+	{ name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']*f['Servings Per Container']))}},
+	{ name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(parseInt(f['Servings Per Container']))}},
+	// TODO gotta cleanup the ounces before I can do this:
+	//{ name: 'Ounces/Package', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
 ];
+
+function doNada() {
+	return false;
+}
+
+function checkBadNum(result) {
+	if (isNaN(result)) {
+		console.log(printStackTrace().join('\n'));
+		return 0;
+	}
+	return result;
+}
 
 function drawFoodOverviewLitmus(eater,element) { //{{{
 	/*
