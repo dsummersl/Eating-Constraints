@@ -188,17 +188,19 @@ function checkBadNum(result) {
 		//console.log(printStackTrace().join('\n'));
 		return 0;
 	}
+	if (result == Infinity) { return 100000; }
+	if (result == -Infinity) { return -100000; }
 	return result;
 }
 
-function drawFoodOverviewLitmus(eater,element) { //{{{
+function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
 	 Draws a litmus bar showing categories that the eater can eat, and what they can't
 	*/
 	var height = 50
-	var litmusWidth = computeCount(eater.eaten,buttonOptions[0].calc);
-	litmusWidth += computeCount(eater.toEat,buttonOptions[0].calc);
-	litmusWidth += computeCount(eater.denied,buttonOptions[0].calc);
+	var litmusWidth = computeCount(eater.eaten,bo.calc);
+	litmusWidth += computeCount(eater.toEat,bo.calc);
+	litmusWidth += computeCount(eater.denied,bo.calc);
 	var elementWidth = $(element).width();
 
 	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,elementWidth]);
@@ -243,65 +245,17 @@ function drawFoodOverviewLitmus(eater,element) { //{{{
 			.attr('x', function(d) { 
 						if (element == '#OmnivoreLitmus') {
 							console.log('cluster = '+ d.cluster)
-							console.log('x = '+ computeXOffset([edible,inedible],d,buttonOptions[0].calc));
-							console.log('d = '+ d.index);
-							console.log("inedible = "+ d3.keys(inedible).length);
-					//		console.log('xn = '+ widths(computeXOffset([edible,inedible],d,buttonOptions[0].calc)));
-						}
-				return widths(computeXOffset([edible,inedible],d,buttonOptions[0].calc)) 
-			})
-			.attr('y', heights(.05))
-			.attr('width',function(d) {return widths(computeFoodClusterWidth(d,buttonOptions[0].calc))})
-			.attr('height',heights(.5))
-		;
-	});
-	$.each(buttonOptions,function(i,bo) {
-		$('#'+ bo.id).click(function() {
-			//console.log("The element = "+ element);
-			var newWidth = computeCount(eater.eaten,bo.calc);
-			//console.log("new eaten width = "+ widths(newWidth));
-			newWidth += computeCount(eater.toEat,bo.calc);
-			//console.log("new toEat width = "+ widths(newWidth));
-			newWidth += computeCount(eater.denied,bo.calc);
-			//console.log("new denied width = "+ widths(newWidth));
-			widths = d3.scale.linear().domain([0,newWidth]).range([0,elementWidth]);
-			$.each([edible,inedible],function(i,v) {
-				theType = 'eaten';
-				if (i == 1) { theType = 'denied' }
-				/*
-				console.log("new max width = "+ widths(newWidth));
-				console.log("thetype = "+ theType);
-				console.log("trying to b = "+ vis.selectAll("."+ theType)[0].length);
-				console.log("trying to c = "+ d3.selectAll(element).selectAll("."+ theType)[0].length);
-				console.log("jquery found "+ $(element +" ."+ theType).size());
-				*/
-				vis.selectAll("."+ theType)
-					.data(d3.values(v))
-					.transition()
-					.duration(1000)
-					.attr('x', function(d) { 
-						if (element == '#OmnivoreLitmus') {
-							console.log('cluster = '+ d.cluster)
 							console.log('x = '+ computeXOffset([edible,inedible],d,bo.calc));
 							console.log('d = '+ d.index);
 							console.log("inedible = "+ d3.keys(inedible).length);
 					//		console.log('xn = '+ widths(computeXOffset([edible,inedible],d,bo.calc)));
 						}
-						return widths(computeXOffset([edible,inedible],d,bo.calc)) })
-					.attr('width',function(d) { 
-						/*
-						if (element == '#OmnivoreLitmus') {
-							console.log('widths = '+ newWidth);
-							console.log('computeFoodClusterWidth = '+ computeFoodClusterWidth(d,bo.calc));
-							//console.log('d = '+ JSON.stringify(d));
-							console.log("ol w = "+ widths(computeFoodClusterWidth(d,bo.calc)));
-						}
-						*/
-						return widths(computeFoodClusterWidth(d,bo.calc)) })
-				;
-			});
-			return false;
-		});
+				return widths(computeXOffset([edible,inedible],d,bo.calc)) 
+			})
+			.attr('y', heights(.05))
+			.attr('width',function(d) {return widths(computeFoodClusterWidth(d,bo.calc))})
+			.attr('height',heights(.5))
+		;
 	});
 	return vis;
 }//}}}
@@ -322,7 +276,7 @@ function computeXOffset(parts,cluster,calc) {
 			}
 		});
 	});
-	return xOffset;
+	return checkBadNum(xOffset);
 }
 
 function drawLitmusForEater(eater,element) {//{{{

@@ -78,8 +78,11 @@
                                 $('#'+newPage +'Tab').addClass('active');
                                 if (!$('#refreshingNote').is(':visible')) {
                                     $('#refreshingNote').fadeIn();
-                                    console.log('click click');
                                     populateTable(food,currentArrangeBy,'#tableresults');
+                                    $.each(eaters,function(i,v) {
+                                        $('#'+ v.description +'Litmus').empty();
+                                        drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus',currentArrangeBy);
+                                    });
                                     $('#'+newPage).fadeIn(1000,function() {
                                         $('#refreshingNote').fadeOut();
                                     });
@@ -113,9 +116,9 @@
 						];
 						$.each(eaters,function(i,v) {
 							v.setupFoodStore(food.ingredients);
-							v.eat(2000); v.eat(2000);
+							//v.eat(2000); v.eat(2000);
 							$('#eaterresults').append($.sprintf('<div class="row"><h3>%s</h3><hr/><div id="%sLitmus" class="litmus"></div></div>',v.description,v.description));
-							drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus');
+							drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus',currentArrangeBy);
 							//viz = drawLitmusForEater(v,'#'+ v.description +'Litmus');
 						});
 					} catch(e) {
@@ -233,6 +236,7 @@
             <div class="row">
                 <div class="span16 columns">
                     <hr />
+                    Copyright 2011 <a href="mailto:dsummersl@yahoo.com">Dane Summers</a>
                     <div id="testresults"></div>
                 </div>
             </div>
