@@ -92,16 +92,20 @@ function makeRanksPopup(food,anchorElement) {
 	var toAppend = "";
 	toAppend += $.sprintf('<div id="%sPopover" class="popover right" style="display: none;"><div class="arrow"></div><div class="inner">',anchorElement);
 	toAppend += $.sprintf('<h3 class="title">%s</h3><div class="content">',aFood.Description);
-	toAppend += '<table><thead><tr>';
-	toAppend += $.sprintf('<th class="header">%s</th>','Ingredient');
-	toAppend += $.sprintf('<th class="header">%s</th>','Contains');
+	toAppend += '<table class="zebra-striped"><thead><tr>';
+	toAppend += $.sprintf('<th class="header">%s</th>','Nutrient');
+	toAppend += $.sprintf('<th class="header">%s</th>','Value');
 	toAppend += "</tr></thead><tbody>";
-	$.each(aFood.Ranks,function(i,v) {
-		toAppend += '<tr>';
-		//toAppend += $.sprintf('<td>%s</td><td>%s</td>',v.Ingredient,v.IngredientCategory.replace('|',','));
-		toAppend += $.sprintf('<td>%s</td><td>%s</td>',v.Ingredient,v.IngredientCategory);
-		toAppend += '</tr>';
-	});
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s</td></tr>','Serving Size',checkBadNum(aFood['Serving Size']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s</td></tr>','Calories',checkBadNum(aFood['Calories']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s g (%s%%)</td></tr>','Carbohydrates',checkBadNum(aFood['Total Carbohydrate - Grams']),checkBadNum(aFood['Total Carbohydrate - Percent']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s g (%s%%)</td></tr>','Fiber',checkBadNum(aFood['Dietary Fiber  - Grams']),checkBadNum(aFood['Dietary Fiber  - Percent']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s g (%s%%)</td></tr>','Fat',checkBadNum(aFood['Total Fat - Grams']),checkBadNum(aFood['Total Fat - Percent']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s g (%s%%)</td></tr>','Saturated Fat',checkBadNum(aFood['Saturated Fat  - Grams']),checkBadNum(aFood['Saturated Fat  - Percent']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s %s</td></tr>','Sugar',checkBadNum(aFood['Sugars  - Grams']),'g');
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s %s</td></tr>','Protein',checkBadNum(aFood['Protein - Grams']),'g');
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s %s (%s%%)</td></tr>','Salt',checkBadNum(aFood['Sodium - Milligrams']),'mg',checkBadNum(aFood['Sodium - Percent']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s %s (%s%%)</td></tr>','Cholesterol',checkBadNum(aFood['Cholesterol - Milligrams']),'mg',checkBadNum(aFood['Cholesterol - Percent']));
 	toAppend += "</tbody></table></div></div></td>";
 
 	$('#'+anchorElement).parent().find('.popover').remove();
