@@ -27,6 +27,7 @@
 			var food = {};
 			var uniqueRankCategories;
             var lastPopup;
+            var currentArrangeBy = buttonOptions[0];
 			$(function() {
 				window.onerror = function(msg, file, line) { alert(printStackTrace().join('\n\n')); }
 				// setup data functions<!--{{{-->
@@ -35,18 +36,32 @@
 						$.each(d3.keys(clusterDefinitions),function(i,v) { // setup colorkey
 							$('#colorKey').append($.sprintf('<a class="btn %s">%s</a>',v,clusterDefinitions[v]));
 						});
-						$.each(buttonOptions,function(i,bo) {
+                        var sortCats = $.map(buttonOptions,function(v) { return v.cat }).unique().sort();
+                        $.each(sortCats,function (i,cat) {
 							options = "";
 							if (i == 0) { options = "first active" }
 							if (i == buttonOptions.length-1) { options = "last" }
-							$('#groupByMenu').append($.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name));
-							$('#'+bo.id).click(function() {
-								$('#graphPageTab a').text("Arranged by "+ bo.name);
-								return false;
-							});
-						});
+                            var toAppend = $.sprintf('<li class="menu"><a class="menu" href="#">%s</a>',cat);
+                            toAppend += '<ul class="menu-dropdown">';
+                            $.each(buttonOptions,function(i,bo) {
+                                if (bo.cat == cat) {
+                                    toAppend += $.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name);
+                                }
+                            });
+                            toAppend += '</ul></li>';
+                            $(toAppend).insertAfter('#arrangeByMenu');
+                            $.each(buttonOptions,function(i,bo) {
+                                $('#'+bo.id).click(function() {
+                                    $('#graphPageTab a').text("Arranged by "+ bo.name);
+                                    $('#'+bo.id).parent().parent().parent().removeClass('open');
+                                    currentArrangeBy = bo;
+                                    $('#graphPageTab a').click();
+                                    return false;
+                                });
+                            });
+                        });
 						$('#menuReset').click(function() {
-							$('#'+ buttonOptions[0].id).click();
+							$('#'+ currentArrangeBy.id).click();
 							return false;
 						});
                         var pages = [ 'graphPage','tablePage' ];
@@ -61,15 +76,19 @@
                                     }
                                 });
                                 $('#'+newPage +'Tab').addClass('active');
-                                $('#refreshingNote').fadeIn();
-                                $('#'+newPage).fadeIn(1000,function() {
-                                    $('#refreshingNote').fadeOut();
-                                });
+                                if (!$('#refreshingNote').is(':visible')) {
+                                    $('#refreshingNote').fadeIn();
+                                    console.log('click click');
+                                    populateTable(food,currentArrangeBy,'#tableresults');
+                                    $('#'+newPage).fadeIn(1000,function() {
+                                        $('#refreshingNote').fadeOut();
+                                    });
+                                }
                             });
                         });
-						$('#graphPageTab a').text("Arranged by "+ buttonOptions[0].name); // update the graph tab whenever the arrange by changes
+						$('#graphPageTab a').text("Arranged by "+ currentArrangeBy.name); // update the graph tab whenever the arrange by changes
 						drawTreeMap(food,'#mapresults');
-                        populateTable(food.ingredients,'#tableresults');
+                        populateTable(food,currentArrangeBy,'#tableresults');
                         $('.tableDetails').click(function () {
                             $('.popover').fadeOut();
                             if (lastPopup == $(this).attr('id')) {
@@ -107,9 +126,6 @@
 				});
 				// <!--}}}-->
 				// bootstrap menu<!--{{{-->
-				$("body").bind("click", function (e) {
-					$('a.menu').parent("li").removeClass("open");
-				});
 				$("a.menu").click(function (e) {
 					var $li = $(this).parent("li").toggleClass('open');
 					return false;
@@ -156,13 +172,8 @@
 				<div class="container">
 					<h3><a href="#">Eating Constraints</a></h3>
 					<ul class="nav secondary-nav">
-						<li class="menu">
-							<a class="menu" href="#">Arrange By...</a>
-							<ul id="groupByMenu" class="menu-dropdown">
-								<li><a id="menuReset" href="#">Reset</a></li>
-								<li class="divider"></li>
-							</ul>
-						</li>
+                        <li id="arrangeByMenu"><a class="menu" onclick="return false;" href="#">Arrange By:</a></li>
+                        <li class="active"><a id="menuReset" href="#">Reset</a></li>
 					</ul>
 				</div>
 			</div>

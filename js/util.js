@@ -2,33 +2,44 @@
 
 // description of the clusters
 clusterDefinitions = {
-	cluster0: 'Fatty',
+	cluster0: 'Very Fatty',
 	cluster1: 'Salty',
 	cluster2: 'Extremely Salty',
-	cluster3: 'cluster3',
+	cluster3: 'Fibrous & No Fat',
 	cluster4: 'Very Salty',
-	cluster5: 'cluster5',
+	cluster5: 'Fibrous & Salty',
 	cluster6: 'Sugary',
 	cluster7: 'Fatty & Salty',
 }
 
 // filter functions
 buttonOptions = [
-	{ name : 'Calories/Serving', id     : 'mapCaloriesPerServing', calc : function(f) { return checkBadNum(parseInt(f.Calories))}},
-	{ name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(parseInt(f['Servings Per Container'])*f.Calories)}},
-	{ name : 'Carbs(g)/Serving', id     : 'mapCarbsPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']))}},
-	{ name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']*f['Servings Per Container']))}},
-	{ name : 'Sugar(g)/Serving', id     : 'mapSugarPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams']))}},
-	{ name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams']*f['Servings Per Container']))}},
-	{ name : 'Fiber(g)/Serving', id     : 'mapFiberPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams']))}},
-	{ name : 'Fiber(g)/Package', id     : 'mapFiberPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams']*f['Servings Per Container']))}},
-	{ name : 'Total Fat(g)/Serving', id : 'mapFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams']))}},
-	{ name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams']*f['Servings Per Container']))}},
-	{ name : 'Sat Fat(g)/Serving', id   : 'mapFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']))}},
-	{ name : 'Sat Fat(g)/Package', id   : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']*f['Servings Per Container']))}},
-	{ name : 'Salt(mg)/Serving', id     : 'mapSaltPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']))}},
-	{ name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']*f['Servings Per Container']))}},
-	{ name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(parseInt(f['Servings Per Container']))}},
+	{ cat: 'Serving', name : 'Calories/Serving', id     : 'mapCaloriesPerServing', calc : function(f) { return checkBadNum(parseInt(f.Calories))}},
+	{ cat: 'Serving', name : 'Carbs(g)/Serving', id     : 'mapCarbsPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']))}},
+	{ cat: 'Serving', name : 'Sugar(g)/Serving', id     : 'mapSugarPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams']))}},
+	{ cat: 'Serving', name : 'Fiber(g)/Serving', id     : 'mapFiberPerServing', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams']))}},
+	{ cat: 'Serving', name : 'Total Fat(g)/Serving', id : 'mapFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams']))}},
+	{ cat: 'Serving', name : 'Sat Fat(g)/Serving', id   : 'mapSatFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']))}},
+	{ cat: 'Serving', name : 'Salt(mg)/Serving', id     : 'mapSaltPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']))}},
+	{ cat: 'Serving', name : 'Cholesterol(mg)/Serving', id     : 'mapChPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Cholesterol - Milligrams']))}},
+
+	{ cat: 'Package', name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(parseInt(f['Servings Per Container'])*f.Calories)}},
+	{ cat: 'Package', name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Fiber(g)/Package', id     : 'mapFiberPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Sat Fat(g)/Package', id   : 'mapSatFatPerPackage', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(parseInt(f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Cholesterol(mg)/Package', id     : 'mapChPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Cholesterol - Milligrams']*f['Servings Per Container']))}},
+
+	{ cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Sugar(g)/Calorie', id     : 'mapSugarPerCalorie', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Fiber(g)/Calorie', id     : 'mapFiberPerCalorie', calc    : function(f) { return checkBadNum(parseInt(f['Dietary Fiber  - Grams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Total Fat(g)/Calorie', id : 'mapFatPerCalorie', calc      : function(f) { return checkBadNum(parseInt(f['Total Fat - Grams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Sat Fat(g)/Calorie', id   : 'mapSatFatPerCalorie', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Salt(mg)/Calorie', id     : 'mapSaltPerCalorie', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Cholesterol(mg)/Calorie', id     : 'mapChPerCalorie', calc     : function(f) { return checkBadNum(parseInt(f['Cholesterol - Milligrams'])/f.Calories)}},
 	// TODO gotta cleanup the ounces before I can do this:
 	//{ name: 'Ounces/Package', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
 ];
@@ -95,21 +106,45 @@ function makeRanksPopup(food,anchorElement) {
 	positionPopoversNextOver('#'+anchorElement,'#'+anchorElement+"Popover");
 }
 
-function populateTable(food,element) {
+function populateTable(food,arrangeBy,element) {
+	var alreadyExists = false;
+	if ($(element +' table').size() > 0) {
+		// /html/body/div[2]/div[3]/div/table/tbody/tr/td[5]
+		//console.log("looking!");
+		//$(element +' td:nth-child(5)').map(function(index) {
+		$(element +' tr').map(function(index) {
+			if (!alreadyExists) { // first row, ignore
+				$(this).find(':nth-child(5)').text(arrangeBy.name);
+				alreadyExists = true;
+				return;
+			}
+			//console.log("1st = '"+ $(this).find(':nth-child(1)').text() +"'");
+			var aFood = $(this).find(':first-child a').attr('id');
+			//console.log("found '"+ aFood +"'");
+			var newVal = arrangeBy.calc(food.ingredients[aFood.split('-')[1]]);
+			//console.log("new val = "+ newVal);
+			var child = $(this).find(':nth-child(5)').text($.sprintf("%1.2f",newVal));
+			//return $('<td>ahem</td>').get(0);
+		});
+		$(element +" table").trigger('update');
+		return;
+	}
+	// TODO sorting of the Package Size column isn't correct. Need to fix.
 	var toAppend = ""
 	toAppend += '<table class="zebra-striped"><thead><tr>';
 	toAppend += $.sprintf('<th class="header">%s</th>','Product');
 	toAppend += $.sprintf('<th class="header">%s</th>','Package Size');
 	toAppend += $.sprintf('<th class="header">%s</th>','Servings');
 	toAppend += $.sprintf('<th class="header">%s</th>','Calories');
+	toAppend += $.sprintf('<th class="header">%s</th>',arrangeBy.name);
 	toAppend += $.sprintf('<th class="header">%s</th>','Category');
 	toAppend += $.sprintf('<th class="header">%s</th>','Contains');
 	toAppend += '</tr></thead><tbody>';
 
 	var idoffset = 0;
-	$.each(food,function(i,aFood) {
+	$.each(food.ingredients,function(i,aFood) {
 		toAppend += '<tr>';
-		$.each(['Description','PackageWeight','Servings Per Container','Calories','cluster','Categories'],function(i,v) {
+		$.each(['Description','PackageWeight','Servings Per Container','Calories','arrangeby','cluster','Categories'],function(i,v) {
 			// TODO for the header link to its URL
 			if (v == 'cluster') {
 				toAppend += $.sprintf('<td><a class="btn %s">%s</a></td>',aFood[v],clusterDefinitions[aFood[v]]);
@@ -126,10 +161,13 @@ function populateTable(food,element) {
 				toAppend += $.sprintf('<td>%s %s</td>',aFood[v],aFood['PackageWeightUnits']);
 			}
 			else if (v == 'Description') {
-				toAppend += $.sprintf('<td><a href="#" id="tableDescId%s" class="popoverswell tableDetails">%s</a></td>',idoffset++,aFood[v]);
+				toAppend += $.sprintf('<td><a href="#" id="tableDescId-%s" class="popoverswell tableDetails">%s</a></td>',idoffset++,aFood[v]);
+			}
+			else if (v == 'arrangeby') {
+				toAppend += $.sprintf('<td>%s</td>',$.sprintf("%1.2f",arrangeBy.calc(aFood)));
 			}
 			else {
-				toAppend += $.sprintf('<td>%s</td>',v,aFood[v]);
+				toAppend += $.sprintf('<td>%s</td>',aFood[v]);
 			}
 		});
 		toAppend += '</tr>';
@@ -137,7 +175,7 @@ function populateTable(food,element) {
 	toAppend += '</tbody></table>';
 	$(element).empty();
 	$(element).append(toAppend);
-	$(element +" table").tablesorter({sortList: [[0,0]]});
+	var ts = $(element +" table").tablesorter({sortList: [[0,0]]});
 	//console.log("I appended this table to "+ element +": "+ toAppend)
 }
 
@@ -398,7 +436,7 @@ Each cluster can be sized in the following ways:
 	}
 
 	var w = 600;
-	var h = 400;
+	var h = 500;
 
 	var treemap = d3.layout.treemap()
 		.size([w, h])
