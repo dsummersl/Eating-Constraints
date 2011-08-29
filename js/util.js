@@ -193,6 +193,19 @@ function checkBadNum(result) {
 	return result;
 }
 
+function addFoodStats(eater,element,bo) {
+	var toAppend = '<ul class="unstyled">';
+	var inedible = computeCount(eater.denied,bo.calc);
+	var total = computeCount(eater.eaten,bo.calc) + computeCount(eater.toEat,bo.calc) + inedible;
+	if (eater.denied.length == 0) {
+		toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",0);
+	}
+	else {
+		toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(inedible/total));
+	}
+	toAppend += "</ul>";
+	$(element).append(toAppend);
+}
 function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
 	 Draws a litmus bar showing categories that the eater can eat, and what they can't

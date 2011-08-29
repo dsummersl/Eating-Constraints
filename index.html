@@ -81,7 +81,9 @@
                                     populateTable(food,currentArrangeBy,'#tableresults');
                                     $.each(eaters,function(i,v) {
                                         $('#'+ v.description +'Litmus').empty();
+                                        $('#'+ v.description +'Stats').empty();
                                         drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus',currentArrangeBy);
+                                        addFoodStats(v,'#'+ v.description +'Stats',currentArrangeBy);
                                     });
                                     $('#'+newPage).fadeIn(1000,function() {
                                         $('#refreshingNote').fadeOut();
@@ -104,22 +106,21 @@
                             return false;
                         });
 						var eaters = [
-							new Eater('Omnivore'),
+							//new Eater('Omnivore'),
 							new Eater('Vegitarian',['Meat']),
 							new Eater('DairyFree',['Dairy']),
 							new Eater('FlourFree',['Wheat']),
-
+							new Eater('SugarFree',['Sugar']),
 							//new Eater('Vegan',['Meat','Dairy']),
-							//new Eater('SugarFree',['Sugar']),
 							//new Eater('CornFree',['Corn']),
 							//new Eater('SoyFree',['Soy']),
 						];
 						$.each(eaters,function(i,v) {
 							v.setupFoodStore(food.ingredients);
 							//v.eat(2000); v.eat(2000);
-							$('#eaterresults').append($.sprintf('<div class="row"><h3>%s</h3><hr/><div id="%sLitmus" class="litmus"></div></div>',v.description,v.description));
+                            $('#eaterresults').append($.sprintf('<div class="row"><h3>%s</h3><hr/><div id="%sLitmus" class="litmus"></div><div id="%sStats"></div></div>',v.description,v.description,v.description));
 							drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus',currentArrangeBy);
-							//viz = drawLitmusForEater(v,'#'+ v.description +'Litmus');
+                            addFoodStats(v,'#'+ v.description +'Stats',currentArrangeBy);
 						});
 					} catch(e) {
 						console.log(printStackTrace({e:e}).join('\n'));
