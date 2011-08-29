@@ -96,7 +96,7 @@ function makeRanksPopup(food,anchorElement) {
 	toAppend += $.sprintf('<th class="header">%s</th>','Nutrient');
 	toAppend += $.sprintf('<th class="header">%s</th>','Value');
 	toAppend += "</tr></thead><tbody>";
-  toAppend += $.sprintf('<tr><td>%s</td><td>%s</td></tr>','Serving Size',checkBadNum(aFood['Serving Size']));
+  toAppend += $.sprintf('<tr><td>%s</td><td>%s</td></tr>','Servings',checkBadNum(aFood['Servings Per Container']));
   toAppend += $.sprintf('<tr><td>%s</td><td>%s</td></tr>','Calories',checkBadNum(aFood['Calories']));
   toAppend += $.sprintf('<tr><td>%s</td><td>%s g (%s%%)</td></tr>','Carbohydrates',checkBadNum(aFood['Total Carbohydrate - Grams']),checkBadNum(aFood['Total Carbohydrate - Percent']));
   toAppend += $.sprintf('<tr><td>%s</td><td>%s g (%s%%)</td></tr>','Fiber',checkBadNum(aFood['Dietary Fiber  - Grams']),checkBadNum(aFood['Dietary Fiber  - Percent']));
