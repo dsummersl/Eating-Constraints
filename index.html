@@ -126,8 +126,17 @@
 				});
 				// <!--}}}-->
 				// bootstrap menu<!--{{{-->
+                $("body").bind("click", function (e) {
+                    $('a.menu').parent("li").removeClass("open");
+                });
 				$("a.menu").click(function (e) {
-					var $li = $(this).parent("li").toggleClass('open');
+                    if ($(this).parent("li").hasClass('open')) {
+                        var $li = $(this).parent("li").removeClass('open');
+                    }
+                    else {
+                        $('li.menu.open').removeClass('open');
+                        var $li = $(this).parent("li").addClass('open');
+                    }
 					return false;
 				}); 
 				//<!--}}}-->
