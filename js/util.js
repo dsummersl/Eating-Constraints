@@ -137,7 +137,7 @@ function populateTable(food,element) {
 	toAppend += '</tbody></table>';
 	$(element).empty();
 	$(element).append(toAppend);
-	//$(element +" table").tablesorter({sortList: [[0,0]]});
+	$(element +" table").tablesorter({sortList: [[0,0]]});
 	//console.log("I appended this table to "+ element +": "+ toAppend)
 }
 
