@@ -22,6 +22,7 @@ buttonOptions = [
 	{ cat: 'Serving', name : 'Sat Fat(g)/Serving', id   : 'mapSatFatPerServing', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams']))}},
 	{ cat: 'Serving', name : 'Salt(mg)/Serving', id     : 'mapSaltPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']))}},
 	{ cat: 'Serving', name : 'Cholesterol(mg)/Serving', id     : 'mapChPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Cholesterol - Milligrams']))}},
+	{ cat: 'Serving', name : 'Protein(g)/Serving', id     : 'mapProteinPerServing', calc     : function(f) { return checkBadNum(parseInt(f['Protein - Grams']))}},
 
 	{ cat: 'Package', name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(parseInt(f['Servings Per Container'])*f.Calories)}},
 	{ cat: 'Package', name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams']*f['Servings Per Container']))}},
@@ -32,6 +33,7 @@ buttonOptions = [
 	{ cat: 'Package', name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams']*f['Servings Per Container']))}},
 	{ cat: 'Package', name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(parseInt(f['Servings Per Container']))}},
 	{ cat: 'Package', name : 'Cholesterol(mg)/Package', id     : 'mapChPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Cholesterol - Milligrams']*f['Servings Per Container']))}},
+	{ cat: 'Package', name : 'Protein(g)/Package', id     : 'mapProteinPerPackage', calc     : function(f) { return checkBadNum(parseInt(f['Protein - Grams']*f['Servings Per Container']))}},
 
 	{ cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(parseInt(f['Total Carbohydrate - Grams'])/f.Calories)}},
 	{ cat: 'Calorie', name : 'Sugar(g)/Calorie', id     : 'mapSugarPerCalorie', calc    : function(f) { return checkBadNum(parseInt(f['Sugars  - Grams'])/f.Calories)}},
@@ -40,6 +42,7 @@ buttonOptions = [
 	{ cat: 'Calorie', name : 'Sat Fat(g)/Calorie', id   : 'mapSatFatPerCalorie', calc      : function(f) { return checkBadNum(parseInt(f['Saturated Fat  - Grams'])/f.Calories)}},
 	{ cat: 'Calorie', name : 'Salt(mg)/Calorie', id     : 'mapSaltPerCalorie', calc     : function(f) { return checkBadNum(parseInt(f['Sodium - Milligrams'])/f.Calories)}},
 	{ cat: 'Calorie', name : 'Cholesterol(mg)/Calorie', id     : 'mapChPerCalorie', calc     : function(f) { return checkBadNum(parseInt(f['Cholesterol - Milligrams'])/f.Calories)}},
+	{ cat: 'Calorie', name : 'Protein(g)/Calorie', id     : 'mapProteinPerCalorie', calc     : function(f) { return checkBadNum(parseInt(f['Protein - Grams'])/f.Calories)}},
 	// TODO gotta cleanup the ounces before I can do this:
 	//{ name: 'Ounces/Package', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
 ];
@@ -121,10 +124,12 @@ function populateTable(food,arrangeBy,element) {
 			//console.log("1st = '"+ $(this).find(':nth-child(1)').text() +"'");
 			var aFood = $(this).find(':first-child a').attr('id');
 			//console.log("found '"+ aFood +"'");
-			var newVal = arrangeBy.calc(food.ingredients[aFood.split('-')[1]]);
-			//console.log("new val = "+ newVal);
-			var child = $(this).find(':nth-child(5)').text($.sprintf("%1.2f",newVal));
-			//return $('<td>ahem</td>').get(0);
+			if (aFood) { // TODO don't know...
+				var newVal = arrangeBy.calc(food.ingredients[aFood.split('-')[1]]);
+				//console.log("new val = "+ newVal);
+				var child = $(this).find(':nth-child(5)').text($.sprintf("%1.2f",newVal));
+				//return $('<td>ahem</td>').get(0);
+			}
 		});
 		$(element +" table").trigger('update');
 		return;
