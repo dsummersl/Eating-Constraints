@@ -22,6 +22,20 @@
 		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/jquery.tablesorter.min.js"></script>
 <!--}}}-->
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-25399461-1']);
+          _gaq.push(['_setDomainName', '.pinedesk.biz']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
 		<script type="text/javascript">
 			var debug = false;
 			var food = {};
@@ -197,6 +211,14 @@
             <hr/>
 			<div class="row">
 				<div class="span8 columns">
+					<h3>Colors</h3>
+					<p> Foods colored by nutritional content: </p>
+					<div id="colorKey"></div>
+
+                    <br/>
+					<p>Use the menu bar to drill down by different values. Click on the 'Tabular Form' to explore numbers in depth.</p>
+				</div>
+				<div class="span8 columns">
 					<h3>Motivation</h3>
 					<p>
 					When it comes to food in the US we've got a whole variety of packaged foods to choose from. But in this 
@@ -207,13 +229,7 @@
 					This page explores the topic of food access. Given a random sampling of foods commonly found in the 
 					supermarket, what would various dietary restrictions be able to eat?
 					</p>
-				</div>
-				<div class="span8 columns">
-					<h3>Colors</h3>
-					<p>
-					Foods colored by nutritional content:
-					<p>
-					<div id="colorKey"></div>
+
 					<br/>
 					This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
 					contest in August, 2011.
