@@ -105,9 +105,16 @@ rect.border {
     fill: gray;
 }
 
-.evenCalorieAxis {
-    fill: #eeeeee;
+/* try to make the popover scrollable. To no avail.
+.popover .inner {
+    width: 370px;
+    height: 220px;
+    overflow: auto;
 }
-.oddCalorieAxis {
-    fill: #aaaaaa;
+
+.popover .content {
+    width: 350px;
+    height: 200px;
+    overflow: auto;
 }
+*/

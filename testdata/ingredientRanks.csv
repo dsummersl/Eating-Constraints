@@ -110,7 +110,7 @@ Wild Thymes Caribbean Peach Lime Chutney,14,Cilantro,,11 oz
 Wild Thymes Caribbean Peach Lime Chutney,15,Lime Juice,,11 oz
 Wild Thymes Caribbean Peach Lime Chutney,16,Spice(s),Spice,11 oz
 Wild Thymes Caribbean Peach Lime Chutney,17,Salt Sea,Salt,11 oz
-Streit's Matzo Crackers,1,Wheat Flour,Flour,5.3 oz
+Streit's Matzo Crackers,1,Wheat Flour,Wheat,5.3 oz
 Streit's Matzo Crackers,2,Water,Water,5.3 oz
 Mountain Dew Code Red Soda,1,Water Carbonated,Water,20 fl oz
 Mountain Dew Code Red Soda,2,Corn Syrup High Fructose,Sugar,20 fl oz
@@ -130,8 +130,8 @@ Mountain Dew Code Red Soda,17,Potassium Benzoate,,20 fl oz
 Mountain Dew Code Red Soda,18,Vegetable(s) Oil Brominated,Oil,20 fl oz
 Mountain Dew Code Red Soda,19,Yellow 5,Coloring,20 fl oz
 Mountain Dew Code Red Soda,20,Blue 1,Coloring,20 fl oz
-Keebler Honey Graham Crackers,1,Flour Enriched,Flour,16 oz.
-Keebler Honey Graham Crackers,2,Wheat Flour,Flour,16 oz.
+Keebler Honey Graham Crackers,1,Flour Enriched,Wheat,16 oz.
+Keebler Honey Graham Crackers,2,Wheat Flour,Wheat,16 oz.
 Keebler Honey Graham Crackers,3,Niacin,,16 oz.
 Keebler Honey Graham Crackers,4,Iron Reduced,,16 oz.
 Keebler Honey Graham Crackers,5,Thiamine Mononitrate (Vitamin B1),,16 oz.
@@ -143,9 +143,9 @@ Keebler Honey Graham Crackers,10,Sugar,Sugar,16 oz.
 Keebler Honey Graham Crackers,11,Cottonseed Oil Partially Hydrogenated,Oil,16 oz.
 Keebler Honey Graham Crackers,12,Soybean(s) Oil Partially Hydrogenated,Soy|Oil,16 oz.
 Keebler Honey Graham Crackers,13,TBHQ,,16 oz.
-Keebler Honey Graham Crackers,15,Wheat Flour Whole,Flour,16 oz.
-Keebler Honey Graham Crackers,16,Graham Flour,Flour,16 oz.
-Keebler Honey Graham Crackers,17,Flour,Flour,16 oz.
+Keebler Honey Graham Crackers,15,Wheat Flour Whole,Wheat,16 oz.
+Keebler Honey Graham Crackers,16,Graham Flour,Wheat,16 oz.
+Keebler Honey Graham Crackers,17,Flour,Wheat,16 oz.
 Keebler Honey Graham Crackers,18,Molasses,Sugar,16 oz.
 Keebler Honey Graham Crackers,19,Honey,Sugar,16 oz.
 Keebler Honey Graham Crackers,20,Corn Syrup,Sugar,16 oz.
@@ -199,8 +199,8 @@ Orville Redenbacher's Kettle Korn Popcorn,6,Flavor(s) Natural &amp;amp; Artifici
 Orville Redenbacher's Kettle Korn Popcorn,7,Sucralose,,10.5 oz
 Orville Redenbacher's Kettle Korn Popcorn,8,TBHQ,,10.5 oz
 Orville Redenbacher's Kettle Korn Popcorn,10,Citric Acid,,10.5 oz
-Cheez-It Baked Snack Crackers - Family Size,1,Flour Enriched,Flour,24 oz.
-Cheez-It Baked Snack Crackers - Family Size,2,Flour,Flour,24 oz.
+Cheez-It Baked Snack Crackers - Family Size,1,Flour Enriched,Wheat,24 oz.
+Cheez-It Baked Snack Crackers - Family Size,2,Flour,Wheat,24 oz.
 Cheez-It Baked Snack Crackers - Family Size,3,Niacin,,24 oz.
 Cheez-It Baked Snack Crackers - Family Size,4,Iron Reduced,,24 oz.
 Cheez-It Baked Snack Crackers - Family Size,5,Thiamine Mononitrate (Vitamin B1),,24 oz.
@@ -246,9 +246,9 @@ Heinz Hot Dog Relish,23,Pepper(s) Bell Red Dehydrated,,10 fl oz.
 Heinz Hot Dog Relish,24,Flavoring Natural,,10 fl oz.
 Heinz Hot Dog Relish,25,Turmeric Extractives,,10 fl oz.
 Heinz Hot Dog Relish,26,Yellow 5,Coloring,10 fl oz.
-Healthy Choice Grilled Chicken Caesar,1,Pasta Macaroni Cooked,Flour,10 oz
+Healthy Choice Grilled Chicken Caesar,1,Pasta Macaroni Cooked,Wheat,10 oz
 Healthy Choice Grilled Chicken Caesar,2,Water,Water,10 oz
-Healthy Choice Grilled Chicken Caesar,3,Semolina Enriched Durum,Flour,10 oz
+Healthy Choice Grilled Chicken Caesar,3,Semolina Enriched Durum,Wheat,10 oz
 Healthy Choice Grilled Chicken Caesar,4,Niacin,,10 oz
 Healthy Choice Grilled Chicken Caesar,5,Ferrous Sulfate,,10 oz
 Healthy Choice Grilled Chicken Caesar,6,Thiamine Mononitrate (Vitamin B1),,10 oz
@@ -340,7 +340,7 @@ Weis Vegetable Oil Spread With Sweet Cream Buttermilk,10,Citric Acid,,16 oz
 Weis Vegetable Oil Spread With Sweet Cream Buttermilk,11,Flavor(s) Artificial Butter,Dairy,16 oz
 Weis Vegetable Oil Spread With Sweet Cream Buttermilk,12,Beta Carotene,,16 oz
 Weis Vegetable Oil Spread With Sweet Cream Buttermilk,13,Vitamin A Palmitate,,16 oz
-Golden Grain Enriched Spaghetti Pasta,1,Semolina Durum,Flour,16 oz.
+Golden Grain Enriched Spaghetti Pasta,1,Semolina Durum,Wheat,16 oz.
 Golden Grain Enriched Spaghetti Pasta,2,Niacin,,16 oz.
 Golden Grain Enriched Spaghetti Pasta,3,Ferrous Sulfate,,16 oz.
 Golden Grain Enriched Spaghetti Pasta,4,Thiamine Mononitrate (Vitamin B1),,16 oz.
@@ -378,8 +378,8 @@ Red Bull Energy Shot with Taurine,15,Ascorbic Acid,,2 fl oz.
 Red Bull Energy Shot with Taurine,16,Antioxidant,,2 fl oz.
 Red Bull Energy Shot with Taurine,17,Flavor(s) Natural &amp;amp; Artificial,,2 fl oz.
 Red Bull Energy Shot with Taurine,18,Color(s),Coloring,2 fl oz.
-Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,1,Flour Enriched,Flour,4.62 oz
-Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,2,Wheat Flour,Flour,4.62 oz
+Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,1,Flour Enriched,Wheat,4.62 oz
+Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,2,Wheat Flour,Wheat,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,3,Niacin,,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,4,Iron Reduced,,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,5,Thiamine Mononitrate (Vitamin B1),,4.62 oz
@@ -387,7 +387,7 @@ Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,6,Vitamin B1,,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,7,Riboflavin (Vitamin B2),,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,8,Vitamin B2,,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,9,Folic Acid (Vitamin aB),,4.62 oz
-Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,10,Wheat Flour Whole,Flour,4.62 oz
+Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,10,Wheat Flour Whole,Wheat,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,11,Safflower Oil Expeller Pressed High Oleic,Oil,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,12,Sugar,Sugar,4.62 oz
 Nabisco Kid Sense Fun Packs Smilin' Ritz Bits Crackers,13,Rice Brown Syrup,Sugar|Rice,4.62 oz
@@ -410,8 +410,8 @@ Albertson's Frozen Kiwi Raspberry Juice Concentrate,8,Grape(s) Juice Concentrate
 Albertson's Frozen Kiwi Raspberry Juice Concentrate,9,Raspberry(ies) Juice Concentrate,,12 oz.
 Albertson's Frozen Kiwi Raspberry Juice Concentrate,10,Ascorbic Acid,,12 oz.
 Albertson's Frozen Kiwi Raspberry Juice Concentrate,11,Malic Acid,,12 oz.
-President's Choice Fig &amp; Goat Cheese Blooms,1,Pastry,Flour,8.9 oz.
-President's Choice Fig &amp; Goat Cheese Blooms,3,Wheat Flour Enriched,Flour,8.9 oz.
+President's Choice Fig &amp; Goat Cheese Blooms,1,Pastry,Wheat,8.9 oz.
+President's Choice Fig &amp; Goat Cheese Blooms,3,Wheat Flour Enriched,Wheat,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,4,Canola Oil,Oil,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,5,Palm Oil Modified,Oil,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,6,Water,Water,8.9 oz.
@@ -465,7 +465,7 @@ DiGiorno Deep Dish Pepperoni Pizza,3,Milk Part Skim,Dairy,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,4,Cheese Culture,Dairy,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,5,Salt,Salt,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,6,Enzyme(s),,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,7,Wheat Flour,Flour,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,7,Wheat Flour,Wheat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,8,Pepperoni,Meat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,9,Pork,Meat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,10,Chicken,Meat,33 oz.
@@ -495,7 +495,7 @@ DiGiorno Deep Dish Pepperoni Pizza,37,Corn Oil,Corn|Oil,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,38,Wheat Gluten,Wheat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,39,Salt,Salt,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,40,Soybean(s) Oil,Soy|Oil,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,41,Wheat Starch,Flour,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,41,Wheat Starch,Wheat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,42,Yeast,,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,43,Spice(s),Spice,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,44,Sodium Bicarbonate,,33 oz.
@@ -511,7 +511,7 @@ DiGiorno Deep Dish Pepperoni Pizza,53,Calcium Phosphate,,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,54,Ascorbic Acid,,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,55,Beta Carotene,,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,56,color(s),Coloring,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,57,Barley Malted Flour,Flour,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,57,Barley Malted Flour,Wheat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,58,Soy Lecithin,Soy,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,59,Flavor(s) Natural,Flavoring,33 oz.
 Vermont Butter &amp; Cream Company Creme Fraiche,1,Cream Pasteurized Cow&amp;apos;s,Dairy,8 oz
@@ -527,10 +527,10 @@ Alpine Sugar Free Spiced Cider Apple Flavor Drink Mix,8,Tricalcium Phosphate,,14
 Alpine Sugar Free Spiced Cider Apple Flavor Drink Mix,10,Ascorbic Acid,,14 oz.
 Alpine Sugar Free Spiced Cider Apple Flavor Drink Mix,11,Flavor(s) Natural &amp;amp; Artificial,,14 oz.
 Alpine Sugar Free Spiced Cider Apple Flavor Drink Mix,12,Spice(s) Extractive,Spice,14 oz.
-Cream of Wheat Whole Grain Hot Cereal,1,Wheat Farina,Flour,18 oz
-Cream of Wheat Whole Grain Hot Cereal,2,Wheat Bran,Flour,18 oz
-Cream of Wheat Whole Grain Hot Cereal,3,Wheat Germ,Flour,18 oz
-Cream of Wheat Whole Grain Hot Cereal,4,Wheat Germ Defatted,Flour,18 oz
+Cream of Wheat Whole Grain Hot Cereal,1,Wheat Farina,Wheat,18 oz
+Cream of Wheat Whole Grain Hot Cereal,2,Wheat Bran,Wheat,18 oz
+Cream of Wheat Whole Grain Hot Cereal,3,Wheat Germ,Wheat,18 oz
+Cream of Wheat Whole Grain Hot Cereal,4,Wheat Germ Defatted,Wheat,18 oz
 Cream of Wheat Whole Grain Hot Cereal,5,Disodium Phosphate,,18 oz
 Cream of Wheat Whole Grain Hot Cereal,6,Vitamins And Minerals,,18 oz
 Cream of Wheat Whole Grain Hot Cereal,8,Calcium Carbonate,,18 oz
@@ -561,8 +561,8 @@ Carb Options Ranch Salad Dressing,18,Polysorbate 60,,16 fl oz
 Carb Options Ranch Salad Dressing,19,Disodium Guanylate,,16 fl oz
 Carb Options Ranch Salad Dressing,20,Disodium Inosinate,,16 fl oz
 Carb Options Ranch Salad Dressing,21,Sucralose,,16 fl oz
-Quaker Chocolatey Drizzle Multigrain Cakes,1,Multi Grain Cake,Flour,4.2 oz.
-Quaker Chocolatey Drizzle Multigrain Cakes,2,Wheat Flour Whole Grain,Flour,4.2 oz.
+Quaker Chocolatey Drizzle Multigrain Cakes,1,Multi Grain Cake,Wheat,4.2 oz.
+Quaker Chocolatey Drizzle Multigrain Cakes,2,Wheat Flour Whole Grain,Wheat,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,3,Corn Yellow Whole Grain,Corn,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,4,Rice Brown Flour Whole Grain,Rice,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,5,Sugar,Sugar,4.2 oz.
@@ -580,9 +580,9 @@ Quaker Chocolatey Drizzle Multigrain Cakes,18,Sorbitan Monostearate,,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,19,Soy Lecithin,Soy,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,20,Polysorbate 60,,4.2 oz.
 Quaker Chocolatey Drizzle Multigrain Cakes,21,Flavor(s) Natural &amp;amp; Artificial,Flavoring,4.2 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,1,Wheat Flour Enriched,Flour,9 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,2,Wheat Flour,Flour,9 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,3,Barley Malted Flour,Flour,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,1,Wheat Flour Enriched,Wheat,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,2,Wheat Flour,Wheat,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,3,Barley Malted Flour,Wheat,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,4,Niacin,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,5,Iron Reduced,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,6,Thiamine Mononitrate (Vitamin B1),,9 oz.
@@ -616,10 +616,10 @@ Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,41,Lime Juice
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,42,Potassium Sorbate,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,45,Corn Syrup,Sugar,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,46,Yeast,,9 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,47,Bread Crumbs,Flour,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,47,Bread Crumbs,Wheat,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,49,Niacin,,9 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,50,Wheat Flour,Flour,9 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,51,Barley Malted Flour,Flour,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,50,Wheat Flour,Wheat,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,51,Barley Malted Flour,Wheat,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,52,Niacin,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,53,Iron Reduced,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,54,Thiamine Mononitrate (Vitamin B1),,9 oz.
@@ -633,7 +633,7 @@ Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,61,Bicarbonat
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,62,Calcium Propionate,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,63,Preservative,,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,64,Sesame Seed(s),,9 oz.
-Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,66,Soy Flour,Flour|Soy,9 oz.
+Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,66,Soy Flour,Wheat|Soy,9 oz.
 Super Pretzel Onion Veggie Cream Cheese Filled Soft Pretzel Sticks,67,Carbonates of Soda,,9 oz.
 Toll House Mini Brownie Bites,1,Sugar,Sugar,16 oz
 Toll House Mini Brownie Bites,2,Nestle Toll House Morsels,,16 oz
@@ -656,8 +656,8 @@ Toll House Mini Brownie Bites,18,Flavor(s) Natural &amp;amp; Artificial,Flavorin
 Toll House Mini Brownie Bites,19,Beta Carotene,,16 oz
 Toll House Mini Brownie Bites,20,color(s),Coloring,16 oz
 Toll House Mini Brownie Bites,21,Vitamin A Palmitate,,16 oz
-Toll House Mini Brownie Bites,22,Flour Bleached Enriched,Flour,16 oz
-Toll House Mini Brownie Bites,23,Wheat Flour,Flour,16 oz
+Toll House Mini Brownie Bites,22,Flour Bleached Enriched,Wheat,16 oz
+Toll House Mini Brownie Bites,23,Wheat Flour,Wheat,16 oz
 Toll House Mini Brownie Bites,24,Niacin,,16 oz
 Toll House Mini Brownie Bites,25,Iron Reduced,,16 oz
 Toll House Mini Brownie Bites,26,Thiamine Mononitrate (Vitamin B1),,16 oz
@@ -685,7 +685,7 @@ Sylvia's Restaurant Specially-Seasoned Turnip Greens,5,Salt,Salt,14 oz
 Sylvia's Restaurant Specially-Seasoned Turnip Greens,6,Flavor(s) Smoke Imitation Turkey,Flavoring,14 oz
 Sylvia's Restaurant Specially-Seasoned Turnip Greens,7,Corn Gluten Hydrolyzed,Corn,14 oz
 Sylvia's Restaurant Specially-Seasoned Turnip Greens,8,Soy Protein,Soy,14 oz
-Sylvia's Restaurant Specially-Seasoned Turnip Greens,9,Wheat Gluten,Flour,14 oz
+Sylvia's Restaurant Specially-Seasoned Turnip Greens,9,Wheat Gluten,Wheat,14 oz
 Sylvia's Restaurant Specially-Seasoned Turnip Greens,10,Soybean(s) Oil,Oil|Soy,14 oz
 Sylvia's Restaurant Specially-Seasoned Turnip Greens,11,Flavor(s) Smoke,Flavoring,14 oz
 Sylvia's Restaurant Specially-Seasoned Turnip Greens,12,Xanthan Gum,,14 oz
@@ -821,8 +821,8 @@ Sara Lee Bites Strawberry Cheesecake,15,Lactic Acid,Dairy,7 oz
 Sara Lee Bites Strawberry Cheesecake,16,Mono and Diglycerides,,7 oz
 Sara Lee Bites Strawberry Cheesecake,17,Apo-Carotenal Color,Coloring,7 oz
 Sara Lee Bites Strawberry Cheesecake,18,Vanilla Wafer Crumb,,7 oz
-Sara Lee Bites Strawberry Cheesecake,19,Flour Enriched,Flour,7 oz
-Sara Lee Bites Strawberry Cheesecake,20,Wheat Flour,Flour,7 oz
+Sara Lee Bites Strawberry Cheesecake,19,Flour Enriched,Wheat,7 oz
+Sara Lee Bites Strawberry Cheesecake,20,Wheat Flour,Wheat,7 oz
 Sara Lee Bites Strawberry Cheesecake,21,Niacin,,7 oz
 Sara Lee Bites Strawberry Cheesecake,22,Iron,,7 oz
 Sara Lee Bites Strawberry Cheesecake,23,Thiamine Mononitrate (Vitamin B1),,7 oz
@@ -890,7 +890,7 @@ Good Sense Canyon Mix Fruit 'N Nut Snack Mix,13,Pineapple,,10 oz.
 Good Sense Canyon Mix Fruit 'N Nut Snack Mix,14,Walnut(s),,10 oz.
 Good Sense Canyon Mix Fruit 'N Nut Snack Mix,15,Almond(s),,10 oz.
 Good Sense Canyon Mix Fruit 'N Nut Snack Mix,16,Sulfer Dioxide,,10 oz.
-Newman's Own Organics Traditional Thin Pretzels,1,Wheat Flour Unbleached ( Organic ),Flour,7.5 oz
+Newman's Own Organics Traditional Thin Pretzels,1,Wheat Flour Unbleached ( Organic ),Wheat,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,2,Rye Flour ( Organic ),,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,3,Rice Brown Syrup ( Organic ),Sugar|Rice,7.5 oz
 Newman's Own Organics Traditional Thin Pretzels,4,Sunflower Oil ( Organic ),Oil,7.5 oz
@@ -904,7 +904,7 @@ President's Choice 3-Bean Minestrone Soup,3,Bean(s) Kidney,,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,4,Spinach,,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,5,Tomato(es) Paste,,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,6,Pasta Shells,,18.25 oz.
-President's Choice 3-Bean Minestrone Soup,7,Wheat Flour Enriched,Flour,18.25 oz.
+President's Choice 3-Bean Minestrone Soup,7,Wheat Flour Enriched,Wheat,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,8,Egg(s) Whites Dried,Dairy,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,9,Canola Oil,Oil,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,11,Chickpea(s),,18.25 oz.
@@ -946,7 +946,7 @@ President's Choice Blue Menu Reduced Fat Shepherd's Pie,24,Cellulose Gum,,31.75 
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,25,Polysorbate 80,,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,26,Caramel Color,,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,27,Dextrose,,31.75 oz.
-President's Choice Blue Menu Reduced Fat Shepherd's Pie,28,Wheat Flour Enriched,Flour,31.75 oz.
+President's Choice Blue Menu Reduced Fat Shepherd's Pie,28,Wheat Flour Enriched,Wheat,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,30,Flavor(s),Flavoring,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,31,Salt,Salt,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,32,Canola Oil,Oil,31.75 oz.
@@ -960,7 +960,7 @@ President's Choice Blue Menu Reduced Fat Shepherd's Pie,39,Beef,Meat,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,40,Beef Stock,Meat,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,41,Garlic Powder,,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,42,Onion(s) Powder,,31.75 oz.
-President's Choice Blue Menu Reduced Fat Shepherd's Pie,43,Potato(es) Flour,Flour,31.75 oz.
+President's Choice Blue Menu Reduced Fat Shepherd's Pie,43,Potato(es) Flour,Wheat,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,44,Salt,Salt,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,45,Caramel Color,Coloring,31.75 oz.
 President's Choice Blue Menu Reduced Fat Shepherd's Pie,46,Corn Oil,Corn|Oil,31.75 oz.
@@ -1017,12 +1017,12 @@ Kellogg's Corn Flake Crumbs,12,Pyridoxine Hydrochloride (HCL),,21 oz.
 Kellogg's Corn Flake Crumbs,13,Folic Acid (Vitamin aB),,21 oz.
 Kellogg's Corn Flake Crumbs,14,BHT,,21 oz.
 Kellogg's Corn Flake Crumbs,15,Preservative,,21 oz.
-Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,1,Wheat Flour ( Organic ),Flour,7.5 oz.
+Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,1,Wheat Flour ( Organic ),Wheat,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,2,Cane Juice Evaporated ( Organic ),Sugar,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,3,Safflower Oil,Oil,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,4,Sunflower Oil,Oil,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,5,Corn Flour ( Organic ),Corn,7.5 oz.
-Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,6,Graham Flour ( Organic ),Flour,7.5 oz.
+Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,6,Graham Flour ( Organic ),Wheat,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,7,Chocolate Chips,,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,8,Sugar,Sugar,7.5 oz.
 Annie's Homegrown Chocolate Chip Bunny Grahams Crackers,9,Chocolate Unsweetened,,7.5 oz.
@@ -1042,8 +1042,8 @@ Wegmans Hash Brown's O'Brien,3,Pepper(s) Bell Green,,28 oz
 Wegmans Hash Brown's O'Brien,4,Pepper(s) Bell Red,,28 oz
 Wegmans Hash Brown's O'Brien,5,Dextrose,,28 oz
 Wegmans Hash Brown's O'Brien,6,Sodium Acid Pyrophosphate,,28 oz
-Herr's One Pounder Sourdough Pretzels,1,Wheat Flour Enriched,Flour,16 oz.
-Herr's One Pounder Sourdough Pretzels,2,Wheat Flour,Flour,16 oz.
+Herr's One Pounder Sourdough Pretzels,1,Wheat Flour Enriched,Wheat,16 oz.
+Herr's One Pounder Sourdough Pretzels,2,Wheat Flour,Wheat,16 oz.
 Herr's One Pounder Sourdough Pretzels,3,Niacin,,16 oz.
 Herr's One Pounder Sourdough Pretzels,4,Iron Reduced,,16 oz.
 Herr's One Pounder Sourdough Pretzels,5,Thiamine Mononitrate (Vitamin B1),,16 oz.
@@ -1184,8 +1184,8 @@ After The Fall Organic Tropical Punch Juice Blend,6,Pineapple Juice ( Organic ),
 After The Fall Organic Tropical Punch Juice Blend,8,Lemon(s) Juice Concentrate ( Organic ),,32 fl oz
 After The Fall Organic Tropical Punch Juice Blend,9,Mango Puree ( Organic ),,32 fl oz
 After The Fall Organic Tropical Punch Juice Blend,10,Flavor(s) Natural,Flavoring,32 fl oz
-"Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",1,Flour Enriched,Flour,7.5 oz
-"Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",2,Wheat Flour,Flour,7.5 oz
+"Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",1,Flour Enriched,Wheat,7.5 oz
+"Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",2,Wheat Flour,Wheat,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",3,Niacin,,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",4,Iron Reduced,,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",5,Thiamine Mononitrate (Vitamin B1),,7.5 oz
@@ -1229,7 +1229,7 @@ Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,5,Vitamin A Palmit
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,6,Vitamin D3,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,7,Chicken Fat Rendered,Meat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,8,Flavor(s),Flavoring,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,9,Wheat Flour,Flour,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,9,Wheat Flour,Wheat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,10,BHA,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,11,Chicken Fat,Meat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,12,BHA,,10.10 oz
@@ -1256,7 +1256,7 @@ Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,32,Vegetable(s) Oi
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,33,Mushroom(s),,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,34,Soybean(s) Oil Partially Hydrogenated,Soy,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,35,Soy Sauce,Soy,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,36,Wheat,Flour,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,36,Wheat,Wheat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,37,Soybean(s),Soy,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,38,Salt,Salt,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,39,Sodium Benzoate,,10.10 oz
@@ -1264,8 +1264,8 @@ Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,40,Spice(s),Spice,
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,41,Sesame Oil,Oil,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,42,Chicken Powder Cooked,Meat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,43,Chicken Ground And Formed Cooked,Meat,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,44,Breading,Flour,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,45,Wheat Flour Bleached,Flour,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,44,Breading,Wheat,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,45,Wheat Flour Bleached,Wheat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,46,Corn Flour Yellow,Corn,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,47,Spice(s),Spice,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,48,Salt,Salt,10.10 oz
@@ -1288,7 +1288,7 @@ Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,64,Leavening,,10.1
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,65,Sodium Acid Pyrophosphate,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,66,Sodium Bicarbonate,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,67,Monocalcium Phosphate,,10.10 oz
-Wegmans Rainbow Rotini Pasta,1,Semolina,Flour,12 oz.
+Wegmans Rainbow Rotini Pasta,1,Semolina,Wheat,12 oz.
 Wegmans Rainbow Rotini Pasta,2,Tomato(es) Solids,,12 oz.
 Wegmans Rainbow Rotini Pasta,3,Spinach Dried,,12 oz.
 Wegmans Rainbow Rotini Pasta,5,Iron,,12 oz.
@@ -1298,7 +1298,7 @@ Wegmans Rainbow Rotini Pasta,8,Niacin,,12 oz.
 Wegmans Rainbow Rotini Pasta,9,Thiamine Mononitrate (Vitamin B1),,12 oz.
 Wegmans Rainbow Rotini Pasta,10,Riboflavin (Vitamin B2),,12 oz.
 Wegmans Rainbow Rotini Pasta,11,Folic Acid (Vitamin aB),,12 oz.
-Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,1,Wheat Flour ( Organic ),Flour,11 oz.
+Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,1,Wheat Flour ( Organic ),Wheat,11 oz.
 Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,2,Vegetable(s) Oil Expeller-Pressed ( Organic ),Oil,11 oz.
 Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,3,Safflower Oil ( Organic ),Oil,11 oz.
 Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,5,Sunflower Oil ( Organic ),Oil,11 oz.
@@ -1310,7 +1310,7 @@ Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,10,Annatto Extr
 Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,11,Celery Seed Ground ( Organic ),,11 oz.
 Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,12,Onion(s) Powder ( Organic ),,11 oz.
 Annie's Homegrown Organic Cheddar Bunnies Crackers - Family Size,13,Yeast,,11 oz.
-Hodgson Mill Whole Wheat Buttermilk Pancake Mix,1,Wheat Flour Whole,Flour,32 oz.
+Hodgson Mill Whole Wheat Buttermilk Pancake Mix,1,Wheat Flour Whole,Wheat,32 oz.
 Hodgson Mill Whole Wheat Buttermilk Pancake Mix,2,Corn Meal Yellow,Corn,32 oz.
 Hodgson Mill Whole Wheat Buttermilk Pancake Mix,3,Buttermilk Solids,Dairy,32 oz.
 Hodgson Mill Whole Wheat Buttermilk Pancake Mix,4,Dextrose,,32 oz.
@@ -1361,11 +1361,11 @@ President's Choice Memories of Canton Plum Sauce,13,Soybean(s) Oil,Soy|Oil,11.8 
 President's Choice Memories of Canton Plum Sauce,14,Spice(s),Spice,11.8 fl oz.
 President's Choice Memories of Canton Plum Sauce,15,Citric Acid,,11.8 fl oz.
 President's Choice Memories of Canton Plum Sauce,16,Acetic Acid,,11.8 fl oz.
-Freihofer's Carb Consider Wheat Bread,1,Wheat Flour Whole,Flour,20 oz.
+Freihofer's Carb Consider Wheat Bread,1,Wheat Flour Whole,Wheat,20 oz.
 Freihofer's Carb Consider Wheat Bread,2,Water,Water,20 oz.
-Freihofer's Carb Consider Wheat Bread,3,Wheat Flour Enriched,Flour,20 oz.
-Freihofer's Carb Consider Wheat Bread,4,Flour,Flour,20 oz.
-Freihofer's Carb Consider Wheat Bread,5,Barley Malted Flour,Flour,20 oz.
+Freihofer's Carb Consider Wheat Bread,3,Wheat Flour Enriched,Wheat,20 oz.
+Freihofer's Carb Consider Wheat Bread,4,Flour,Wheat,20 oz.
+Freihofer's Carb Consider Wheat Bread,5,Barley Malted Flour,Wheat,20 oz.
 Freihofer's Carb Consider Wheat Bread,6,Iron Reduced,,20 oz.
 Freihofer's Carb Consider Wheat Bread,7,Niacin,,20 oz.
 Freihofer's Carb Consider Wheat Bread,8,Thiamine Mononitrate (Vitamin B1),,20 oz.
@@ -1373,11 +1373,11 @@ Freihofer's Carb Consider Wheat Bread,9,Vitamin B1,,20 oz.
 Freihofer's Carb Consider Wheat Bread,10,Riboflavin (Vitamin B2),,20 oz.
 Freihofer's Carb Consider Wheat Bread,11,Vitamin B2,,20 oz.
 Freihofer's Carb Consider Wheat Bread,12,Folic Acid (Vitamin aB),,20 oz.
-Freihofer's Carb Consider Wheat Bread,13,Wheat Gluten,Flour,20 oz.
+Freihofer's Carb Consider Wheat Bread,13,Wheat Gluten,Wheat,20 oz.
 Freihofer's Carb Consider Wheat Bread,14,Wheat Protein Isolate,,20 oz.
 Freihofer's Carb Consider Wheat Bread,15,Soybean(s) Oil,Soy|Oil,20 oz.
 Freihofer's Carb Consider Wheat Bread,16,Yeast,,20 oz.
-Freihofer's Carb Consider Wheat Bread,17,Wheat Bran,Flour,20 oz.
+Freihofer's Carb Consider Wheat Bread,17,Wheat Bran,Wheat,20 oz.
 Freihofer's Carb Consider Wheat Bread,18,Oat(s) Fiber,,20 oz.
 Freihofer's Carb Consider Wheat Bread,19,Corn Syrup High Fructose,Corn|Sugar,20 oz.
 Freihofer's Carb Consider Wheat Bread,20,Molasses,Sugar,20 oz.
@@ -1391,7 +1391,7 @@ Freihofer's Carb Consider Wheat Bread,27,Monocalcium Phosphate,,20 oz.
 Freihofer's Carb Consider Wheat Bread,28,Calcium Sulphate (Sulfate),,20 oz.
 Freihofer's Carb Consider Wheat Bread,29,Soy Lecithin,Soy,20 oz.
 Silk Light Lactose Free Plain Soymilk,1,Water Filtered,Water,64 fl oz.
-Silk Light Lactose Free Plain Soymilk,2,Soy Flour,Flour,64 fl oz.
+Silk Light Lactose Free Plain Soymilk,2,Soy Flour,Soy,64 fl oz.
 Silk Light Lactose Free Plain Soymilk,3,Cane Juice Naturally Milled Evaporated ( Organic ),,64 fl oz.
 Silk Light Lactose Free Plain Soymilk,4,Calcium Carbonate,,64 fl oz.
 Silk Light Lactose Free Plain Soymilk,5,Salt Sea,Salt,64 fl oz.
@@ -1410,9 +1410,9 @@ Activia Fiber Nonfat Peach &amp; Cereal Yogurt,5,Sugar,Sugar,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,6,Inulin,,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,8,Whey Protein Concentrate,Dairy,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,9,Corn Starch,Corn,16 oz
-Activia Fiber Nonfat Peach &amp; Cereal Yogurt,10,Wheat Flakes Rolled White,Flour,16 oz
+Activia Fiber Nonfat Peach &amp; Cereal Yogurt,10,Wheat Flakes Rolled White,Wheat,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,11,Corn Starch Modified,Corn,16 oz
-Activia Fiber Nonfat Peach &amp; Cereal Yogurt,12,Wheat Bran Red,Flour,16 oz
+Activia Fiber Nonfat Peach &amp; Cereal Yogurt,12,Wheat Bran Red,Wheat,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,13,Gelatin Kosher,,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,14,Oat(s) Rolled,,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,15,Flavor(s) Natural,Flavoring,16 oz
@@ -1421,9 +1421,9 @@ Activia Fiber Nonfat Peach &amp; Cereal Yogurt,17,Sodium Citrate,,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,18,Annatto Extract,,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,19,Turmeric,,16 oz
 Activia Fiber Nonfat Peach &amp; Cereal Yogurt,20,color(s),Coloring,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,1,Wheat Flour Unbleached,Flour,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,2,Flour,Flour,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,3,Barley Malted Flour,Flour,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,1,Wheat Flour Unbleached,Wheat,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,2,Flour,Wheat,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,3,Barley Malted Flour,Wheat,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,4,Iron Reduced,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,5,Niacin,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,6,Thiamine Mononitrate (Vitamin B1),,16 oz
@@ -1438,13 +1438,13 @@ Thomas' Cinnamon Swirl Toasting Bread,14,Soybean(s) Shortening Partially Hydroge
 Thomas' Cinnamon Swirl Toasting Bread,15,Cottonseed Shortening Partially Hydrogenated,Oil,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,16,Yeast,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,17,Cinnamon,,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,18,Wheat Gluten,Flour,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,18,Wheat Gluten,Wheat,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,19,Salt,Salt,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,20,Corn Syrup High Fructose,Corn|Sugar,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,21,Potato(es) Flour,Flour,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,21,Potato(es) Flour,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,22,Maltodextrin,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,23,Whey,Dairy,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,24,Soy Flour,Flour,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,24,Soy Flour,Soy,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,25,Mono and Diglycerides,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,26,Milk Non-Fat,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,27,Molasses,Sugar,16 oz
@@ -1453,10 +1453,10 @@ Thomas' Cinnamon Swirl Toasting Bread,29,Corn Syrup Solids,Corn,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,30,Calcium Propionate,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,31,Preservative,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,32,Caramel Color,,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,33,Corn Flour,Flour,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,33,Corn Flour,Corn,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,34,Flavor(s) Natural &amp;amp; Artificial,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,35,Soy Lecithin,Soy,16 oz
-Thomas' Cinnamon Swirl Toasting Bread,36,Wheat Starch,Flour,16 oz
+Thomas' Cinnamon Swirl Toasting Bread,36,Wheat Starch,Wheat,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,37,Leavening,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,38,Sodium Acid Pyrophosphate,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,39,Baking Soda,,16 oz
@@ -1466,8 +1466,8 @@ Thomas' Cinnamon Swirl Toasting Bread,42,Xanthan Gum,,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,43,Spice(s),Spice,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,45,Coloring,Coloring,16 oz
 Thomas' Cinnamon Swirl Toasting Bread,46,Corn Starch Modified,Corn,16 oz
-Butterball One-Step Seasoned Stuffing,1,Wheat Flour Enriched,Flour,6 oz
-Butterball One-Step Seasoned Stuffing,3,Wheat Flour,Flour,6 oz
+Butterball One-Step Seasoned Stuffing,1,Wheat Flour Enriched,Wheat,6 oz
+Butterball One-Step Seasoned Stuffing,3,Wheat Flour,Wheat,6 oz
 Butterball One-Step Seasoned Stuffing,4,Niacin,,6 oz
 Butterball One-Step Seasoned Stuffing,5,Iron,,6 oz
 Butterball One-Step Seasoned Stuffing,6,Thiamine Mononitrate (Vitamin B1),,6 oz
@@ -1512,7 +1512,7 @@ President's Choice Blue Menu Chicken Curry,21,Flavor(s),Flavoring,9.88 oz.
 President's Choice Blue Menu Chicken Curry,22,Garlic,,9.88 oz.
 President's Choice Blue Menu Chicken Curry,23,Salt,Salt,9.88 oz.
 President's Choice Blue Menu Chicken Curry,24,Lemon(s) Juice Concentrated,,9.88 oz.
-Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,1,Wheat Flour,Flour,6.8 oz.
+Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,1,Wheat Flour,Wheat,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,2,Palm Oil,Oil,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,3,Sugar,Sugar,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,4,Butter,Dairy,6.8 oz.
@@ -1619,8 +1619,8 @@ Fisher Boy Crunchy Fish Sticks,8,Plaice,,16 oz.
 Fisher Boy Crunchy Fish Sticks,9,Burbot,,16 oz.
 Fisher Boy Crunchy Fish Sticks,10,Fish Cod FreshWater,Water,16 oz.
 Fisher Boy Crunchy Fish Sticks,11,Water,Water,16 oz.
-Fisher Boy Crunchy Fish Sticks,12,Wheat Flour Enriched,Flour,16 oz.
-Fisher Boy Crunchy Fish Sticks,13,Flour,Flour,16 oz.
+Fisher Boy Crunchy Fish Sticks,12,Wheat Flour Enriched,Wheat,16 oz.
+Fisher Boy Crunchy Fish Sticks,13,Flour,Wheat,16 oz.
 Fisher Boy Crunchy Fish Sticks,14,Niacin,,16 oz.
 Fisher Boy Crunchy Fish Sticks,15,Ferrous Sulfate,,16 oz.
 Fisher Boy Crunchy Fish Sticks,16,Thiamine Mononitrate (Vitamin B1),,16 oz.
@@ -1642,9 +1642,9 @@ Fisher Boy Crunchy Fish Sticks,34,Monocalcium Phosphate,,16 oz.
 Fisher Boy Crunchy Fish Sticks,35,Soybean(s) Oil Partially Hydrogenated,Soy|Oil,16 oz.
 Fisher Boy Crunchy Fish Sticks,36,Milk Non-Fat Dry,Dairy,16 oz.
 Fisher Boy Crunchy Fish Sticks,37,Whey,Dairy,16 oz.
-Fisher Boy Crunchy Fish Sticks,38,Wheat Flour,Flour,16 oz.
-Fisher Boy Crunchy Fish Sticks,39,Wheat Enriched Bleached Flour,Flour,16 oz.
-Fisher Boy Crunchy Fish Sticks,40,Flour,Flour,16 oz.
+Fisher Boy Crunchy Fish Sticks,38,Wheat Flour,Wheat,16 oz.
+Fisher Boy Crunchy Fish Sticks,39,Wheat Enriched Bleached Flour,Wheat,16 oz.
+Fisher Boy Crunchy Fish Sticks,40,Flour,Wheat,16 oz.
 Fisher Boy Crunchy Fish Sticks,41,Niacin,,16 oz.
 Fisher Boy Crunchy Fish Sticks,42,Ferrous Sulfate,,16 oz.
 Fisher Boy Crunchy Fish Sticks,43,Thiamine Mononitrate (Vitamin B1),,16 oz.
@@ -1657,7 +1657,7 @@ Fisher Boy Crunchy Fish Sticks,49,Guar Gum,,16 oz.
 Fisher Boy Crunchy Fish Sticks,50,Spice(s),Spice,16 oz.
 Fisher Boy Crunchy Fish Sticks,51,Pepper(s) Soluble,,16 oz.
 Fisher Boy Crunchy Fish Sticks,52,Sodium Tripolyphosphate,,16 oz.
-Fisher Boy Crunchy Fish Sticks,54,Soy Flour,Flour,16 oz.
+Fisher Boy Crunchy Fish Sticks,54,Soy Flour,Soy,16 oz.
 Fisher Boy Crunchy Fish Sticks,55,Corn Flour Yellow,Corn,16 oz.
 Fisher Boy Crunchy Fish Sticks,56,Corn Starch,Corn,16 oz.
 Fisher Boy Crunchy Fish Sticks,57,Flavor(s) Natural,Flavoring,16 oz.
@@ -1743,8 +1743,8 @@ Sun-Maid Vanilla Yogurt Raisins,11,Confectioner&amp;apos;s Glaze,,8 oz
 Sun-Maid Vanilla Yogurt Raisins,12,Corn Syrup,Sugar,8 oz
 Sun-Maid Vanilla Yogurt Raisins,13,Dextrin,,8 oz
 Sun-Maid Vanilla Yogurt Raisins,14,Maltodextrin,,8 oz
-Mrs. Cubbison's Seasoned Restaurant Style Croutons,1,Wheat Flour Enriched,Flour,6 oz
-Mrs. Cubbison's Seasoned Restaurant Style Croutons,3,Flour,Flour,6 oz
+Mrs. Cubbison's Seasoned Restaurant Style Croutons,1,Wheat Flour Enriched,Wheat,6 oz
+Mrs. Cubbison's Seasoned Restaurant Style Croutons,3,Flour,Wheat,6 oz
 Mrs. Cubbison's Seasoned Restaurant Style Croutons,4,Barley Malt,,6 oz
 Mrs. Cubbison's Seasoned Restaurant Style Croutons,5,Ferrous Sulfate,,6 oz
 Mrs. Cubbison's Seasoned Restaurant Style Croutons,6,Niacin,,6 oz
@@ -1800,14 +1800,14 @@ Pace Tequila Lime Salsa,13,Salt,Salt,16 oz.
 Pace Tequila Lime Salsa,14,Sugar,Sugar,16 oz.
 Pace Tequila Lime Salsa,15,Citric Acid,,16 oz.
 Pace Tequila Lime Salsa,16,Flavoring Natural,Flavoring,16 oz.
-Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,1,Wheat Flour Unbleached ( Organic ),Flour,12.7 oz
+Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,1,Wheat Flour Unbleached ( Organic ),Wheat,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,2,Niacin,,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,3,Iron,,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,4,Thiamine Mononitrate (Vitamin B1),,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,5,Riboflavin (Vitamin B2),,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,6,Folic Acid (Vitamin aB),,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,7,Water,Water,12.7 oz
-Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,8,Wheat Flour Whole ( Organic ),Flour,12.7 oz
+Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,8,Wheat Flour Whole ( Organic ),Wheat,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,9,Canola Oil,Oil,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,10,Calcium Propionate,,12.7 oz
 Tumaro's Tortillas Garden Spinach &amp; Herb Homestyle Organic Flour Tortillas,11,Baking Powder,,12.7 oz
@@ -1852,7 +1852,7 @@ Ore-Ida Extra Crispy Fast Food French Fries,15,Xanthan Gum,,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,16,Disodium Dihydrogen Pyrophosphate,,26 oz
 Ore-Ida Extra Crispy Fast Food French Fries,17,Annatto,,26 oz
 Honey Bunchs of Oats Cereal with Almonds,1,Corn,Corn,14.5 oz
-Honey Bunchs of Oats Cereal with Almonds,2,Wheat Whole Grain,Flour,14.5 oz
+Honey Bunchs of Oats Cereal with Almonds,2,Wheat Whole Grain,Wheat,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,3,Sugar,Sugar,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,4,Oat(s) Rolled Whole Grain,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,5,Almond(s),,14.5 oz
@@ -1862,9 +1862,9 @@ Honey Bunchs of Oats Cereal with Almonds,8,Canola Oil,Oil,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,10,Sunflower Oil,Oil,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,11,Rice Flour,Flour|Rice,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,12,Corn Syrup,Sugar,14.5 oz
-Honey Bunchs of Oats Cereal with Almonds,13,Wheat Flour,Flour,14.5 oz
+Honey Bunchs of Oats Cereal with Almonds,13,Wheat Flour,Wheat,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,14,Rice,Rice,14.5 oz
-Honey Bunchs of Oats Cereal with Almonds,15,Barley Malted Flour,Flour,14.5 oz
+Honey Bunchs of Oats Cereal with Almonds,15,Barley Malted Flour,Wheat,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,16,Salt,Salt,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,17,Fructose,Sugar,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,18,Whey,Dairy,14.5 oz
@@ -1890,11 +1890,11 @@ Honey Bunchs of Oats Cereal with Almonds,44,Zinc Oxide,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,45,Zinc,,14.5 oz
 Honey Bunchs of Oats Cereal with Almonds,46,Vitamin A Palmitate,,14.5 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,1,Rice Aromatic ( Organic ),Rice,5.6 oz
-Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,2,Pasta ( Organic ),Flour,5.6 oz
-Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,3,Semolina Durum ( Organic ),Flour,5.6 oz
+Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,2,Pasta ( Organic ),Wheat,5.6 oz
+Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,3,Semolina Durum ( Organic ),Wheat,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,4,Water,Water,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,5,Lentil(s) ( Organic ),,5.6 oz
-Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,6,Wheat Berries ( Organic ),Flour,5.6 oz
+Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,6,Wheat Berries ( Organic ),Wheat,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,7,Vegetable(s) Dried ( Organic ),,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,8,Carrot(s) ( Organic ),,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,9,Onion(s) ( Organic ),,5.6 oz
@@ -1911,27 +1911,27 @@ Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,19,Salt,Salt,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,20,Rice Flour ( Organic ),,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,21,Herb(s) ( Organic ),,5.6 oz
 Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,22,Sunflower Oil ( Organic ),Oil,5.6 oz
-McCormick Country Herb Chicken Sauce Blend,1,Wheat Starch,Flour,1.25 oz
+McCormick Country Herb Chicken Sauce Blend,1,Wheat Starch,Wheat,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,2,Cream Solids,Dairy,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,3,Salt,Salt,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,4,Chicken Broth,Meat,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,5,Corn Gluten Hydrolyzed,Corn,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,6,Soy Protein,Soy,1.25 oz
-McCormick Country Herb Chicken Sauce Blend,7,Wheat Gluten,Flour,1.25 oz
+McCormick Country Herb Chicken Sauce Blend,7,Wheat Gluten,Wheat,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,8,Yeast Torula,,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,11,Thyme,,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,12,Rosemary,,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,13,Sage,,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,14,Xanthan Gum,,1.25 oz
-McCormick Country Herb Chicken Sauce Blend,15,Soy Flour,Flour,1.25 oz
+McCormick Country Herb Chicken Sauce Blend,15,Soy Flour,Soy,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,16,Garlic,,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,17,Onion(s),,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,18,Yeast Extract Autolyzed,,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,19,Soy Lecithin,Soy,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,20,Flavor(s) Natural,Flavoring,1.25 oz
 Lifestream Organic 8 Grain Sesame Toaster Waffles,1,Water,Water,11 oz.
-Lifestream Organic 8 Grain Sesame Toaster Waffles,2,Wheat Flour White ( Organic ),Flour,11 oz.
-Lifestream Organic 8 Grain Sesame Toaster Waffles,3,Wheat Flour Whole ( Organic ),Flour,11 oz.
+Lifestream Organic 8 Grain Sesame Toaster Waffles,2,Wheat Flour White ( Organic ),Wheat,11 oz.
+Lifestream Organic 8 Grain Sesame Toaster Waffles,3,Wheat Flour Whole ( Organic ),Wheat,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,4,Canola Oil Expeller Pressed,Oil,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,6,Soybean(s) Oil ( Organic ),Soy|Oil,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,7,Cane Juice Evaporated,Sugar,11 oz.
@@ -1944,7 +1944,7 @@ Lifestream Organic 8 Grain Sesame Toaster Waffles,13,Oat(s) Bran ( Organic ),,11
 Lifestream Organic 8 Grain Sesame Toaster Waffles,14,Millet ( Organic ),,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,15,Buckwheat Flour ( Organic ),,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,16,Barley Flour ( Organic ),,11 oz.
-Lifestream Organic 8 Grain Sesame Toaster Waffles,17,Wheat Bran ( Organic ),Flour,11 oz.
+Lifestream Organic 8 Grain Sesame Toaster Waffles,17,Wheat Bran ( Organic ),Wheat,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,18,Leavening,,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,19,Sodium Acid Pyrophosphate,,11 oz.
 Lifestream Organic 8 Grain Sesame Toaster Waffles,20,Sodium Bicarbonate,,11 oz.
@@ -1988,9 +1988,9 @@ Lowe's Cinnamon Applesauce - 6 Pack,5,Flavor(s) Natural,Flavoring,24 oz.
 Lowe's Cinnamon Applesauce - 6 Pack,6,Cinnamon,,24 oz.
 Lowe's Cinnamon Applesauce - 6 Pack,7,Erythorbic Acid,,24 oz.
 Lowe's Cinnamon Applesauce - 6 Pack,8,To Protect Color,,24 oz.
-Wegmans Oatmeal Soft Cookies,1,Flour Enriched Bleached,Flour,11 oz.
-Wegmans Oatmeal Soft Cookies,2,Flour Unbleached,Flour,11 oz.
-Wegmans Oatmeal Soft Cookies,3,Wheat Flour,Flour,11 oz.
+Wegmans Oatmeal Soft Cookies,1,Flour Enriched Bleached,Wheat,11 oz.
+Wegmans Oatmeal Soft Cookies,2,Flour Unbleached,Wheat,11 oz.
+Wegmans Oatmeal Soft Cookies,3,Wheat Flour,Wheat,11 oz.
 Wegmans Oatmeal Soft Cookies,4,Niacin,,11 oz.
 Wegmans Oatmeal Soft Cookies,5,Iron,,11 oz.
 Wegmans Oatmeal Soft Cookies,6,Thiamine Mononitrate (Vitamin B1),,11 oz.
@@ -2124,9 +2124,9 @@ Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,14,Monocalcium Phosphate,,1
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,15,Cinnamon,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,16,Citric Acid,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,17,Xanthan Gum,,10.4 oz.
-Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,18,Wheat Flour Enriched,Flour,10.4 oz.
-Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,19,Wheat Flour Bleached,Flour,10.4 oz.
-Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,20,Barley Malted Flour,Flour,10.4 oz.
+Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,18,Wheat Flour Enriched,Wheat,10.4 oz.
+Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,19,Wheat Flour Bleached,Wheat,10.4 oz.
+Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,20,Barley Malted Flour,Wheat,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,21,Niacin,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,22,Iron Reduced,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,23,Thiamine Mononitrate (Vitamin B1),,10.4 oz.
@@ -2142,7 +2142,7 @@ Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,33,Glycerine,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,34,Milk Non-Fat Dry,Dairy,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,35,Calcium Carbonate,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,36,Honey,Sugar,10.4 oz.
-Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,37,Wheat Bran,Flour,10.4 oz.
+Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,37,Wheat Bran,Wheat,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,38,Salt,Salt,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,39,Sorbitan Monostearate,,10.4 oz.
 Wegmans Fruit &amp; Grain Apple Cinnamon Cereal Bars,40,Leavening,,10.4 oz.
@@ -2235,7 +2235,7 @@ Luzianne Cajun Stew Etouffee Dinner Kit,4,Food Starch Modified,,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,5,Onion(s),,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,6,Vegetable(s) Protein Hydrolyzed,Soy,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,7,Salt,Salt,8 oz.
-Luzianne Cajun Stew Etouffee Dinner Kit,8,Flour,Flour,8 oz.
+Luzianne Cajun Stew Etouffee Dinner Kit,8,Flour,Wheat,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,9,Spice(s),Spice,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,10,Flavor(s) Natural,Flavoring,8 oz.
 Luzianne Cajun Stew Etouffee Dinner Kit,11,Celery,,8 oz.
@@ -2302,7 +2302,7 @@ President's Choice Blue Menu Barley Risotto with Herbed Chicken,58,Sorbic Acid,,
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,59,Tricalcium Phosphate,,10.2 oz.
 Entenmann's Key Lime Pie,1,Milk Condensed Sweetened,Dairy,21 oz.
 Entenmann's Key Lime Pie,2,Water,Water,21 oz.
-Entenmann's Key Lime Pie,3,Wheat Flour Unbleached,Flour,21 oz.
+Entenmann's Key Lime Pie,3,Wheat Flour Unbleached,Wheat,21 oz.
 Entenmann's Key Lime Pie,4,Vegetable(s) Shortening Partially Hydrogenated,Oil,21 oz.
 Entenmann's Key Lime Pie,6,Soybean(s),Soy,21 oz.
 Entenmann's Key Lime Pie,7,Cottonseed,,21 oz.
@@ -2310,7 +2310,7 @@ Entenmann's Key Lime Pie,9,Egg(s),Dairy,21 oz.
 Entenmann's Key Lime Pie,10,Lime Puree,,21 oz.
 Entenmann's Key Lime Pie,11,Key Lime Puree,,21 oz.
 Entenmann's Key Lime Pie,12,Sugar,Sugar,21 oz.
-Entenmann's Key Lime Pie,13,Wheat Flour Whole,Flour,21 oz.
+Entenmann's Key Lime Pie,13,Wheat Flour Whole,Wheat,21 oz.
 Entenmann's Key Lime Pie,14,Salt,Salt,21 oz.
 Entenmann's Key Lime Pie,15,Dextrose,,21 oz.
 Entenmann's Key Lime Pie,16,Potassium Sorbate,,21 oz.
@@ -2339,8 +2339,8 @@ Genisoy Diet Chocolate Mint Supplement Protein Bar,9,Lecithin,Dairy,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,10,Flavor(s) Vanilla,,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,11,Rice Flour,Flour|Rice,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,12,Cocoa,,2.2 oz
-Genisoy Diet Chocolate Mint Supplement Protein Bar,13,Cookies,Flour,2.2 oz
-Genisoy Diet Chocolate Mint Supplement Protein Bar,14,Wheat Flour Enriched,Flour,2.2 oz
+Genisoy Diet Chocolate Mint Supplement Protein Bar,13,Cookies,Wheat,2.2 oz
+Genisoy Diet Chocolate Mint Supplement Protein Bar,14,Wheat Flour Enriched,Wheat,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,15,Sugar,Sugar,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,16,Vegetable(s) Oil,Oil,2.2 oz
 Genisoy Diet Chocolate Mint Supplement Protein Bar,17,Salt,Salt,2.2 oz
@@ -2415,7 +2415,7 @@ Uncle Ben's Country In Broccoli Rice Au Gratin,18,Parsley Dried,,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,19,Salt,Salt,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,20,Soybean(s) Oil Partially Hydrogenated,Soy|Oil,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,21,Yeast Extract Autolyzed,,6 oz
-Uncle Ben's Country In Broccoli Rice Au Gratin,22,Wheat Flour,Flour,6 oz
+Uncle Ben's Country In Broccoli Rice Au Gratin,22,Wheat Flour,Wheat,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,23,Sodium Citrate,,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,24,Lactic Acid,,6 oz
 Uncle Ben's Country In Broccoli Rice Au Gratin,25,Disodium Phosphate,,6 oz
@@ -2435,7 +2435,7 @@ Uncle Ben's Country In Broccoli Rice Au Gratin,38,Turmeric,,6 oz
 Knorr Extra Large Fish Flavor Bouillon,1,Salt,Salt,2 oz
 Knorr Extra Large Fish Flavor Bouillon,2,Soybean(s) Oil Partially Hydrogenated,Soy|Oil,2 oz
 Knorr Extra Large Fish Flavor Bouillon,3,Cottonseed Oil Partially Hydrogenated,Oil,2 oz
-Knorr Extra Large Fish Flavor Bouillon,4,Wheat Protein Hydrolyzed,Flour,2 oz
+Knorr Extra Large Fish Flavor Bouillon,4,Wheat Protein Hydrolyzed,Wheat,2 oz
 Knorr Extra Large Fish Flavor Bouillon,5,Fish Powder,Meat,2 oz
 Knorr Extra Large Fish Flavor Bouillon,6,Monosodium Glutamate,,2 oz
 Knorr Extra Large Fish Flavor Bouillon,7,Onion(s) Powder,,2 oz
@@ -2444,8 +2444,8 @@ Knorr Extra Large Fish Flavor Bouillon,9,Spice(s),Spice,2 oz
 Knorr Extra Large Fish Flavor Bouillon,10,Disodium Inosinate,,2 oz
 Knorr Extra Large Fish Flavor Bouillon,11,Disodium Guanylate,,2 oz
 Knorr Extra Large Fish Flavor Bouillon,12,Caramel Color,Coloring,2 oz
-Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,1,Wheat Flour Unbleached Enriched,Flour,11 oz
-Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,2,Flour,Flour,11 oz
+Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,1,Wheat Flour Unbleached Enriched,Wheat,11 oz
+Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,2,Flour,Wheat,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,3,Niacin,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,4,Iron Reduced,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,5,Riboflavin (Vitamin B2),,11 oz
@@ -2469,7 +2469,7 @@ Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,22,Barley Mal
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,23,Barley Malted Flour,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,24,Monocalcium Phosphate,,11 oz
 Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,25,Salt,Salt,11 oz
-Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,26,Wheat Gluten,Flour,11 oz
+Pepperidge Farm Giant Goldfish Buttery Flavor Baked Snack Crackers,26,Wheat Gluten,Wheat,11 oz
 Chloraseptic Oral Anesthetic / Analgesic Sore Throat Gargle,1,Blue 1,Coloring,10 fl oz
 Chloraseptic Oral Anesthetic / Analgesic Sore Throat Gargle,2,Flavor(s),Flavoring,10 fl oz
 Chloraseptic Oral Anesthetic / Analgesic Sore Throat Gargle,3,Glycerine,,10 fl oz

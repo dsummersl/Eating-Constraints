@@ -20,18 +20,20 @@
 		<script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
 		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
+		<script type="text/javascript" language="JavaScript" src="js/jquery.tablesorter.min.js"></script>
 <!--}}}-->
 		<script type="text/javascript">
-			var debug = true;
+			var debug = false;
 			var food = {};
 			var uniqueRankCategories;
+            var lastPopup;
 			$(function() {
 				window.onerror = function(msg, file, line) { alert(printStackTrace().join('\n\n')); }
-				// test litmus drawing<!--{{{-->
+				// setup data functions<!--{{{-->
 				startupWithData(function() {
 					try {
-						$.each(d3.keys(clusterDefinitions),function(i,v) {
-							$('#colorKey').append($.sprintf('<a class="btn large %s">%s</a>',v,clusterDefinitions[v]));
+						$.each(d3.keys(clusterDefinitions),function(i,v) { // setup colorkey
+							$('#colorKey').append($.sprintf('<a class="btn %s">%s</a>',v,clusterDefinitions[v]));
 						});
 						$.each(buttonOptions,function(i,bo) {
 							options = "";
@@ -39,22 +41,51 @@
 							if (i == buttonOptions.length-1) { options = "last" }
 							$('#groupByMenu').append($.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name));
 							$('#'+bo.id).click(function() {
-								$('#currentGroupBy').text("Arranged by "+ bo.name);
+								$('#graphPageTab a').text("Arranged by "+ bo.name);
 								return false;
 							});
 						});
 						$('#menuReset').click(function() {
-							//$('#currentGroupBy').text("Arranged by "+ buttonOptions[0].name);
 							$('#'+ buttonOptions[0].id).click();
 							return false;
 						});
-						$('#currentGroupBy').text("Arranged by "+ buttonOptions[0].name);
+                        var pages = [ 'graphPage','tablePage' ];
+                        $.each(pages,function(i,newPage) {
+                            // TODO coloring for these links so they don't change color
+                            // TODO also there is a border when you click? get rid of that too.
+                            $('#'+ newPage +'Tab a').click(function () { 
+                                $.each(pages,function(i,oldPage) { 
+                                    if (newPage != oldPage) { 
+                                        $('#'+ oldPage).fadeOut(); 
+                                        $('#'+ oldPage +'Tab').removeClass('active');
+                                    }
+                                });
+                                $('#'+newPage +'Tab').addClass('active');
+                                $('#refreshingNote').fadeIn();
+                                $('#'+newPage).fadeIn(1000,function() {
+                                    $('#refreshingNote').fadeOut();
+                                });
+                            });
+                        });
+						$('#graphPageTab a').text("Arranged by "+ buttonOptions[0].name); // update the graph tab whenever the arrange by changes
 						drawTreeMap(food,'#mapresults');
+                        populateTable(food.ingredients,'#tableresults');
+                        $('.tableDetails').click(function () {
+                            $('.popover').fadeOut();
+                            if (lastPopup == $(this).attr('id')) {
+                                lastPopup = '';
+                                return false;
+                            }
+                            makeRanksPopup(food,$(this).attr('id'));
+                            $(this).parent().find('.popover').fadeIn();
+                            lastPopup = $(this).attr('id');
+                            return false;
+                        });
 						var eaters = [
 							new Eater('Omnivore'),
 							new Eater('Vegitarian',['Meat']),
 							new Eater('DairyFree',['Dairy']),
-							new Eater('FlourFree',['Flour']),
+							new Eater('FlourFree',['Wheat']),
 
 							//new Eater('Vegan',['Meat','Dairy']),
 							//new Eater('SugarFree',['Sugar']),
@@ -104,6 +135,18 @@
 						jspec.report();
 					}
 				} // }}}
+                // link formatting<!--{{{-->
+                $('ul.tabs a, ul.pills a, .pagination a, .well .btn, .actions .btn, .alert-message .btn, a.close').click(function(e) {
+                    e.preventDefault();
+                });
+
+                // Copy code blocks in docs
+                $(".copy-code").focus(function() {
+                    var el = this;
+                    // push select to event loop for chrome :{o
+                    setTimeout(function () { $(el).select(); }, 1);
+                });
+                //<!--}}}-->
 			});
 		</script>
 	</head>
@@ -152,37 +195,38 @@
 					This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
 					contest in August, 2011.
 				</div>
-				<div class="span16 columns">
-					<hr/>
-				</div>
-			</div>
-			<div>
-				<div class="row">
-					<div class="span11 columns" id="mapbuttons">
-						<h3 id="currentGroupBy"></h3>
-						<!--TODO cluster by food category (snack, condiment, etc)-->
-					</div>
-					<div class="span11 columns" id="mapresults">
-					</div>
-					<div class="span5 columns" id="eaterresults">
-					</div>
-				</div>
-				<!--
-				<div class="row">
-					<div class="span16 columns">
-						<h3>Custom Eater</h3>
-						<hr/>
-					</div>
-				</div>
-				-->
-			</div>
-			<div id="testresults"></div>
+                <div class="span16 columns">
+                    <ul class="tabs">
+                        <li class="active" id="graphPageTab"><a href="#"></a></li>
+                        <li id="tablePageTab"><a href="#">Tabular Form</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row" id="graphPage">
+                <div class="span11 columns" id="mapresults"> </div>
+                <div class="span5 columns" id="eaterresults"> </div>
+            </div>
+            <div class="row" id="tablePage" style="display: none;">
+                <div class="span16 columns" id="tableresults">
+                </div>
+            </div>
+            <div class="row">
+                <div class="span16 columns">
+                    <hr />
+                    <div id="testresults"></div>
+                </div>
+            </div>
         </div>
 		<!-- popups and forms -->
 		<!--{{{-->
 		<div class="modal" id="startupLoading">
 			<div class="modal-header"><h3>Loading...</h3></div>
 			<div class="modal-body"><p>Please wait while some data is loaded...</p></div>
+			<div class="modal-footer"></div>
+		</div>
+		<div class="modal" id="refreshingNote" style="display:none;">
+			<div class="modal-header"><h3>Refreshing...</h3></div>
+			<div class="modal-body"><p>Wait one second while I refresh some data...</p></div>
 			<div class="modal-footer"></div>
 		</div>
 		<div style="display:none;" id="eatingFood">

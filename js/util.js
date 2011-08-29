@@ -1,6 +1,6 @@
-// graph functions//{{{
-//
+// configuration options {{{
 
+// description of the clusters
 clusterDefinitions = {
 	cluster0: 'Fatty',
 	cluster1: 'Salty',
@@ -12,6 +12,7 @@ clusterDefinitions = {
 	cluster7: 'Fatty & Salty',
 }
 
+// filter functions
 buttonOptions = [
 	{ name : 'Calories/Serving', id     : 'mapCaloriesPerServing', calc : function(f) { return checkBadNum(parseInt(f.Calories))}},
 	{ name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(parseInt(f['Servings Per Container'])*f.Calories)}},
@@ -32,13 +33,121 @@ buttonOptions = [
 	//{ name: 'Ounces/Package', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
 ];
 
-function doNada() {
-	return false;
+// }}}
+// table functions {{{
+// data that would show up in the table page
+
+function positionPopoversNextOver(anchorElement,popoverElement) { // NOTE: has to be VISIBLE to get this info correctly
+	/*
+	 * compute the popover's location relative to anchorElement and the direction class hint (.left, .right, .above, .below).
+	 */
+	$anchorA = $(anchorElement);
+	$twipsyA = $(popoverElement);
+	twipsyType = 'right';
+	$.each(['left','right','above','below'],function(i,v) {
+		if ($twipsyA.hasClass(v)) {
+			twipsyType = v;
+		}
+	});
+	twipsy = { width: $twipsyA.width() + 10 , height: $twipsyA.height() + 10 };
+	anchor = { position: $anchorA.position() , width: $anchorA.width() , height: $anchorA.height() };
+	offset = {
+		above: {
+			top: anchor.position.top - twipsy.height
+			, left: anchor.position.left + (anchor.width/2) - (twipsy.width/2)
+		}
+		, below: {
+			top: anchor.position.top + anchor.height
+			, left: anchor.position.left + (anchor.width/2) - (twipsy.width/2)
+		}
+		, left: {
+			top: anchor.position.top + (anchor.height/2) - (twipsy.height/2)
+			, left: anchor.position.left - twipsy.width - 5
+		}
+		, right: {
+			top: anchor.position.top + (anchor.height/2) - (twipsy.height/2)
+			, left: anchor.position.left + anchor.width + 5
+		}
+	};
+	//console.log('anchor = '+ JSON.stringify(anchor));
+	$twipsyA.css(offset[twipsyType])
 }
+
+function makeRanksPopup(food,anchorElement) {
+	var aFood = findFoodFromFoodName(food,$('#'+anchorElement).text());
+	var toAppend = "";
+	toAppend += $.sprintf('<div id="%sPopover" class="popover right" style="display: none;"><div class="arrow"></div><div class="inner">',anchorElement);
+	toAppend += $.sprintf('<h3 class="title">%s</h3><div class="content">',aFood.Description);
+	toAppend += '<table><thead><tr>';
+	toAppend += $.sprintf('<th class="header">%s</th>','Ingredient');
+	toAppend += $.sprintf('<th class="header">%s</th>','Contains');
+	toAppend += "</tr></thead><tbody>";
+	$.each(aFood.Ranks,function(i,v) {
+		toAppend += '<tr>';
+		//toAppend += $.sprintf('<td>%s</td><td>%s</td>',v.Ingredient,v.IngredientCategory.replace('|',','));
+		toAppend += $.sprintf('<td>%s</td><td>%s</td>',v.Ingredient,v.IngredientCategory);
+		toAppend += '</tr>';
+	});
+	toAppend += "</tbody></table></div></div></td>";
+
+	$('#'+anchorElement).parent().find('.popover').remove();
+	$('#'+anchorElement).parent().append(toAppend);
+	positionPopoversNextOver('#'+anchorElement,'#'+anchorElement+"Popover");
+}
+
+function populateTable(food,element) {
+	var toAppend = ""
+	toAppend += '<table class="zebra-striped"><thead><tr>';
+	toAppend += $.sprintf('<th class="header">%s</th>','Product');
+	toAppend += $.sprintf('<th class="header">%s</th>','Package Size');
+	toAppend += $.sprintf('<th class="header">%s</th>','Servings');
+	toAppend += $.sprintf('<th class="header">%s</th>','Calories');
+	toAppend += $.sprintf('<th class="header">%s</th>','Category');
+	toAppend += $.sprintf('<th class="header">%s</th>','Contains');
+	toAppend += '</tr></thead><tbody>';
+
+	var idoffset = 0;
+	$.each(food,function(i,aFood) {
+		toAppend += '<tr>';
+		$.each(['Description','PackageWeight','Servings Per Container','Calories','cluster','Categories'],function(i,v) {
+			// TODO for the header link to its URL
+			if (v == 'cluster') {
+				toAppend += $.sprintf('<td><a class="btn %s">%s</a></td>',aFood[v],clusterDefinitions[aFood[v]]);
+			}
+			else if (v == 'Categories') {
+				var categories = "";
+				$.each(aFood[v].sort(),function(i,c) {
+					categories += c;
+					if (i < aFood[v].length-1) { categories += ", "; }
+				});
+				toAppend += $.sprintf('<td>%s</td>',categories);
+			}
+			else if (v == 'PackageWeight') {
+				toAppend += $.sprintf('<td>%s %s</td>',aFood[v],aFood['PackageWeightUnits']);
+			}
+			else if (v == 'Description') {
+				toAppend += $.sprintf('<td><a href="#" id="tableDescId%s" class="popoverswell tableDetails">%s</a></td>',idoffset++,aFood[v]);
+			}
+			else {
+				toAppend += $.sprintf('<td>%s</td>',v,aFood[v]);
+			}
+		});
+		toAppend += '</tr>';
+	});
+	toAppend += '</tbody></table>';
+	$(element).empty();
+	$(element).append(toAppend);
+	//$(element +" table").tablesorter({sortList: [[0,0]]});
+	//console.log("I appended this table to "+ element +": "+ toAppend)
+}
+
+// }}}
+// graph functions//{{{
+//
 
 function checkBadNum(result) {
 	if (isNaN(result)) {
-		console.log(printStackTrace().join('\n'));
+		//console.log(printStackTrace().join('\n'));
 		return 0;
 	}
 	return result;
@@ -345,8 +454,7 @@ function processEaterForm() { //<!--{{{-->
 		console.log($.sprintf("denied food = %d (%d)",eater.calsDenied(),eater.denied.length));
 		console.log($.sprintf("left   food = %d (%d)",eater.calsToEat(),eater.toEat.length));
 		console.log($.sprintf("ate    food = %d (%d)",eater.calsAte(),eater.eaten.length));
-		$('#eatingFood').dialog();
-		$('#eatingFood').dialog('open');
+		$('#eatingFood').fadeIn();
 		var eatCount = 0;
 	//	while (eater.toEat.length > 0) {
 			var whatIAte = eater.eat();
@@ -363,7 +471,7 @@ function processEaterForm() { //<!--{{{-->
 			drawLitmusForEater(eater,$.sprintf('eat-%d',eatCount));
 			eatCount++;
 	//	}
-		$('#eatingFood').dialog('close')
+		$('#eatingFood').fadeOut()
 	} catch(e) {
 		console.log(printStackTrace({e:e}).join('\n'));
 		console.trace();
@@ -373,9 +481,6 @@ function processEaterForm() { //<!--{{{-->
 }//<!--}}}-->
 
 function startupWithData(onstarted) { //<!--{{{-->
-	$('#startupLoading').dialog();
-	$('#startupLoading').dialog('close');
-	$('#startupLoading').dialog('open');
 	$.getJSON('testdata/ingredients.json', function(d) {
 		food['ingredients'] = d;
 	})
@@ -394,7 +499,7 @@ function startupWithData(onstarted) { //<!--{{{-->
 				$(field).append($.sprintf('<option value="%s">%s</option>',v,v))
 			})
 		})
-		$('#startupLoading').dialog('close')
+		$('#startupLoading').fadeOut()
 		onstarted();
 	})
 
