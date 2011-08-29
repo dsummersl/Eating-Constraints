@@ -88,7 +88,7 @@ function positionPopoversNextOver(anchorElement,popoverElement) { // NOTE: has t
 }
 
 function makeRanksPopup(food,anchorElement) {
-	var aFood = findFoodFromFoodName(food,$('#'+anchorElement).text());
+  var aFood = food.ingredients[anchorElement.split('-')[1]];
 	var toAppend = "";
 	toAppend += $.sprintf('<div id="%sPopover" class="popover right" style="display: none;"><div class="arrow"></div><div class="inner">',anchorElement);
 	toAppend += $.sprintf('<h3 class="title">%s</h3><div class="content">',aFood.Description);
