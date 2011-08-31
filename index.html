@@ -1,152 +1,186 @@
 <!DOCTYPE html>
 <html>
-	<head>
+  <head>
 <!-- scripts and css includes {{{-->
-		<link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
+    <link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />  
         <link type="text/css" rel="stylesheet" href="css/bootstrap-1.1.1.min.css">
-		<link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
-		<link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
+    <link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
+    <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
 
-		<script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
-		<script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
 
-		<script src="test/vizlathon/spec/lib/jspec.js"></script>
-		<script src="test/vizlathon/spec/lib/jspec.xhr.js"></script>
-		<script src="test/vizlathon/spec/lib/jspec.jquery.js"></script>
+    <script src="test/vizlathon/spec/lib/jspec.js"></script>
+    <script src="test/vizlathon/spec/lib/jspec.xhr.js"></script>
+    <script src="test/vizlathon/spec/lib/jspec.jquery.js"></script>
 
-		<script type="text/javascript" src="js/d3/d3.js"></script>
-		<script type="text/javascript" src="js/d3/d3.layout.js"></script>
+    <script type="text/javascript" src="js/d3/d3.js"></script>
+    <script type="text/javascript" src="js/d3/d3.layout.js"></script>
 
-		<script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
-		<script type="text/javascript" language="JavaScript" src="js/util.js"></script>
-		<script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
-		<script type="text/javascript" language="JavaScript" src="js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="js/sprintf.js"></script>
+    <script type="text/javascript" language="JavaScript" src="js/util.js"></script>
+    <script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
+    <script type="text/javascript" language="JavaScript" src="js/jquery.tablesorter.min.js"></script>
 <!--}}}-->
-        <script type="text/javascript">
+    <script type="text/javascript"><!-- google analytics {{{-->
 
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-25399461-1']);
-          _gaq.push(['_setDomainName', '.pinedesk.biz']);
-          _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25399461-1']);
+      _gaq.push(['_setDomainName', '.pinedesk.biz']);
+      _gaq.push(['_trackPageview']);
 
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
-        </script>
-		<script type="text/javascript">
-			var debug = false;
-			var food = {};
-			var uniqueRankCategories;
-            var lastPopup;
-            var currentArrangeBy = buttonOptions[0];
-			$(function() {
-				window.onerror = function(msg, file, line) { alert(printStackTrace().join('\n\n')); }
-				// setup data functions<!--{{{-->
-				startupWithData(function() {
-					try {
-						$.each(d3.keys(clusterDefinitions),function(i,v) { // setup colorkey
-							$('#colorKey').append($.sprintf('<a class="btn %s">%s</a>',v,clusterDefinitions[v]));
-						});
-                        var sortCats = $.map(buttonOptions,function(v) { return v.cat }).unique().sort();
-                        $.each(sortCats,function (i,cat) {
-							options = "";
-							if (i == 0) { options = "first active" }
-							if (i == buttonOptions.length-1) { options = "last" }
-                            var toAppend = $.sprintf('<li class="menu"><a class="menu" href="#">%s</a>',cat);
-                            toAppend += '<ul class="menu-dropdown">';
-                            $.each(buttonOptions,function(i,bo) {
-                                if (bo.cat == cat) {
-                                    toAppend += $.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name);
-                                }
-                            });
-                            toAppend += '</ul></li>';
-                            $(toAppend).insertAfter('#arrangeByMenu');
-                            $.each(buttonOptions,function(i,bo) {
-                                $('#'+bo.id).click(function() {
-                                    $('#graphPageTab a').text("Arranged by "+ bo.name);
-                                    $('#'+bo.id).parent().parent().parent().removeClass('open');
-                                    currentArrangeBy = bo;
-                                    $('#graphPageTab a').click();
-                                    return false;
-                                });
-                            });
-                        });
-						$('#menuReset').click(function() {
-							$('#'+ currentArrangeBy.id).click();
-							return false;
-						});
-                        var pages = [ 'graphPage','tablePage' ];
-                        $.each(pages,function(i,newPage) {
-                            // TODO coloring for these links so they don't change color
-                            // TODO also there is a border when you click? get rid of that too.
-                            $('#'+ newPage +'Tab a').click(function () { 
-                                $.each(pages,function(i,oldPage) { 
-                                    if (newPage != oldPage) { 
-                                        $('#'+ oldPage).fadeOut(); 
-                                        $('#'+ oldPage +'Tab').removeClass('active');
-                                    }
-                                });
-                                $('#'+newPage +'Tab').addClass('active');
-                                if (!$('#refreshingNote').is(':visible')) {
-                                    $('#refreshingNote').fadeIn();
-                                    populateTable(food,currentArrangeBy,'#tableresults');
-                                    $('#'+newPage).fadeIn(1000,function() {
-                                        $('#refreshingNote').fadeOut();
-                                    });
-                                }
-                                $.each(eaters,function(i,v) {
-                                    $('#'+ v.description +'Litmus').empty();
-                                    $('#'+ v.description +'Stats').empty();
-                                    drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus',currentArrangeBy);
-                                    addFoodStats(v,'#'+ v.description +'Stats',currentArrangeBy);
-                                });
-                            });
-                        });
-						$('#graphPageTab a').text("Arranged by "+ currentArrangeBy.name); // update the graph tab whenever the arrange by changes
-						drawTreeMap(food,'#mapresults');
-                        populateTable(food,currentArrangeBy,'#tableresults');
-                        $('.tableDetails').click(function () {
-                            $('.popover').fadeOut();
-                            if (lastPopup == $(this).attr('id')) {
-                                lastPopup = '';
-                                return false;
-                            }
-                            makeRanksPopup(food,$(this).attr('id'));
-                            $(this).parent().find('.popover').fadeIn();
-                            lastPopup = $(this).attr('id');
-                            return false;
-                        });
-						var eaters = [
-							new Eater('Vegetarian',['Meat']),
-							new Eater('DairyFree',['Dairy']),
-							new Eater('FlourFree',['Wheat']),
-							new Eater('SugarFree',['Sugar']),
-							new Eater('Vegan',['Meat','Dairy']),
-							new Eater('CornFree',['Corn']),
-							new Eater('SoyFree',['Soy']),
-						];
-						$.each(eaters,function(i,v) {
-							v.setupFoodStore(food.ingredients);
-							//v.eat(2000); v.eat(2000);
-                            $('#eaterresults').append($.sprintf('<div class="row"><h3>%s</h3><hr/><div id="%sLitmus" class="litmus"></div><div id="%sStats"></div></div>',v.description,v.description,v.description));
-							drawFoodOverviewLitmus(v,'#'+ v.description +'Litmus',currentArrangeBy);
-                            addFoodStats(v,'#'+ v.description +'Stats',currentArrangeBy);
-						});
-					} catch(e) {
-						console.log(printStackTrace({e:e}).join('\n'));
-						console.trace();
-						alert(e);
-					}
-				});
-				// <!--}}}-->
-				// bootstrap menu<!--{{{-->
+    </script><!--}}}-->
+    <script type="text/javascript">
+      var debug = true;
+      // mastaer list of eater data as computed at startup:
+      var food = {};
+      var eaters = [
+        { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
+        /*
+        new Eater('DairyFree',['Dairy']),
+        new Eater('FlourFree',['Wheat']),
+        new Eater('SugarFree',['Sugar']),
+        new Eater('Vegan',['Meat','Dairy']),
+        new Eater('CornFree',['Corn']),
+        new Eater('SoyFree',['Soy']),
+        */
+      ];
+      var currentArrangeBy = buttonOptions[0];
+
+      // the current selection of data:
+      var foodSelection = food;
+      var foodMap = {};
+
+      var lastPopup;
+      var pages = [ 'graphPage','tablePage' ];
+
+      function updateUI(dontSwitchPages) {
+        try{
+        dontSwitchPages = dontSwitchPages == 'no' ? true:false;
+        console.log("Gonna switch tabs? "+ !dontSwitchPages);
+        if (!dontSwitchPages) {
+          var newPage = 'graphPage';
+          if ($('#graphPageTab').hasClass('active')) {
+            newPage = 'tablePage';
+          }
+            console.log("starting update: "+ newPage);
+          $.each(pages,function(i,oldPage) {
+              if (newPage != oldPage) {
+                  $('#'+ oldPage).fadeOut();
+                  $('#'+ oldPage +'Tab').removeClass('active');
+              }
+          });
+          $('#'+newPage +'Tab').addClass('active');
+        }
+        if (!$('#refreshingNote').is(':visible')) { // if the note is visible, we're doing some udpates already, ignore:
+          $('#refreshingNote').show();
+          populateTable(foodSelection,currentArrangeBy,'#tableresults');
+          $.each(eaters,function(i,v) {
+              eater = new Eater(v.id,v.constraints);
+              eater.setupFoodStore(foodSelection);
+              $('#'+ v.id +'Litmus').empty();
+              $('#'+ v.id +'Stats').empty();
+              drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
+              addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
+          });
+          drawTreeMap(foodMap,'#mapresults',currentArrangeBy);
+          if (!dontSwitchPages) {
+            $('#'+newPage).fadeIn(1000,function() {
+              $('#refreshingNote').fadeOut();
+            });
+          }
+          else {
+            $('#refreshingNote').fadeOut();
+          }
+        }
+          } catch(e) {
+            console.log(printStackTrace({e:e}).join('\n'));
+            console.trace();
+            alert(e);
+          }
+      }
+      $(function() {
+        // setup data functions<!--{{{-->
+        startupWithData(function() {
+          foodSelection = food.ingredients;
+          foodMap = food.foodMap
+          try {
+            $.each(d3.keys(clusterDefinitions),function(i,cluster) { // setup colorkey
+              $('#colorKey').append($.sprintf('<a id="keyBtn%s" class="btn %s">%s</a>',cluster,cluster,clusterDefinitions[cluster]));
+              $('#keyBtn'+cluster).click(function() {
+                // filter the current set of data to just the cluster.
+                foodSelection = food.ingredients.filter(function (v){ return v.cluster == cluster });
+                foodMap = { name:'top', children: [] }
+                $.map(food.foodMap.children,function(v) {
+                  if (v.cluster == cluster) { foodMap.children.push(v) }
+                });
+                updateUI('no');
+              });
+            });
+            var sortCats = $.map(buttonOptions,function(v) { return v.cat }).unique().sort();
+            $.each(sortCats,function (i,cat) {
+              options = "";
+              if (i == 0) { options = "first active" }
+              if (i == buttonOptions.length-1) { options = "last" }
+              var toAppend = $.sprintf('<li class="menu"><a class="menu" href="#">%s</a>',cat);
+              toAppend += '<ul class="menu-dropdown">';
+              $.each(buttonOptions,function(i,bo) {
+                if (bo.cat == cat) {
+                  toAppend += $.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name);
+                }
+              });
+              toAppend += '</ul></li>';
+              $(toAppend).insertAfter('#arrangeByMenu');
+              $.each(buttonOptions,function(i,bo) {
+                $('#'+bo.id).click(function() {
+                  $('#graphPageTab a').text("Arranged by "+ bo.name);
+                  $('#'+bo.id).parent().parent().parent().removeClass('open');
+                  currentArrangeBy = bo;
+                  updateUI('no');
+                  return false;
+                });
+              });
+            });
+            $('#menuReset').click(function() {
+              foodSelection = food.ingredients;
+              foodMap = food.foodMap;
+              updateUI('no');
+              return false;
+            });
+            $.each(pages,function(i,newPage) {
+                // TODO also there is a border when you click? get rid of that too.
+                $('#'+ newPage +'Tab a').click(updateUI);
+            });
+
+            // initial arrangement.
+            $('#graphPageTab a').text("Arranged by "+ currentArrangeBy.name); // update the graph tab whenever the arrange by changes
+            drawTreeMap(foodMap,'#mapresults',currentArrangeBy);
+            populateTable(foodSelection,currentArrangeBy,'#tableresults');
+            $.each(eaters,function(i,v) {
+              eater = new Eater(v.id,v.constraints);
+              eater.setupFoodStore(foodSelection);
+              $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><div id="%sLitmus" class="litmus"></div><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id));
+              drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
+              addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
+            });
+          } catch(e) {
+            console.log(printStackTrace({e:e}).join('\n'));
+            console.trace();
+            alert(e);
+          }
+        });
+        // <!--}}}-->
+        // bootstrap menu<!--{{{-->
                 $("body").bind("click", function (e) {
                     $('a.menu').parent("li").removeClass("open");
                 });
-				$("a.menu").click(function (e) {
+        $("a.menu").click(function (e) {
                     if ($(this).parent("li").hasClass('open')) {
                         var $li = $(this).parent("li").removeClass('open');
                     }
@@ -154,29 +188,29 @@
                         $('li.menu.open').removeClass('open');
                         var $li = $(this).parent("li").addClass('open');
                     }
-					return false;
-				}); 
-				//<!--}}}-->
-				if (debug) { // {{{
-					var jspec = JSpec.exec('test/vizlathon/spec/unit/spec.js')
-					.run({ fixturePath: 'test/vizlathon/spec/fixtures' });
+          return false;
+        }); 
+        //<!--}}}-->
+        if (debug) { // {{{
+          var jspec = JSpec.exec('test/vizlathon/spec/unit/spec.js')
+          .run({ fixturePath: 'test/vizlathon/spec/fixtures' });
 
-					if (jspec.stats.failures > 0) {
-						var html = '';
-						html += '<ul>';
-						html += '<li>';
-						html += '<div id="jspec-top"><h2 id="jspec-title">JSpec <em>'+ JSpec.version +'</em></h2></div>';
-						html += '<div id="jspec"></div>';
-						html += '<div id="jspec-bottom"></div>';
-						html += '</li>';
-						html += '</ul>';
-						html += '<br/><br/><br/>';
-						html += '<br/><br/><br/>';
-						html += '<br/><br/><br/>';
-						$('#testresults').append($(html));
-						jspec.report();
-					}
-				} // }}}
+          if (jspec.stats.failures > 0) {
+            var html = '';
+            html += '<ul>';
+            html += '<li>';
+            html += '<div id="jspec-top"><h2 id="jspec-title">JSpec <em>'+ JSpec.version +'</em></h2></div>';
+            html += '<div id="jspec"></div>';
+            html += '<div id="jspec-bottom"></div>';
+            html += '</li>';
+            html += '</ul>';
+            html += '<br/><br/><br/>';
+            html += '<br/><br/><br/>';
+            html += '<br/><br/><br/>';
+            $('#testresults').append($(html));
+            jspec.report();
+          }
+        } // }}}
                 // link formatting<!--{{{-->
                 $('ul.tabs a, ul.pills a, .pagination a, .well .btn, .actions .btn, .alert-message .btn, a.close').click(function(e) {
                     e.preventDefault();
@@ -189,51 +223,51 @@
                     setTimeout(function () { $(el).select(); }, 1);
                 });
                 //<!--}}}-->
-			});
-		</script>
-	</head>
-	<body>
-		<div class="topbar">
-			<div class="fill">
-				<div class="container">
-					<h3><a href="#">Eating Constraints</a></h3>
-					<ul class="nav secondary-nav">
+      });
+    </script>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <h3><a href="#">Eating Constraints</a></h3>
+          <ul class="nav secondary-nav">
                         <li id="arrangeByMenu"><a class="menu" onclick="return false;" href="#">Arrange By:</a></li>
                         <li class="active"><a id="menuReset" href="#">Reset</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+          </ul>
+        </div>
+      </div>
+    </div>
         <div class="container">
             <h1>Eating Constraints
                 <small>How food restrictions affect the diet</small>
             </h1>
             <hr/>
-			<div class="row">
-				<div class="span8 columns">
-					<h3>Colors</h3>
-					<p> Foods colored by nutritional content: </p>
-					<div id="colorKey"></div>
+      <div class="row">
+        <div class="span8 columns">
+          <h3>Colors</h3>
+          <p> Foods colored by nutritional content: </p>
+          <div id="colorKey"></div>
 
                     <br/>
-					<p>Use the menu bar to drill down by different values. Click on the 'Tabular Form' to explore numbers in depth.</p>
-				</div>
-				<div class="span8 columns">
-					<h3>Motivation</h3>
-					<p>
-					When it comes to food in the US we've got a whole variety of packaged foods to choose from. But in this 
-					sea of food, is it all accessible? What if you are allergic to soy, or wheat? What if you're vegetarian?
-					</p>
+          <p>Use the menu bar to drill down by different values. Click on the 'Tabular Form' to explore numbers in depth.</p>
+        </div>
+        <div class="span8 columns">
+          <h3>Motivation</h3>
+          <p>
+          When it comes to food in the US we've got a whole variety of packaged foods to choose from. But in this 
+          sea of food, is it all accessible? What if you are allergic to soy, or wheat? What if you're vegetarian?
+          </p>
 
-					<p>
-					This page explores the topic of food access. Given a random sampling of foods commonly found in the 
-					supermarket, what would various dietary restrictions be able to eat?
-					</p>
+          <p>
+          This page explores the topic of food access. Given a random sampling of foods commonly found in the 
+          supermarket, what would various dietary restrictions be able to eat?
+          </p>
 
-					<br/>
-					This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
-					contest in August, 2011.
-				</div>
+          <br/>
+          This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
+          contest in August, 2011.
+        </div>
                 <div class="span16 columns">
                     <ul class="tabs">
                         <li class="active" id="graphPageTab"><a href="#"></a></li>
@@ -257,37 +291,37 @@
                 </div>
             </div>
         </div>
-		<!-- popups and forms -->
-		<!--{{{-->
-		<div class="modal" id="startupLoading">
-			<div class="modal-header"><h3>Loading...</h3></div>
-			<div class="modal-body"><p>Please wait while some data is loaded...</p></div>
-			<div class="modal-footer"></div>
-		</div>
-		<div class="modal" id="refreshingNote" style="display:none;">
-			<div class="modal-header"><h3>Refreshing...</h3></div>
-			<div class="modal-body"><p>Wait one second while I refresh some data...</p></div>
-			<div class="modal-footer"></div>
-		</div>
-		<div style="display:none;" id="eatingFood">
-			<p>Please wait while I eat some food...</p>
-		</div>
-		<div style="display:none;" id='neweaterform'>
-			<form>
-				Description:
-				<input id="eatername" type="text">
-				<br/>
-				Alergies:
-				<select multiple id="alergies"></select>
-				<br/>
-				Favorites:
-				<select multiple id="favorites"></select>
-				<br/>
-				Submit:
-				<input type="submit" href="#" />
-				<br/>
-			</form>
-		</div><!--}}}-->
-	</body>
-	<!-- vim: set fdm=marker ai: -->
+    <!-- popups and forms -->
+    <!--{{{-->
+    <div class="modal" id="startupLoading">
+      <div class="modal-header"><h3>Loading...</h3></div>
+      <div class="modal-body"><p>Please wait while some data is loaded...</p></div>
+      <div class="modal-footer"></div>
+    </div>
+    <div class="modal" id="refreshingNote" style="display:none;">
+      <div class="modal-header"><h3>Refreshing...</h3></div>
+      <div class="modal-body"><p>Wait one second while I refresh some data...</p></div>
+      <div class="modal-footer"></div>
+    </div>
+    <div style="display:none;" id="eatingFood">
+      <p>Please wait while I eat some food...</p>
+    </div>
+    <div style="display:none;" id='neweaterform'>
+      <form>
+        Description:
+        <input id="eatername" type="text">
+        <br/>
+        Alergies:
+        <select multiple id="alergies"></select>
+        <br/>
+        Favorites:
+        <select multiple id="favorites"></select>
+        <br/>
+        Submit:
+        <input type="submit" href="#" />
+        <br/>
+      </form>
+    </div><!--}}}-->
+  </body>
+  <!-- vim: set fdm=marker ai: -->
 </html>

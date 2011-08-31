@@ -88,7 +88,10 @@ function positionPopoversNextOver(anchorElement,popoverElement) { // NOTE: has t
 }
 
 function makeRanksPopup(food,anchorElement) {
-  var aFood = food.ingredients[anchorElement.split('-')[1]];
+  var idx = anchorElement.split('-')[1];
+  console.log("idx = "+ idx);
+  var aFood = food.filter(function (v) { return idx == v.idx })[0];
+  console.log("aFood = "+ aFood);
 	var toAppend = "";
 	toAppend += $.sprintf('<div id="%sPopover" class="popover right" style="display: none;"><div class="arrow"></div><div class="inner">',anchorElement);
 	toAppend += $.sprintf('<h3 class="title">%s</h3><div class="content">',aFood.Description);
@@ -114,6 +117,7 @@ function makeRanksPopup(food,anchorElement) {
 }
 
 function populateTable(food,arrangeBy,element) {
+  /*
 	var alreadyExists = false;
 	if ($(element +' table').size() > 0) {
 		// /html/body/div[2]/div[3]/div/table/tbody/tr/td[5]
@@ -128,8 +132,9 @@ function populateTable(food,arrangeBy,element) {
 			//console.log("1st = '"+ $(this).find(':nth-child(1)').text() +"'");
 			var aFood = $(this).find(':first-child a').attr('id');
 			//console.log("found '"+ aFood +"'");
-			if (aFood) { // TODO don't know...
-				var newVal = arrangeBy.calc(food.ingredients[aFood.split('-')[1]]);
+			if (aFood) { // TODO don't know why I need to make sure aFood exists
+        var idx = aFood.split('-')[1];
+        var newVal = food.filter(function (v) { return idx == v.idx })[0];
 				//console.log("new val = "+ newVal);
 				var child = $(this).find(':nth-child(5)').text($.sprintf("%1.2f",newVal));
 				//return $('<td>ahem</td>').get(0);
@@ -138,6 +143,7 @@ function populateTable(food,arrangeBy,element) {
 		$(element +" table").trigger('update');
 		return;
 	}
+  */
 	// TODO sorting of the Package Size column isn't correct. Need to fix.
 	var toAppend = ""
 	toAppend += '<table class="zebra-striped"><thead><tr>';
@@ -150,8 +156,7 @@ function populateTable(food,arrangeBy,element) {
 	toAppend += $.sprintf('<th class="header">%s</th>','Contains');
 	toAppend += '</tr></thead><tbody>';
 
-	var idoffset = 0;
-	$.each(food.ingredients,function(i,aFood) {
+	$.each(food,function(i,aFood) {
 		toAppend += '<tr>';
 		$.each(['Description','PackageWeight','Servings Per Container','Calories','arrangeby','cluster','Categories'],function(i,v) {
 			// TODO for the header link to its URL
@@ -170,7 +175,7 @@ function populateTable(food,arrangeBy,element) {
 				toAppend += $.sprintf('<td>%s %s</td>',aFood[v],aFood['PackageWeightUnits']);
 			}
 			else if (v == 'Description') {
-				toAppend += $.sprintf('<td><a href="#" id="tableDescId-%s" class="popoverswell tableDetails">%s</a></td>',idoffset++,aFood[v]);
+				toAppend += $.sprintf('<td><a href="#" id="tableDescId-%s" class="popoverswell tableDetails">%s</a></td>',aFood.idx,aFood[v]);
 			}
 			else if (v == 'arrangeby') {
 				toAppend += $.sprintf('<td>%s</td>',$.sprintf("%1.2f",arrangeBy.calc(aFood)));
@@ -186,6 +191,24 @@ function populateTable(food,arrangeBy,element) {
 	$(element).append(toAppend);
 	var ts = $(element +" table").tablesorter({sortList: [[0,0]]});
 	//console.log("I appended this table to "+ element +": "+ toAppend)
+  $('.tableDetails').click(function () {
+      try{
+      console.log("click on details!");
+    $('.popover').fadeOut();
+    if (lastPopup == $(this).attr('id')) {
+      lastPopup = '';
+      return false;
+    }
+    makeRanksPopup(food,$(this).attr('id'));
+    $(this).parent().find('.popover').fadeIn();
+    lastPopup = $(this).attr('id');
+    return false;
+} catch(e) {
+  console.log(printStackTrace({e:e}).join('\n'));
+  console.trace();
+  alert(e);
+}
+  });
 }
 
 // }}}
@@ -376,7 +399,7 @@ function drawLitmusForEater(eater,element) {//{{{
 	return vis;
 }//}}}
 
-function drawTreeMap(food,element) {//{{{
+function drawTreeMap(foodMap,element,bo) {//{{{
 /*
 
 TreeMap:
@@ -389,36 +412,54 @@ Each cluster can be sized in the following ways:
 
  Return list of button IDs we need
  */
-	foodMap = { name:'top', children: [] }
-	for (k in food.clusters) {
-		el = {};
-		el.cluster = food.clusters[k].cluster;
-		el.name = el.cluster;
-		el.children = [];
-		$.each(food.clusters[k].children,function(i,v) {
-			ch = {
-				cluster: el.cluster,
-				name: v.productName,
-			};
-			$.each(buttonOptions,function(i,bo) {
-				ch[bo.id] = 0;
-				var f = findFoodFromFoodName(food,v.productName);
-				ch[bo.id] += bo.calc(f);
-				//console.log($.sprintf("%s: %s = %s",ch.name,bo.id,ch[bo.id]));
-			});
-			el.children.push(ch);
-		});
-		foodMap.children.push(el);
-	}
-
+	//var w = $(element).width();
 	var w = 600;
 	var h = 500;
 
 	var treemap = d3.layout.treemap()
 		.size([w, h])
-		.sticky(true)
-		.value(function(d) { return d[buttonOptions[0].id]; })
+    .sticky(true)
+		.value(function(d) { return d[bo.id]; })
 	;
+
+  /*
+  if ($(element +' div').length > 0) {
+    console.log("already drew treemap");
+    var update = d3.select(element).select('div')
+      .data([foodMap]).selectAll('div')
+      .data(treemap.nodes,function(d) { d.idx})
+			.data(treemap.value(function(d) { return d[buttonOptions[1].id]; }))
+    
+    // TODO durations don't work.
+    update.transition()
+      .duration(1000)
+      .call(cell)
+      .text(function(d) { return d.children ? null : d.name; })
+    ;
+
+    update.exit()
+      .transition()
+      .duration(1000)
+      .attr('x',0)
+      .remove()
+    ;
+
+    update.enter()
+      .append("div")
+      .attr("class", function(d) { return "cell "+ d.cluster})
+      .call(cell)
+      .text(function(d) { return d.children ? null : d.name; })
+      .transition()
+      .duration(1000)
+      .attr('x',300)
+    ;
+
+    return
+  }
+  */
+  console.log("BEFORE: "+ $(element).children().size());
+  $(element).empty();
+  console.log("AFTER: "+ $(element).children().size());
 
 	var div = d3.select(element).append("div")
 		.style("position", "relative")
@@ -426,13 +467,15 @@ Each cluster can be sized in the following ways:
 		.style("height", h + "px");
 
 	div.data([foodMap]).selectAll("div")
-		.data(treemap.nodes)
+    //.data(treemap.nodes,function(d) { d.idx})
+    .data(treemap.nodes)
 		.enter().append("div")
 		.attr("class", function(d) { return "cell "+ d.cluster})
 		.call(cell)
 		.text(function(d) { return d.children ? null : d.name; })
 	;
 
+  /*
 	$.each(buttonOptions,function(i,bo) {
 		$('#'+ bo.id).click(function() {
 			div.selectAll("div")
@@ -446,6 +489,7 @@ Each cluster can be sized in the following ways:
 			return false;
 		});
 	});
+  */
 }//}}}
 
 function cell() {
@@ -523,8 +567,10 @@ function startupWithData(onstarted) { //<!--{{{-->
 function combineIngredientsAndRanks(food) {//{{{
 	food.uniqueRankCategories = $.map(food.ingredientRanks, function (v) { return v.IngredientCategory }).filter(function(v) { return v != ''}).unique().sort()
 	// make all the food ingredients be an array, and each element of the array is a dictionary of the food details.
-	var newfood = []
+	var newfood = [];
+  var idx = 0;
 	for (k in food.ingredients) {
+    food.ingredients[k].idx = idx++;
 		newfood.push(food.ingredients[k])
 	}
 	food.ingredients = newfood;
@@ -560,6 +606,29 @@ function combineIngredientsAndRanks(food) {//{{{
 		});
 	});
 	delete food.ingredientRanks;
+	foodMap = { name:'top', children: [] }
+	for (k in food.clusters) { // for each cluster, compute its value for easy switching later on.
+		el = {};
+		el.cluster = food.clusters[k].cluster;
+		el.name = el.cluster;
+		el.children = [];
+		$.each(food.clusters[k].children,function(i,v) {
+      var f = findFoodFromFoodName(food.ingredients,v.productName);
+			ch = {
+        idx: f.idx,
+				cluster: el.cluster,
+				name: v.productName,
+			};
+			$.each(buttonOptions,function(i,bo) {
+				ch[bo.id] = 0;
+				ch[bo.id] += bo.calc(f);
+			});
+			el.children.push(ch);
+		});
+		foodMap.children.push(el);
+	}
+  food.foodMap = foodMap;
+
 	return food;
 }//}}}
 
@@ -641,7 +710,7 @@ var eaterMethods = {
 	}
 }
 
-// Eater class - holds the state and specific strategy of an eater
+// Eater class - holds the state and specific strategy of an eater//{{{
 // Params:
 //  description - name
 //  alergies - an array of food categories this eater will not eat
@@ -713,7 +782,7 @@ Eater.prototype.eat = function(calories) {
 
 function findFoodFromFoodName(foods,foodName) {
 	var food;
-	$.each(foods.ingredients,function(i,v) { if (v.Description == foodName) { food = v; }});
+	$.each(foods,function(i,v) { if (v.Description == foodName) { food = v; }});
 	return food;
 }
 
@@ -732,6 +801,6 @@ Eater.prototype.calsDenied = function() {
 }
 Eater.prototype.calsToEat = function() {
 	return computeCount(this.toEat);
-}
+}//}}}
 //}}}
 // vim: set fdm=marker ai:
