@@ -4,9 +4,9 @@
 clusterDefinitions = {
 	cluster0: 'Very Fatty',
 	cluster1: 'Salty',
-	cluster2: 'Extremely Salty',
+	//cluster4: 'Very Salty',
+	//cluster2: 'Extremely Salty',
 	cluster3: 'Fibrous & No Fat',
-	cluster4: 'Very Salty',
 	cluster5: 'Fibrous & Salty',
 	cluster6: 'Sugary',
 	cluster7: 'Fatty & Salty',
