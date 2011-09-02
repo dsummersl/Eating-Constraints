@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Eating Constraints</title>
 <!-- scripts and css includes {{{-->
-    <link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />  
-        <link type="text/css" rel="stylesheet" href="css/bootstrap-1.1.1.min.css">
+    <link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-1.1.1.min.css">
     <link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
     <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
 
     <script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
-    <script type="text/javascript" language="JavaScript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
 
     <script src="test/vizlathon/spec/lib/jspec.js"></script>
     <script src="test/vizlathon/spec/lib/jspec.xhr.js"></script>
@@ -41,6 +41,7 @@
       // mastaer list of eater data as computed at startup:
       var food = {};
       var eaters = [
+        { id: 'omnivore', name: 'Omnivore', subtitle:'No restrictions', constraints: [] },
         { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
         { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
         { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
@@ -166,6 +167,7 @@
               eater = new Eater(v.id,v.constraints);
               eater.setupFoodStore(foodSelection);
               $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
+              //$('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></a></div></div><div class="row"><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
               drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
               addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
             });

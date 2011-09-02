@@ -118,3 +118,29 @@ rect.border {
     overflow: auto;
 }
 */
+
+.arc .bordered {
+  stroke: #000;
+  fill: #ddd;
+}
+
+.arc .nopaint {
+  fill-opacity: 0;
+}
+
+.percentdesc {
+  //font-weight: bold;
+  font-size: 8pt;
+}
+
+.percenttext {
+  fill: #999;
+  text-style: italic;
+  font-size: 8pt;
+}
+
+svg {
+  fill: #999;
+  text-style: italic;
+  font-size: 8pt;
+}

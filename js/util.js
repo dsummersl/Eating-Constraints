@@ -54,6 +54,17 @@ buttonOptions = [
 	//{ name: 'Ounces/Package', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
 ];
 
+nonUserOptions = [ // computations used internally but not explicitly selected by the user:
+	{ cat: 'Package', type: 'Carbs', name : 'Carbs(%)/Package', id     : 'mapCarbsPerPercentPackage', calc    : function(f) { 
+                                                                                                             //console.log($.sprintf('ttl cars = %s (%s) for servings %s - %s',checkBadNum(f['Total Carbohydrate - Percent']),f['Total Carbohydrate - Percent'],checkBadNum(f['Servings Per Container']),f['Description']));
+                                                                                                             return checkBadNum(f['Total Carbohydrate - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ cat: 'Package', type: 'Cholest.', name : 'Cholesterol(%)/Package', id     : 'mapChPerPercentPackage', calc     : function(f) { return checkBadNum(f['Cholesterol - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ cat: 'Package', type: 'Fiber', name : 'Fiber(%)/Package', id     : 'mapFiberPerPercentPackage', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ cat: 'Package', type: 'Salt', name : 'Salt(%)/Package', id     : 'mapSaltPerPercentPackage', calc     : function(f) { return checkBadNum(f['Sodium - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ cat: 'Package', type: 'Sat Fat', name : 'Sat Fat(%)/Package', id   : 'mapSatFatPerPercentPackage', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ cat: 'Package', type: 'Total Fat', name : 'Total Fat(%)/Package', id : 'mapFatPerPercentPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Percent'])*checkBadNum(f['Servings Per Container'])}},
+];
+
 // }}}
 // table functions {{{
 // data that would show up in the table page
@@ -223,24 +234,47 @@ function populateTable(food,arrangeBy,element) {
 //
 
 function addFoodStats(eater,element,bo) {
-	var toAppend = '<ul class="unstyled">';
-	var inedible = computeCount(eater.denied,bo.calc);
-	var total = computeCount(eater.eaten,bo.calc) + computeCount(eater.toEat,bo.calc) + inedible;
-	if (eater.denied.length == 0) {
-		toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",0);
-	}
-	else {
-		toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(inedible/total));
-	}
-	toAppend += "</ul>";
+  // total protein
+  // total sugar
+  //
+  // total fat
+  // saturated fat
+  // carbs
+  // salt
+  // fiber
+  // cholesteral
+  // edible vs inedible foods
+  // edible vs inedible calorie/types?? or is this already taken care of?
+  var toAppend = '';
+	//toAppend = '<ul class="unstyled">';
+  var bopt = buttonOptions.filter(function(v) { return v.id=='mapCaloriesPerPackage' })[0];
+  var denied = computeCount(eater.denied,bopt.calc);
+  var edible = computeCount(eater.eaten,bopt.calc) + computeCount(eater.toEat,bopt.calc);
+  var total = denied + edible;
+  var days = edible/2000;
+  //toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
+  //toAppend += $.sprintf("<li>%2.2f days for %d calories</li>",days,edible);
+	//toAppend += "</ul>";
+  var toShow = ['mapCarbsPerPercentPackage','mapFiberPerPercentPackage','mapSaltPerPercentPackage','mapSatFatPerPercentPackage','mapFatPerPercentPackage','mapChPerPercentPackage'];
+  //var toShow = ['mapFiberPerPercentPackage','mapFatPerPercentPackage'];
+  $.each(toShow,function(i,boname) {
+    toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>',boname);
+  });
 	$(element).append(toAppend);
+  $.each(toShow,function(i,boname) {
+    bopt = nonUserOptions.filter(function(v) { return v.id==boname})[0];
+    var usable = computeCount(eater.eaten,bopt.calc) + computeCount(eater.toEat,bopt.calc);
+    //toAppend += $.sprintf("<li>%s: %2.2f%%</li>",boname,usable/days);
+    //toAppend += $.sprintf("<li>%s: %2.2f%%</li>",boname,usable);
+    paintPercentage(bopt.type,usable/days/100,element +" #"+ boname);
+  });
 }
 
 function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
 	 Draws a litmus bar showing categories that the eater can eat, and what they can't
 	*/
-	var height = 50
+	var height = 10
 	var litmusWidth = computeCount(eater.eaten,bo.calc);
 	litmusWidth += computeCount(eater.toEat,bo.calc);
 	litmusWidth += computeCount(eater.denied,bo.calc);
@@ -297,10 +331,94 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 			})
 			.attr('y', heights(.05))
 			.attr('width',function(d) {return widths(computeFoodClusterWidth(d,bo.calc))})
-			.attr('height',heights(.5))
+			.attr('height',heights(1))
 		;
 	});
 	return vis;
+}//}}}
+
+function paintPercentage(description,percent,element) {//{{{
+  // paint a percentage pie thing - it uses the following classes:
+  // arc =
+  // bordered
+  // nopaint
+  // percentdesc = svg text stylings
+  // percenttext = svg text stylings
+  var width = 30;
+  var height = 50;
+  var x = d3.scale.linear().domain([0,1]).range([0,width]);
+  var y = d3.scale.linear().domain([0,1]).range([height,0]);
+
+  var chart = d3.selectAll(element)
+    .append('svg:svg')
+    .attr('width',width+20)
+    .attr('height',height+20)
+    ;
+
+  var vis = chart.append('svg:g')
+    .attr('transform','translate(10,10)')
+    ;
+
+  // the data will be a number of circle datas:
+  var remainingPercent = percent;
+  var data = [];
+  while (remainingPercent > 0) {
+    if (remainingPercent > 1) {
+      data.push(1); // a whole circle
+      remainingPercent -= 1;
+    }
+    else {
+      data.push(remainingPercent); // the partial
+      remainingPercent = 0;
+    }
+    $.each(data,function (i,v) { data[i] = reDomain(v) });
+  }
+
+  var r = 0.3;
+  var donut = d3.layout.pie().sort(d3.descending);
+  var arc = d3.svg.arc().innerRadius(0).outerRadius(x(r));
+  var color = d3.scale.category20();
+
+  arcSpot = vis.selectAll('.arc')
+      .data([0])
+      .enter()
+      .append('svg:g')
+      .data([data])
+      .attr('class','arc')
+      ;
+
+  $.each(data,function(i,v) {
+    classes = ['bordered'];
+    if (v < 1) {
+      v = [v,1-reDomain(v)];
+      classes = ['bordered','nopaint'];
+    }
+    else {
+      v = [v];
+    }
+    arcSpot.data([v]);
+    arcSpot.selectAll("arc")
+      .data(donut)
+      .enter()
+      .append("svg:path")
+      .attr("transform", "translate(" + x(.5) + "," + y(.5 + i*.1) + ")") // center on X and place the circles ever higher
+      .attr('class',function(d,i) { return classes[i]; })
+      .attr("d", arc)
+      ;
+
+    arcSpot.append("svg:text")
+      .attr("transform", "translate(" + x(.5) + "," + y(.1) + ")")
+      .attr("text-anchor", "middle")
+      .attr("class","percentdesc")
+      .text(description)
+      ;
+    arcSpot.append("svg:text")
+      .attr("transform", "translate(" + x(.5) + "," + y(-.1) + ")")
+      .attr("text-anchor", "middle")
+      .attr("class","percenttext")
+      .text($.sprintf('%2.0f%%',reDomain(100*percent)))
+      ;
+  });
 }//}}}
 
 function computeFoodClusterWidth(cluster,calc) {
@@ -633,7 +751,7 @@ function reDomain(maxValue) {
 }
 
 function checkBadNum(result) {
-	if (isNaN(result)) {
+	if (isNaN(result) || result == '') {
 		//console.log(printStackTrace().join('\n'));
 		return 0;
 	}
