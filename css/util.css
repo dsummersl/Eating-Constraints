@@ -1,6 +1,8 @@
 body {
     padding-top: 40px;
 }
+
+/* treemap related links */
 .cell {
   border: solid 1px white;
   font: 10px sans-serif;
@@ -10,40 +12,9 @@ body {
   text-indent: 2px;
 }
 
-button {
-  font: 14px Helvetica Neue;
-  background-color: #222;
-  background-image: -moz-linear-gradient(top, rgba(255,255,255,.25), rgba(255,255,255,.11));
-  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, rgba(255,255,255,.25)),color-stop(1, rgba(255,255,255,.11)));
-  background-image: -webkit-linear-gradient(rgba(255,255,255,.25), rgba(255,255,255,.11));
-  color: #fff;
-  text-rendering: optimizeLegibility;
-  text-shadow: 0 -1px 1px #222;
-  padding: 6px 10px 6px 10px;
-  border: 0;
-  border-radius: 0;
-  border-bottom: 1px solid #222;
-  margin: 0;
-  -moz-box-shadow: 0 1px 3px #999;
-  -webkit-box-shadow: 0 1px 3px #999;
-}
-
-button.first {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-button.last {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-button.active {
-  background-color: rgb(65,102,133);
-}
-
-button:hover {
-  background-color: steelblue;
+a.treeMapLink {
+  text-decoration: none;
+  color: #888;
 }
 
 .graphic {
@@ -119,6 +90,7 @@ rect.border {
 }
 */
 
+/* Pie parts for the each individual eater's details */
 .arc .bordered {
   fill: #ddd;
   stroke: #999;

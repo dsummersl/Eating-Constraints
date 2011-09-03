@@ -220,8 +220,6 @@ function populateTable(food,arrangeBy,element) {
 	var ts = $(element +" table").tablesorter({sortList: [[0,0]]});
 	//console.log("I appended this table to "+ element +": "+ toAppend)
   $('.tableDetails').click(function () {
-      try{
-      console.log("click on details!");
     $('.popover').fadeOut();
     if (lastPopup == $(this).attr('id')) {
       lastPopup = '';
@@ -231,11 +229,6 @@ function populateTable(food,arrangeBy,element) {
     $(this).parent().find('.popover').fadeIn();
     lastPopup = $(this).attr('id');
     return false;
-} catch(e) {
-  console.log(printStackTrace({e:e}).join('\n'));
-  console.trace();
-  alert(e);
-}
   });
 }
 
@@ -243,7 +236,7 @@ function populateTable(food,arrangeBy,element) {
 // graph functions//{{{
 //
 
-function addFoodStats(eater,element,bo) {
+function addFoodStats(eater,element,bo) {//{{{
   // total protein
   // total sugar
   //
@@ -283,7 +276,7 @@ function addFoodStats(eater,element,bo) {
   });
   //toAppend += "</ul>";
 	//$(element).append(toAppend);
-}
+}//}}}
 
 function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
@@ -532,8 +525,23 @@ Each cluster can be sized in the following ways:
 		.enter().append("div")
 		.attr("class", function(d) { return "cell "+ d.cluster})
 		.call(cell)
-		.text(function(d) { return d.children ? null : d.name; })
+    .attr('id',function(d) { return 'treeMapPane-'+d.idx; })
+		.html(function(d) { return d.children ? null : $.sprintf('<a id="treeMapLink-%s" class="treeMapLink" href="#">%s</a>',d.idx,d.name); })
 	;
+  $('.treeMapLink').click(function () {
+    var idx=$(this).attr('id').split('-')[1];
+    var parentId = 'treeMapPane-'+idx;
+    $('.popover').fadeOut();
+    if (lastPopup == parentId) {
+      lastPopup = '';
+      return false;
+    }
+    makeRanksPopup(foods,parentId);
+    console.log("the el = "+ parentId);
+    $('#'+parentId+'Popover').fadeIn();
+    lastPopup = parentId;
+    return false;
+  });
 
   /*
 	$.each(buttonOptions,function(i,bo) {
