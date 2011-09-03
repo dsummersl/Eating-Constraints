@@ -137,7 +137,19 @@ function makeRanksPopup(food,anchorElement) {
   toAppend += $.sprintf('<tr><td>%s</td><td>%s %s</td></tr>','Protein',checkBadNum(aFood['Protein - Grams']),'g');
   toAppend += $.sprintf('<tr><td>%s</td><td>%s %s (%s%%)</td></tr>','Salt',checkBadNum(aFood['Sodium - Milligrams']),'mg',checkBadNum(aFood['Sodium - Percent']));
   toAppend += $.sprintf('<tr><td>%s</td><td>%s %s (%s%%)</td></tr>','Cholesterol',checkBadNum(aFood['Cholesterol - Milligrams']),'mg',checkBadNum(aFood['Cholesterol - Percent']));
-	toAppend += "</tbody></table></div></div></td>";
+	toAppend += "</tbody></table>";
+  toAppend += '<p class="ingredientItem"><b>Ingredients:</b>';
+  $.each(aFood.Ranks,function(i,v) {
+    toAppend += v.Ingredient;
+    if (v.IngredientCategory.length > 0) {
+        toAppend += $.sprintf('<font class="ingredientCategory">[%s]</font>',v.IngredientCategory.join(','));
+    }
+    if (i < aFood.Ranks.length-1) {
+      toAppend += ", ";
+    }
+  });
+  toAppend += "</p>";
+  toAppend += "</div></div>";
 
 	$('#'+anchorElement).parent().find('.popover').remove();
 	$('#'+anchorElement).parent().append(toAppend);
@@ -645,6 +657,14 @@ function combineIngredientsAndRanks(food) {//{{{
 	// same with the food detials, make it an array
 	newfood = [];
 	for (k in food.ingredientRanks) {
+    if (!(food.ingredientRanks[k].IngredientCategory instanceof Array)) {
+      if (food.ingredientRanks[k].IngredientCategory == '') {
+        food.ingredientRanks[k].IngredientCategory = [];
+      }
+      else {
+        food.ingredientRanks[k].IngredientCategory = [food.ingredientRanks[k].IngredientCategory];
+      }
+    }
 		newfood.push(food.ingredientRanks[k]);
 	}
 	food.ingredientRanks = newfood;

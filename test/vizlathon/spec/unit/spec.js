@@ -22,6 +22,10 @@ describe 'Util.js - utils'
             Description: 'Nuts',
             IngredientCategory: ''
         }
+        foods.ingredientRanks.row4 = {
+            Description: 'Nuttyness',
+            IngredientCategory: ['Eggs','Nuts']
+        }
         foods.clusters = {
             row0: {
                 cluster: 'cluster0',
@@ -34,6 +38,10 @@ describe 'Util.js - utils'
             row2: {
                 cluster: 'cluster1',
                 productName: 'Bolts'
+            },
+            row3: {
+                cluster: 'cluster1',
+                productName: 'Nuttyness'
             }
         }
     end
@@ -49,12 +57,16 @@ describe 'Util.js - utils'
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Nuts' })[0].Categories.should.eql ['Eggs']
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Nuts' })[0].cluster.should.eql 'cluster0'
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Nuts' })[0].idx.should.eql 1
+        result.ingredients.filter(function (v,i,a) { return v.Description == 'Nuts' })[0].Ranks[0].IngredientCategory.should.eql ['Eggs']
+        result.ingredients.filter(function (v,i,a) { return v.Description == 'Nuts' })[0].Ranks[1].IngredientCategory.should.eql []
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Bolts' })[0].Ranks.length.should.eql 0
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Bolts' })[0].cluster.should.eql 'cluster1'
         result.ingredients.filter(function (v,i,a) { return v.Description == 'Bolts' })[0].idx.should.eql 2
+        result.ingredients.filter(function (v,i,a) { return v.Description == 'Food with nuts' })[0].Categories.should.eql ['Eggs','Nuts']
+        result.ingredients.filter(function (v,i,a) { return v.Description == 'Food with nuts' })[0].Ranks[0].IngredientCategory.should.eql ['Eggs','Nuts']
 
         result.clusters.cluster0.children.length.should.eql 2
-        result.clusters.cluster1.children.length.should.eql 1
+        result.clusters.cluster1.children.length.should.eql 2
     end
 
     it 'makeFoodMap function'
