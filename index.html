@@ -79,17 +79,7 @@
         }
         if (!$('#refreshingNote').is(':visible')) { // if the note is visible, we're doing some udpates already, ignore:
           $('#refreshingNote').show();
-          console.log("refreshing based on these foods that were selected: "+ foodSelection.length);
-          populateTable(foodSelection,currentArrangeBy,'#tableresults');
-          $.each(eaters,function(i,v) {
-              eater = new Eater(v.id,v.constraints);
-              eater.setupFoodStore(foodSelection);
-              $('#'+ v.id +'Litmus').empty();
-              $('#'+ v.id +'Stats').empty();
-              drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
-              addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
-          });
-          drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
+          //console.log("refreshing based on these foods that were selected: "+ foodSelection.length);
           if (!dontSwitchPages) {
             $('#'+newPage).fadeIn(1000,function() {
               $('#refreshingNote').fadeOut();
@@ -98,6 +88,16 @@
           else {
             $('#refreshingNote').fadeOut();
           }
+          populateTable(foodSelection,currentArrangeBy,'#tableresults');
+          drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
+          $.each(eaters,function(i,v) {
+              eater = new Eater(v.id,v.constraints);
+              eater.setupFoodStore(foodSelection);
+              $('#'+ v.id +'Litmus').empty();
+              $('#'+ v.id +'Stats').empty();
+              drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
+              addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
+          });
         }
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));

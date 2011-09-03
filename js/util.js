@@ -262,6 +262,9 @@ function addFoodStats(eater,element,bo) {
   var edible = computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt);
   var total = denied + edible;
   var days = edible/2000;
+  //$.each(eater.toEat,function(i,v) {
+    //toAppend += $.sprintf("<li>Edible: %s</li>",v.Description);
+  //});
   toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
   toAppend += $.sprintf("<li>%2.1f days</li>",days,edible);
   toAppend += "</ul>";
@@ -271,13 +274,15 @@ function addFoodStats(eater,element,bo) {
     toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>',boname);
   });
 	$(element).append(toAppend);
+  //toAppend = "<ul>";
   $.each(toShow,function(i,boname) {
     bopt = findOption(boname);
     var usable = computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt);
-    //toAppend += $.sprintf("<li>%s: %2.2f%%</li>",boname,usable/days);
-    //toAppend += $.sprintf("<li>%s: %2.2f%%</li>",boname,usable);
-    paintPercentage(buttonOptions[bopt].type,usable/days/100,element +" #"+ boname);
+    //toAppend += $.sprintf("<li>%s: days %s usable %s result %2.2f</li>",boname,days,usable,usable/days);
+    paintPercentage(buttonOptions[bopt].type,parseInt(usable/days),element +" #"+ boname);
   });
+  //toAppend += "</ul>";
+	//$(element).append(toAppend);
 }
 
 function drawFoodOverviewLitmus(eater,element,bo) { //{{{
@@ -375,12 +380,12 @@ function paintPercentage(description,percent,element) {//{{{
   var remainingPercent = percent;
   var data = [];
   while (remainingPercent > 0) {
-    if (remainingPercent > 1) {
+    if (remainingPercent > 100) {
       data.push(1); // a whole circle
-      remainingPercent -= 1;
+      remainingPercent -= 100;
     }
     else {
-      data.push(remainingPercent); // the partial
+      data.push(remainingPercent/100); // the partial
       remainingPercent = 0;
     }
     $.each(data,function (i,v) { data[i] = reDomain(v) });
@@ -413,22 +418,22 @@ function paintPercentage(description,percent,element) {//{{{
       .data(donut)
       .enter()
       .append("svg:path")
-      .attr("transform", "translate(" + x(.5) + "," + y(.5 + i*.1) + ")") // center on X and place the circles ever higher
+      .attr("transform", "translate(" + x(.5) + "," + y(.5 + i*.12) + ")") // center on X and place the circles ever higher
       .attr('class',function(d,i) { return classes[i]; })
       .attr("d", arc)
       ;
 
-    arcSpot.append("svg:text")
+    arcSpot.data([0]).append("svg:text")
       .attr("transform", "translate(" + x(.5) + "," + y(.1) + ")")
       .attr("text-anchor", "middle")
       .attr("class","percentdesc")
       .text(description)
       ;
-    arcSpot.append("svg:text")
+    arcSpot.data([0]).append("svg:text")
       .attr("transform", "translate(" + x(.5) + "," + y(-.1) + ")")
       .attr("text-anchor", "middle")
       .attr("class","percenttext")
-      .text($.sprintf('%2.0f%%',reDomain(100*percent)))
+      .text($.sprintf('%2.0f%%',percent))
       ;
   });
 }//}}}
@@ -470,12 +475,10 @@ Each cluster can be sized in the following ways:
 	var h = 500;
 
   foodMap = makeFoodMap(foods);
-  console.log("treemap = "+ JSON.stringify(foodMap));
 
 	var treemap = d3.layout.treemap()
 		.size([w, h])
     .sticky(true)
-		//.value(function(d) { return countForFood(foods[d.idx],findOption(bo.id)); })
 		.value(function(d) { return d[bo.id]; })
 	;
 
