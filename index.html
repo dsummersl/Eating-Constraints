@@ -38,14 +38,14 @@
     </script><!--}}}-->
     <script type="text/javascript">
       var debug = true;
-      // mastaer list of eater data as computed at startup:
+      var selectedEaterIndex = -1;
       var food = {};
       var eaters = [
         { id: 'omnivore', name: 'Omnivore', subtitle:'No restrictions', constraints: [] },
-        { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
+ //       { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
         { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
         { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
-        { id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
+//        { id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
         /*
         new Eater('Vegan',['Meat','Dairy']),
         new Eater('CornFree',['Corn']),
@@ -60,7 +60,7 @@
       var lastPopup;
       var pages = [ 'graphPage','tablePage' ];
 
-      function updateUI(dontSwitchPages) {
+      function updateUI(dontSwitchPages) {<!--{{{-->
         try{
         dontSwitchPages = dontSwitchPages == 'no' ? true:false;
         if (!dontSwitchPages) {
@@ -90,21 +90,30 @@
           }
           populateTable(foodSelection,currentArrangeBy,'#tableresults');
           drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
-          $.each(eaters,function(i,v) {
-              eater = new Eater(v.id,v.constraints);
-              eater.setupFoodStore(foodSelection);
-              $('#'+ v.id +'Litmus').empty();
-              $('#'+ v.id +'Stats').empty();
-              drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
-              addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
-          });
+          setupEaters();
         }
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));
             console.trace();
             alert(e);
           }
-      }
+      }<!--}}}-->
+      function setupEaters() {<!--{{{-->
+        $('#eaterresults').empty();
+        $.each(eaters,function(i,v) {
+          eater = new Eater(v.id,v.constraints);
+          eater.setupFoodStore(foodSelection);
+          $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
+          drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
+          addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
+          $('#'+ v.id +'Link').click(function() {
+            selectedEaterIndex = i;
+            $('#eaterDrillDown').fadeIn();
+            return false;
+          });
+          // TODO link up
+        });
+      }<!--}}}-->
       $(function() {
         // setup data functions<!--{{{-->
         startupWithData(function() {
@@ -156,12 +165,25 @@
             $('#graphPageTab a').text("Arranged by "+ currentArrangeBy.name); // update the graph tab whenever the arrange by changes
             drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
-            $.each(eaters,function(i,v) {
-              eater = new Eater(v.id,v.constraints);
-              eater.setupFoodStore(foodSelection);
-              $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
-              drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
-              addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
+            setupEaters();
+            // TODO 
+            $('#eaterDrillDownCancel').click(function() {
+              $('#eaterDrillDown').fadeOut();
+              return false;
+            });
+            $('#eaterDrillDownInedible').click(function() {
+              $('#eaterDrillDown').fadeOut();
+              eater = new Eater(eaters[selectedEaterIndex].id,eaters[selectedEaterIndex].constraints); eater.setupFoodStore(foodSelection);
+              foodSelection = eater.denied;
+              updateUI();
+              return false;
+            });
+            $('#eaterDrillDownEdible').click(function() {
+              $('#eaterDrillDown').fadeOut();
+              eater = new Eater(eaters[selectedEaterIndex].id,eaters[selectedEaterIndex].constraints); eater.setupFoodStore(foodSelection);
+              foodSelection = eater.toEat;
+              updateUI();
+              return false;
             });
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));
@@ -296,6 +318,15 @@
       <div class="modal-header"><h3>Refreshing...</h3></div>
       <div class="modal-body"><p>Wait one second while I refresh some data...</p></div>
       <div class="modal-footer"></div>
+    </div>
+    <div class="modal" id="eaterDrillDown" style="display:none;">
+      <div class="modal-header"><h3>Filter?</h3></div>
+      <div class="modal-body"><p>For this diet, which foods do you want to see?</p></div>
+      <div class="modal-footer">
+        <a id="eaterDrillDownCancel" class="btn primary">Cancel</a>
+        <a id="eaterDrillDownEdible" class="btn">Edible</a>
+        <a id="eaterDrillDownInedible" class="btn">Inedible</a>
+      </div>
     </div>
     <div style="display:none;" id="eatingFood">
       <p>Please wait while I eat some food...</p>
