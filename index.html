@@ -115,6 +115,11 @@
         });
       }<!--}}}-->
       $(function() {
+        $('html').click(function(event) {
+          if ($(event.target).parents().index($('.popover')) == -1) {
+            $('.popover:visible').fadeOut(); // hide any popovers after your done with them.
+          }
+        });
         // setup data functions<!--{{{-->
         startupWithData(function() {
           foodSelection = food.ingredients;

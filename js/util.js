@@ -465,7 +465,8 @@ Each cluster can be sized in the following ways:
  */
 	//var w = $(element).width();
 	var w = 600;
-	var h = 500;
+  // TODO make dependent on screen size
+	var h = 600;
 
   foodMap = makeFoodMap(foods);
 
@@ -537,7 +538,6 @@ Each cluster can be sized in the following ways:
       return false;
     }
     makeRanksPopup(foods,parentId);
-    console.log("the el = "+ parentId);
     $('#'+parentId+'Popover').fadeIn();
     lastPopup = parentId;
     return false;

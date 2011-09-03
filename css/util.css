@@ -29,28 +29,28 @@ rect.border {
 
 .cluster0 {
     /* orange */
-    fill: hsl(25,80%,80%);
-    background: hsl(25,80%,80%);
+    fill: hsl(25,80%,85%);
+    background: hsl(25,80%,85%);
 }
 .cluster1 {
     /* green */
-    fill: hsl(120,80%,80%);
-    background: hsl(120,80%,80%);
+    fill: hsl(120,80%,85%);
+    background: hsl(120,80%,85%);
 }
 .cluster2 {
     /*fill: yellow;*/
-    fill: hsl(65,80%,80%);
-    background: hsl(65,80%,80%);
+    fill: hsl(65,80%,85%);
+    background: hsl(65,80%,85%);
 }
 .cluster3 {
     /*fill: blue;*/
-    fill: hsl(210,80%,80%);
-    background: hsl(210,80%,80%);
+    fill: hsl(210,80%,85%);
+    background: hsl(210,80%,85%);
 }
 .cluster4 {
     /*fill: black;*/
-    fill: hsl(0,0%,80%);
-    background: hsl(0,0%,80%);
+    fill: hsl(0,0%,85%);
+    background: hsl(0,0%,85%);
 }
 .cluster5 {
     /*fill: white;*/
@@ -59,13 +59,13 @@ rect.border {
 }
 .cluster6 {
     /*fill: pink;*/
-    fill: hsl(310,80%,80%);
-    background: hsl(310,80%,80%);
+    fill: hsl(310,80%,85%);
+    background: hsl(310,80%,85%);
 }
 .cluster7 {
     /*fill: cyan;*/
-    fill: hsl(180,80%,80%);
-    background: hsl(180,80%,80%);
+    fill: hsl(180,80%,85%);
+    background: hsl(180,80%,85%);
 }
 
 .toEat {
