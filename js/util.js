@@ -2,14 +2,13 @@
 
 // description of the clusters
 clusterDefinitions = {
-	cluster0: 'Very Fatty',
-	cluster1: 'Salty',
-	//cluster4: 'Very Salty',
-	//cluster2: 'Extremely Salty',
-	cluster3: 'Fibrous & No Fat',
-	cluster5: 'Fibrous & Salty',
+	cluster1: 'Salt & Sugar',
+	cluster3: 'Fiber',
+	cluster4: 'Salt',
+	cluster5: 'Fiber & Salt',
 	cluster6: 'Sugary',
-	cluster7: 'Fatty & Salty',
+	cluster0: 'Fat',
+	cluster7: 'Fat & Salt',
 }
 
 // filter functions
@@ -261,7 +260,7 @@ function addFoodStats(eater,element,bo) {//{{{
   // edible vs inedible foods
   // edible vs inedible calorie/types?? or is this already taken care of?
   var toAppend = '';
-  toAppend = '<ul class="unstyled">';
+  //toAppend = '<ul class="unstyled">';
   var bopt = findOption('mapCaloriesPerPackage');
   var denied = computeCount(eater.denied,bopt);
   var edible = computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt);
@@ -270,9 +269,10 @@ function addFoodStats(eater,element,bo) {//{{{
   //$.each(eater.toEat,function(i,v) {
     //toAppend += $.sprintf("<li>Edible: %s</li>",v.Description);
   //});
-  toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
-  toAppend += $.sprintf("<li>%2.1f days</li>",days,edible);
-  toAppend += "</ul>";
+  //toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
+  //toAppend += $.sprintf("<li>%2.1f days</li>",days,edible);
+  //toAppend += "</ul>";
+  toAppend += $.sprintf('<br/><p class="ingredientItem">On 2kCal/day you could eat for <font class="ingredientCategory">%2.1f days</font> with average daily nutrion:<p>',days);
   var toShow = ['mapCarbsPerPercentPackage','mapFiberPerPercentPackage','mapSaltPerPercentPackage','mapSatFatPerPercentPackage','mapFatPerPercentPackage','mapChPerPercentPackage'];
   //var toShow = ['mapFiberPerPercentPackage','mapFatPerPercentPackage'];
   $.each(toShow,function(i,boname) {
@@ -366,19 +366,20 @@ function paintPercentage(description,percent,element) {//{{{
   // nopaint
   // percentdesc = svg text stylings
   // percenttext = svg text stylings
-  var width = 30;
-  var height = 50;
+  var width = 40;
+  var height = 55;
   var x = d3.scale.linear().domain([0,1]).range([0,width]);
   var y = d3.scale.linear().domain([0,1]).range([height,0]);
 
   var chart = d3.selectAll(element)
     .append('svg:svg')
-    .attr('width',width+20)
-    .attr('height',height+20)
+    .attr('width',width+10)
+    .attr('height',height)
+    .attr('class','arcbody')
     ;
 
   var vis = chart.append('svg:g')
-    .attr('transform','translate(10,10)')
+    .attr('transform','translate(5,0)')
     ;
 
   // the data will be a number of circle datas:
@@ -397,9 +398,9 @@ function paintPercentage(description,percent,element) {//{{{
   }
 
   var r = 0.3;
+  var separation = (.55 - r)/data.length;
   var donut = d3.layout.pie().sort(d3.descending);
   var arc = d3.svg.arc().innerRadius(0).outerRadius(x(r));
-  var color = d3.scale.category20();
 
   arcSpot = vis.selectAll('.arc')
       .data([0])
@@ -423,19 +424,19 @@ function paintPercentage(description,percent,element) {//{{{
       .data(donut)
       .enter()
       .append("svg:path")
-      .attr("transform", "translate(" + x(.5) + "," + y(.5 + i*.12) + ")") // center on X and place the circles ever higher
+      .attr("transform", "translate(" + x(.5) + "," + y(.55 + i*separation) + ")") // center on X and place the circles ever higher
       .attr('class',function(d,i) { return classes[i]; })
       .attr("d", arc)
       ;
 
     arcSpot.data([0]).append("svg:text")
-      .attr("transform", "translate(" + x(.5) + "," + y(.1) + ")")
+      .attr("transform", "translate(" + x(.5) + "," + y(.17) + ")")
       .attr("text-anchor", "middle")
       .attr("class","percentdesc")
       .text(description)
       ;
     arcSpot.data([0]).append("svg:text")
-      .attr("transform", "translate(" + x(.5) + "," + y(-.1) + ")")
+      .attr("transform", "translate(" + x(.5) + "," + y(0) + ")")
       .attr("text-anchor", "middle")
       .attr("class","percenttext")
       .text($.sprintf('%2.0f%%',percent))

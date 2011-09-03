@@ -43,9 +43,9 @@
       var eaters = [
         { id: 'omnivore', name: 'Omnivore', subtitle:'No restrictions', constraints: [] },
  //       { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
-        { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
-        { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
-//        { id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
+//        { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
+ //       { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
+        { id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
         /*
         new Eater('Vegan',['Meat','Dairy']),
         new Eater('CornFree',['Corn']),
@@ -91,6 +91,7 @@
           populateTable(foodSelection,currentArrangeBy,'#tableresults');
           drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
           setupEaters();
+          $('#remainingKey').text($.sprintf('Arranged by %s: %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
         }
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));
@@ -111,7 +112,6 @@
             $('#eaterDrillDown').fadeIn();
             return false;
           });
-          // TODO link up
         });
       }<!--}}}-->
       $(function() {
@@ -148,7 +148,6 @@
               $(toAppend).insertAfter('#arrangeByMenu');
               $.each(buttonOptions,function(i,bo) {
                 $('#'+bo.id).click(function() {
-                  $('#graphPageTab a').text("Arranged by "+ bo.name);
                   $('#'+bo.id).parent().parent().parent().removeClass('open');
                   currentArrangeBy = bo;
                   updateUI('no');
@@ -167,11 +166,10 @@
             });
 
             // initial arrangement.
-            $('#graphPageTab a').text("Arranged by "+ currentArrangeBy.name); // update the graph tab whenever the arrange by changes
+            $('#remainingKey').text($.sprintf('Arranged by %s: %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
             drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
             setupEaters();
-            // TODO 
             $('#eaterDrillDownCancel').click(function() {
               $('#eaterDrillDown').fadeOut();
               return false;
@@ -253,8 +251,8 @@
         <div class="container">
           <h3><a href="#">Eating Constraints</a></h3>
           <ul class="nav secondary-nav">
-                        <li id="arrangeByMenu"><a class="menu" onclick="return false;" href="#">Arrange By:</a></li>
-                        <li class="active"><a id="menuReset" href="#">Reset</a></li>
+            <li id="arrangeByMenu"><a class="menu" onclick="return false;" href="#">Arrange By:</a></li>
+            <li class="active"><a id="menuReset" href="#">Reset</a></li>
           </ul>
         </div>
       </div>
@@ -267,10 +265,9 @@
       <div class="row">
         <div class="span8 columns">
           <h3>Colors</h3>
-          <p> Foods colored by nutritional content: </p>
+          <p> Foods are colored/grouped if they have similar nutritional content: </p>
           <div id="colorKey"></div>
-
-                    <br/>
+          <br/>
           <p>Use the menu bar to drill down by different values. Click on the 'Tabular Form' to explore numbers in depth.</p>
         </div>
         <div class="span8 columns">
@@ -286,17 +283,17 @@
           </p>
 
           <br/>
-          This page was designed for the <a href="http://www.stratavizathlon.com/">VizLathon</a>
-          contest in August, 2011.
+          This page was designed for the <a href="http://www.stratavizathlon.com/" target="_blank">VizLathon</a> contest in August, 2011. The datasources: <a href="https://www.google.com/fusiontables/DataSource?dsrcid=1258150" target="_blank">products</a>, and their <a href="https://www.google.com/fusiontables/DataSource?snapid=S236599YfGS" target="_blank">ingredients</a>.
         </div>
                 <div class="span16 columns">
                     <ul class="tabs">
-                        <li class="active" id="graphPageTab"><a href="#"></a></li>
+                        <li class="active" id="graphPageTab"><a href="#">Graphic</a></li>
                         <li id="tablePageTab"><a href="#">Tabular Form</a></li>
                     </ul>
                 </div>
             </div>
             <div class="row" id="graphPage">
+                <div class="span11 columns" id="remainingKey"></div>
                 <div class="span11 columns" id="mapresults"> </div>
                 <div class="span5 columns" id="eaterresults"> </div>
             </div>
@@ -326,7 +323,7 @@
     </div>
     <div class="modal" id="eaterDrillDown" style="display:none;">
       <div class="modal-header"><h3>Filter?</h3></div>
-      <div class="modal-body"><p>For this diet, which foods do you want to see?</p></div>
+      <div class="modal-body"><p>Which foods do you want to see?</p></div>
       <div class="modal-footer">
         <a id="eaterDrillDownCancel" class="btn primary">Cancel</a>
         <a id="eaterDrillDownEdible" class="btn">Edible</a>
