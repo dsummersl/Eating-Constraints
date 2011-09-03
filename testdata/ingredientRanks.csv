@@ -254,15 +254,15 @@ Healthy Choice Grilled Chicken Caesar,5,Ferrous Sulfate,,10 oz
 Healthy Choice Grilled Chicken Caesar,6,Thiamine Mononitrate (Vitamin B1),,10 oz
 Healthy Choice Grilled Chicken Caesar,7,Riboflavin (Vitamin B2),,10 oz
 Healthy Choice Grilled Chicken Caesar,8,Folic Acid (Vitamin aB),,10 oz
-Healthy Choice Grilled Chicken Caesar,9,Egg(s) Whites,Dairy,10 oz
+Healthy Choice Grilled Chicken Caesar,9,Egg(s) Whites,Dairy|Egg,10 oz
 Healthy Choice Grilled Chicken Caesar,10,Chicken Tenderloins,Meat,10 oz
 Healthy Choice Grilled Chicken Caesar,12,Water,Water,10 oz
 Healthy Choice Grilled Chicken Caesar,13,Olive Oil,Oil,10 oz
 Healthy Choice Grilled Chicken Caesar,14,Seasoning,,10 oz
 Healthy Choice Grilled Chicken Caesar,15,Salt,Salt,10 oz
-Healthy Choice Grilled Chicken Caesar,16,Chicken Broth Powder,Meat,10 oz
+Healthy Choice Grilled Chicken Caesar,16,Chicken Broth Powder,Meat|Chicken,10 oz
 Healthy Choice Grilled Chicken Caesar,17,Maltodextrin,,10 oz
-Healthy Choice Grilled Chicken Caesar,18,Chicken Broth,Meat,10 oz
+Healthy Choice Grilled Chicken Caesar,18,Chicken Broth,Meat|Chicken,10 oz
 Healthy Choice Grilled Chicken Caesar,19,Salt,Salt,10 oz
 Healthy Choice Grilled Chicken Caesar,20,Flavor(s),Flavoring,10 oz
 Healthy Choice Grilled Chicken Caesar,21,Fructose,Sugar,10 oz
@@ -435,7 +435,7 @@ President's Choice Fig &amp; Goat Cheese Blooms,24,Guar Gum,,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,25,Salt,Salt,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,26,Xanthan Gum,,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,27,Lactic Acid,,8.9 oz.
-President's Choice Fig &amp; Goat Cheese Blooms,28,Egg(s) Whole Dried,Dairy,8.9 oz.
+President's Choice Fig &amp; Goat Cheese Blooms,28,Egg(s) Whole Dried,Dairy|Egg,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,29,Sugar,Sugar,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,30,Thyme,,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,31,Water,Water,8.9 oz.
@@ -445,7 +445,7 @@ President's Choice Fig &amp; Goat Cheese Blooms,34,Fig(s),,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,35,Dextrose,,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,36,Vinegar White Wine,,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,37,Topping,,8.9 oz.
-President's Choice Fig &amp; Goat Cheese Blooms,39,Egg(s) Whole Liquid,Dairy,8.9 oz.
+President's Choice Fig &amp; Goat Cheese Blooms,39,Egg(s) Whole Liquid,Dairy|Egg,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,40,Fig(s) Filling,,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,41,Water,Water,8.9 oz.
 President's Choice Fig &amp; Goat Cheese Blooms,42,Corn Syrup High Fructose,Sugar,8.9 oz.
@@ -467,14 +467,14 @@ DiGiorno Deep Dish Pepperoni Pizza,5,Salt,Salt,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,6,Enzyme(s),,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,7,Wheat Flour,Wheat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,8,Pepperoni,Meat,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,9,Pork,Meat,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,10,Chicken,Meat,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,9,Pork,Meat|Pig,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,10,Chicken,Meat|Chicken,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,12,Beef,Meat,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,13,Pork,Meat,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,14,Chicken Mechanically Separated,Meat,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,13,Pork,Meat|Pig,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,14,Chicken Mechanically Separated,Meat|Chicken,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,15,Beef,Meat,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,16,Salt,Salt,33 oz.
-DiGiorno Deep Dish Pepperoni Pizza,18,Pork Stock,Meat,33 oz.
+DiGiorno Deep Dish Pepperoni Pizza,18,Pork Stock,Meat|Pig,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,19,Spice(s),Spice,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,20,Dextrose,,33 oz.
 DiGiorno Deep Dish Pepperoni Pizza,21,Lactic Acid Starter Culture,Dairy,33 oz.
@@ -545,7 +545,7 @@ Cream of Wheat Whole Grain Hot Cereal,16,Folic Acid (Vitamin aB),,18 oz
 Carb Options Ranch Salad Dressing,1,Soybean(s) Oil,Soy|Oil,16 fl oz
 Carb Options Ranch Salad Dressing,2,Water,Water,16 fl oz
 Carb Options Ranch Salad Dressing,3,Salt,Salt,16 fl oz
-Carb Options Ranch Salad Dressing,4,Egg(s) Yolks,Dairy,16 fl oz
+Carb Options Ranch Salad Dressing,4,Egg(s) Yolks,Dairy|Egg,16 fl oz
 Carb Options Ranch Salad Dressing,5,Vinegar Distilled,,16 fl oz
 Carb Options Ranch Salad Dressing,6,Phosphoric Acid,,16 fl oz
 Carb Options Ranch Salad Dressing,7,Garlic Powder,,16 fl oz
@@ -666,7 +666,7 @@ Toll House Mini Brownie Bites,28,Folic Acid (Vitamin aB),,16 oz
 Toll House Mini Brownie Bites,29,Water,Water,16 oz
 Toll House Mini Brownie Bites,30,Cocoa Processed With Alkali,,16 oz
 Toll House Mini Brownie Bites,31,Corn Starch,Corn,16 oz
-Toll House Mini Brownie Bites,32,Egg(s),Dairy,16 oz
+Toll House Mini Brownie Bites,32,Egg(s),Dairy|Egg,16 oz
 Toll House Mini Brownie Bites,33,Corn Syrup High Fructose,Sugar,16 oz
 Toll House Mini Brownie Bites,34,Molasses,Sugar,16 oz
 Toll House Mini Brownie Bites,35,Flavor(s) Natural &amp; Artificial,Flavoring,16 oz
@@ -730,7 +730,7 @@ Lo Mein Beef,6,Bok Choy,,Dinner Portion
 Lo Mein Beef,7,Carrot(s),,Dinner Portion
 Lo Mein Beef,8,Celery,,Dinner Portion
 Lo Mein Beef,9,Dark Sauce,,Dinner Portion
-Lo Mein Beef,10,Egg(s) Noodles,,Dinner Portion
+Lo Mein Beef,10,Egg(s) Noodles,Egg|Wheat,Dinner Portion
 Lo Mein Beef,11,Garlic,,Dinner Portion
 Lo Mein Beef,12,Onion(s) Green,,Dinner Portion
 Lo Mein Beef,13,Sticks,,Dinner Portion
@@ -740,8 +740,8 @@ McCormick California Style Minced Garlic,2,Soybean(s) Oil Partially Hydrogenated
 McCormick California Style Minced Garlic,3,Citric Acid,,4.25 oz
 Wegmans Classic Mayonnaise,1,Soybean(s) Oil,Soy|Oil,16 fl oz.
 Wegmans Classic Mayonnaise,2,Water,Water,16 fl oz.
-Wegmans Classic Mayonnaise,3,Egg(s),Dairy,16 fl oz.
-Wegmans Classic Mayonnaise,4,Egg(s) Yolks,Dairy,16 fl oz.
+Wegmans Classic Mayonnaise,3,Egg(s),Dairy|Egg,16 fl oz.
+Wegmans Classic Mayonnaise,4,Egg(s) Yolks,Dairy|Egg,16 fl oz.
 Wegmans Classic Mayonnaise,5,Vinegar,,16 fl oz.
 Wegmans Classic Mayonnaise,7,Salt,Salt,16 fl oz.
 Wegmans Classic Mayonnaise,8,Sugar,Sugar,16 fl oz.
@@ -847,7 +847,7 @@ Sara Lee Bites Strawberry Cheesecake,41,Phosphoric Acid,,7 oz
 Sara Lee Bites Strawberry Cheesecake,42,Citric Acid,,7 oz
 Sara Lee Bites Strawberry Cheesecake,43,Malic Acid,,7 oz
 Sara Lee Bites Strawberry Cheesecake,44,Tartaric Acid,,7 oz
-Sara Lee Bites Strawberry Cheesecake,45,Egg(s),Dairy,7 oz
+Sara Lee Bites Strawberry Cheesecake,45,Egg(s),Dairy|Egg,7 oz
 Sara Lee Bites Strawberry Cheesecake,46,Sugar,Sugar,7 oz
 Sara Lee Bites Strawberry Cheesecake,47,Corn Syrup High Fructose,Corn|Sugar,7 oz
 Sara Lee Bites Strawberry Cheesecake,48,Vegetable(s) Oil,Oil,7 oz
@@ -905,7 +905,7 @@ President's Choice 3-Bean Minestrone Soup,4,Spinach,,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,5,Tomato(es) Paste,,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,6,Pasta Shells,,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,7,Wheat Flour Enriched,Wheat,18.25 oz.
-President's Choice 3-Bean Minestrone Soup,8,Egg(s) Whites Dried,Dairy,18.25 oz.
+President's Choice 3-Bean Minestrone Soup,8,Egg(s) Whites Dried,Dairy|Egg,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,9,Canola Oil,Oil,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,11,Chickpea(s),,18.25 oz.
 President's Choice 3-Bean Minestrone Soup,12,Onion(s) Dehydrated,,18.25 oz.
@@ -1205,7 +1205,7 @@ After The Fall Organic Tropical Punch Juice Blend,10,Flavor(s) Natural,Flavoring
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",19,Cocoa,,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",20,Food Starch Modified,,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",21,Cocoa Processed with Alkali,,7.5 oz
-"Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",22,Egg(s),Dairy,7.5 oz
+"Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",22,Egg(s),Dairy|Egg,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",23,Salt,Salt,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",24,Mono and Diglycerides,,7.5 oz
 "Tastykake 100 Calorie Cookie Sticks, Fudge Brownie",25,Flavor(s) Natural,Flavoring,7.5 oz
@@ -1227,24 +1227,24 @@ Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,3,Milk Dry Whole,D
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,4,Milk Non-Fat Dry,Dairy,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,5,Vitamin A Palmitate,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,6,Vitamin D3,,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,7,Chicken Fat Rendered,Meat,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,7,Chicken Fat Rendered,Meat|Chicken,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,8,Flavor(s),Flavoring,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,9,Wheat Flour,Wheat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,10,BHA,,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,11,Chicken Fat,Meat,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,11,Chicken Fat,Meat|Chicken,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,12,BHA,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,13,Propyl Gallate,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,14,Citric Acid,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,15,Cottonseed Oil Partially Hydrogenated,Oil,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,16,Food Starch Modified,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,17,Salt,Salt,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,18,Flavor(s) Chicken,Meat,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,18,Flavor(s) Chicken,Meat|Chicken,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,19,Maltodextrin,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,20,Salt,Salt,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,21,Yeast Extract Autolyzed,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,22,Flavor(s),Flavoring,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,23,Chicken Skin,Meat,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,24,Chicken Broth,Meat,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,23,Chicken Skin,Meat|Chicken,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,24,Chicken Broth,Meat|Chicken,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,25,Triglycerides Mixed,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,26,Safflower Oil,Oil,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,27,Sodium Hydroxide,,10.10 oz
@@ -1262,8 +1262,8 @@ Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,38,Salt,Salt,10.10
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,39,Sodium Benzoate,,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,40,Spice(s),Spice,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,41,Sesame Oil,Oil,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,42,Chicken Powder Cooked,Meat,10.10 oz
-Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,43,Chicken Ground And Formed Cooked,Meat,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,42,Chicken Powder Cooked,Meat|Chicken,10.10 oz
+Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,43,Chicken Ground And Formed Cooked,Meat|Chicken,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,44,Breading,Wheat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,45,Wheat Flour Bleached,Wheat,10.10 oz
 Banquet Chicken Fried Chicken With Mashed Potatoes &amp; Corn,46,Corn Flour Yellow,Corn,10.10 oz
@@ -1482,7 +1482,7 @@ Butterball One-Step Seasoned Stuffing,16,Yeast,,6 oz
 Butterball One-Step Seasoned Stuffing,17,Soy Protein Hydrolyzed,,6 oz
 Butterball One-Step Seasoned Stuffing,18,Celery Dehydrated,,6 oz
 Butterball One-Step Seasoned Stuffing,19,Spice(s),Spice,6 oz
-Butterball One-Step Seasoned Stuffing,20,Chicken Fat,Meat,6 oz
+Butterball One-Step Seasoned Stuffing,20,Chicken Fat,Meat|Chicken,6 oz
 Butterball One-Step Seasoned Stuffing,21,Parsley Dehydrated,,6 oz
 Butterball One-Step Seasoned Stuffing,22,Flavor(s) Turkey,,6 oz
 Butterball One-Step Seasoned Stuffing,23,Yeast Extract Autolyzed,,6 oz
@@ -1490,7 +1490,7 @@ Butterball One-Step Seasoned Stuffing,24,Flavor(s) Butter,Flavoring,6 oz
 Butterball One-Step Seasoned Stuffing,25,Disodium Inosinate,,6 oz
 Butterball One-Step Seasoned Stuffing,26,Disodium Guanylate,,6 oz
 President's Choice Blue Menu Chicken Curry,1,Bean(s) Green,,9.88 oz.
-President's Choice Blue Menu Chicken Curry,3,Chicken Fillets Seasoned,Meat,9.88 oz.
+President's Choice Blue Menu Chicken Curry,3,Chicken Fillets Seasoned,Meat|Chicken,9.88 oz.
 President's Choice Blue Menu Chicken Curry,4,Water,Water,9.88 oz.
 President's Choice Blue Menu Chicken Curry,5,Corn Starch Modified,Corn,9.88 oz.
 President's Choice Blue Menu Chicken Curry,6,Salt,Salt,9.88 oz.
@@ -1536,7 +1536,7 @@ Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,22,Flavor(
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,23,Trisodium Phosphate,,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,24,Monosodium Glutamate,,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,25,Disodium Inosinate,,6.8 oz.
-Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,26,Egg(s),Dairy,6.8 oz.
+Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,26,Egg(s),Dairy|Egg,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,27,Disodium Guanylate,,6.8 oz.
 Pringles Stix Crispy Honey Butter Flavored Baked Wheat Cracker Sticks,28,Sucralose,,6.8 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,1,Water,Water,16.25 oz.
@@ -1552,8 +1552,8 @@ Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,12,Water,Water,16.25 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,13,Citric Acid,,16.25 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,14,Lactic Acid,,16.25 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,15,Whey,Dairy,16.25 oz.
-Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,16,Egg(s) Yolks Enzyme Modified,Dairy,16.25 oz.
-Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,17,Egg(s) Yolks,,16.25 oz.
+Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,16,Egg(s) Yolks Enzyme Modified,Dairy|Egg,16.25 oz.
+Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,17,Egg(s) Yolks,Egg,16.25 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,18,Water,Water,16.25 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,19,Enzyme(s),,16.25 oz.
 Francesco Rinaldi Sun-Dried Tomato Alfredo Pasta Sauce,20,Salt,Salt,16.25 oz.
@@ -1914,7 +1914,7 @@ Seeds of Change Certified Organic Moroccan Lentil Rice Pilaf,22,Sunflower Oil ( 
 McCormick Country Herb Chicken Sauce Blend,1,Wheat Starch,Wheat,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,2,Cream Solids,Dairy,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,3,Salt,Salt,1.25 oz
-McCormick Country Herb Chicken Sauce Blend,4,Chicken Broth,Meat,1.25 oz
+McCormick Country Herb Chicken Sauce Blend,4,Chicken Broth,Meat|Chicken,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,5,Corn Gluten Hydrolyzed,Corn,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,6,Soy Protein,Soy,1.25 oz
 McCormick Country Herb Chicken Sauce Blend,7,Wheat Gluten,Wheat,1.25 oz
@@ -1978,7 +1978,7 @@ McDonald's Vanilla Triple Thick &amp; Shake,24,Sodium Benzoate,,32 fl oz.
 McDonald's Vanilla Triple Thick &amp; Shake,25,Preservative,,32 fl oz.
 McDonald's Vanilla Triple Thick &amp; Shake,26,Yellow 5,Coloring,32 fl oz.
 McDonald's Vanilla Triple Thick &amp; Shake,27,Yellow 6,Coloring,32 fl oz.
-Citterio Genuine Prosciutto di Parma,1,Pork,Meat,3 oz
+Citterio Genuine Prosciutto di Parma,1,Pork,Meat|Pig,3 oz
 Citterio Genuine Prosciutto di Parma,2,Salt,Salt,3 oz
 Lowe's Cinnamon Applesauce - 6 Pack,1,Apple(s),,24 oz.
 Lowe's Cinnamon Applesauce - 6 Pack,2,Corn Syrup,Sugar,24 oz.
@@ -2005,16 +2005,16 @@ Wegmans Oatmeal Soft Cookies,15,Oatmeal,,11 oz.
 Wegmans Oatmeal Soft Cookies,16,Raisin(s) Paste,,11 oz.
 Wegmans Oatmeal Soft Cookies,17,Water,Water,11 oz.
 Wegmans Oatmeal Soft Cookies,18,Corn Syrup,Sugar,11 oz.
-Wegmans Oatmeal Soft Cookies,19,Egg(s) Dried,Dairy,11 oz.
+Wegmans Oatmeal Soft Cookies,19,Egg(s) Dried,Dairy|Egg,11 oz.
 Wegmans Oatmeal Soft Cookies,20,Leavening,,11 oz.
 Wegmans Oatmeal Soft Cookies,21,Baking Soda,,11 oz.
 Wegmans Oatmeal Soft Cookies,22,Salt,Salt,11 oz.
 Wegmans Oatmeal Soft Cookies,23,Whey Dried,Dairy,11 oz.
 Wegmans Oatmeal Soft Cookies,24,Cinnamon,,11 oz.
 Wegmans Oatmeal Soft Cookies,25,Flavor(s) Natural &amp; Artificial,Flavoring,11 oz.
-Armour Lite 50% Less Fat Vienna Sausage,1,Chicken Machanically Separated,Meat,5 oz.
+Armour Lite 50% Less Fat Vienna Sausage,1,Chicken Machanically Separated,Meat|Chicken,5 oz.
 Armour Lite 50% Less Fat Vienna Sausage,2,Water,Water,5 oz.
-Armour Lite 50% Less Fat Vienna Sausage,3,Pork,Meat,5 oz.
+Armour Lite 50% Less Fat Vienna Sausage,3,Pork,Meat|Pig,5 oz.
 Armour Lite 50% Less Fat Vienna Sausage,4,Beef,Meat,5 oz.
 Armour Lite 50% Less Fat Vienna Sausage,5,Salt,Salt,5 oz.
 Armour Lite 50% Less Fat Vienna Sausage,6,Food Starch Modified,,5 oz.
@@ -2257,10 +2257,10 @@ President's Choice Blue Menu Barley Risotto with Herbed Chicken,11,Olive Oil,Oil
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,12,Parsley,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,13,Pepper(s) Bell Red,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,14,Lemon(s) Peel,,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,15,Chicken Broth Concentrate,Meat,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,16,Chicken Broth,Meat,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,15,Chicken Broth Concentrate,Meat|Chicken,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,16,Chicken Broth,Meat|Chicken,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,17,Salt,Salt,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,18,Flavor(s) Chicken,Meat,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,18,Flavor(s) Chicken,Meat|Chicken,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,19,Potato(es) Starch Modified,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,20,Carrot(s) Juice,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,21,Guar Gum,,10.2 oz.
@@ -2271,8 +2271,8 @@ President's Choice Blue Menu Barley Risotto with Herbed Chicken,25,Sugar,Sugar,1
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,26,Xanthan Gum,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,27,Mono and Diglycerides,,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,28,Corn Starch Modified,Corn,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,29,Chicken Seasoned,Meat,10.2 oz.
-President's Choice Blue Menu Barley Risotto with Herbed Chicken,30,Chicken Breast,Meat,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,29,Chicken Seasoned,Meat|Chicken,10.2 oz.
+President's Choice Blue Menu Barley Risotto with Herbed Chicken,30,Chicken Breast,Meat|Chicken,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,31,Water,Water,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,32,Salt,Salt,10.2 oz.
 President's Choice Blue Menu Barley Risotto with Herbed Chicken,34,Seasoning,,10.2 oz.
@@ -2306,7 +2306,7 @@ Entenmann's Key Lime Pie,3,Wheat Flour Unbleached,Wheat,21 oz.
 Entenmann's Key Lime Pie,4,Vegetable(s) Shortening Partially Hydrogenated,Oil,21 oz.
 Entenmann's Key Lime Pie,6,Soybean(s),Soy,21 oz.
 Entenmann's Key Lime Pie,7,Cottonseed,,21 oz.
-Entenmann's Key Lime Pie,9,Egg(s),Dairy,21 oz.
+Entenmann's Key Lime Pie,9,Egg(s),Dairy|Egg,21 oz.
 Entenmann's Key Lime Pie,10,Lime Puree,,21 oz.
 Entenmann's Key Lime Pie,11,Key Lime Puree,,21 oz.
 Entenmann's Key Lime Pie,12,Sugar,Sugar,21 oz.
