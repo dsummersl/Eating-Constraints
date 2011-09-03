@@ -14,56 +14,66 @@ clusterDefinitions = {
 
 // filter functions
 buttonOptions = [
-	{ cat: 'Serving', name : 'Calories/Serving', id     : 'mapCaloriesPerServing', calc : function(f) { return checkBadNum(f.Calories)}},
-	{ cat: 'Serving', name : 'Carbs(%)/Serving', id     : 'mapCarbsPerPercent', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Percent'])}},
-	{ cat: 'Serving', name : 'Carbs(g)/Serving', id     : 'mapCarbsPerServing', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])}},
-	{ cat: 'Serving', name : 'Cholesterol(%)/Serving', id     : 'mapChPerPercent', calc     : function(f) { return checkBadNum(f['Cholesterol - Percent'])}},
-	{ cat: 'Serving', name : 'Cholesterol(mg)/Serving', id     : 'mapChPerServing', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])}},
-	{ cat: 'Serving', name : 'Fiber(%)/Serving', id     : 'mapFiberPerPercent', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Percent'])}},
-	{ cat: 'Serving', name : 'Fiber(g)/Serving', id     : 'mapFiberPerServing', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])}},
-	{ cat: 'Serving', name : 'Protein(g)/Serving', id     : 'mapProteinPerServing', calc     : function(f) { return checkBadNum(f['Protein - Grams'])}},
-	{ cat: 'Serving', name : 'Salt(%)/Serving', id     : 'mapSaltPerPercent', calc     : function(f) { return checkBadNum(f['Sodium - Percent'])}},
-	{ cat: 'Serving', name : 'Salt(mg)/Serving', id     : 'mapSaltPerServing', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])}},
-	{ cat: 'Serving', name : 'Sat Fat(%)/Serving', id   : 'mapSatFatPerPercent', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Percent'])}},
-	{ cat: 'Serving', name : 'Sat Fat(g)/Serving', id   : 'mapSatFatPerServing', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])}},
-	{ cat: 'Serving', name : 'Sugar(g)/Serving', id     : 'mapSugarPerServing', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])}},
-	{ cat: 'Serving', name : 'Total Fat(%)/Serving', id : 'mapFatPerPercent', calc      : function(f) { return checkBadNum(f['Total Fat - Percent'])}},
-	{ cat: 'Serving', name : 'Total Fat(g)/Serving', id : 'mapFatPerServing', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Calories/Serving', id     : 'mapCaloriesPerServing', calc : function(f) { return checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Serving', name : 'Carbs(%)/Serving', id     : 'mapCarbsPerPercent', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Percent'])}},
+	{ forUser: true, cat: 'Serving', name : 'Carbs(g)/Serving', id     : 'mapCarbsPerServing', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Cholesterol(%)/Serving', id     : 'mapChPerPercent', calc     : function(f) { return checkBadNum(f['Cholesterol - Percent'])}},
+	{ forUser: true, cat: 'Serving', name : 'Cholesterol(mg)/Serving', id     : 'mapChPerServing', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Fiber(%)/Serving', id     : 'mapFiberPerPercent', calc    : function(f) { 
+                 //                                                                                           console.log($.sprintf('ttl cars = %s (%s) - %s',checkBadNum(f['Dietary Fiber  - Percent']),f['Dietary Fiber  - Percent'],f['Description']));
+                                                                                                     return checkBadNum(f['Dietary Fiber  - Percent'])}},
+	{ forUser: true, cat: 'Serving', name : 'Fiber(g)/Serving', id     : 'mapFiberPerServing', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Protein(g)/Serving', id     : 'mapProteinPerServing', calc     : function(f) { return checkBadNum(f['Protein - Grams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Salt(%)/Serving', id     : 'mapSaltPerPercent', calc     : function(f) { return checkBadNum(f['Sodium - Percent'])}},
+	{ forUser: true, cat: 'Serving', name : 'Salt(mg)/Serving', id     : 'mapSaltPerServing', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Sat Fat(%)/Serving', id   : 'mapSatFatPerPercent', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Percent'])}},
+	{ forUser: true, cat: 'Serving', name : 'Sat Fat(g)/Serving', id   : 'mapSatFatPerServing', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Sugar(g)/Serving', id     : 'mapSugarPerServing', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])}},
+	{ forUser: true, cat: 'Serving', name : 'Total Fat(%)/Serving', id : 'mapFatPerPercent', calc      : function(f) { return checkBadNum(f['Total Fat - Percent'])}},
+	{ forUser: true, cat: 'Serving', name : 'Total Fat(g)/Serving', id : 'mapFatPerServing', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])}},
 
-	{ cat: 'Package', name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(f['Servings Per Container'])*checkBadNum(f.Calories)}},
-	{ cat: 'Package', name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Cholesterol(mg)/Package', id     : 'mapChPerPackage', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Fiber(g)/Package', id     : 'mapFiberPerPackage', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Protein(g)/Package', id     : 'mapProteinPerPackage', calc     : function(f) { return checkBadNum(f['Protein - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Sat Fat(g)/Package', id   : 'mapSatFatPerPackage', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Calories/Package', id     : 'mapCaloriesPerPackage', calc : function(f) { return checkBadNum(f['Servings Per Container'])*checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Package', name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Cholesterol(mg)/Package', id     : 'mapChPerPackage', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Fiber(g)/Package', id     : 'mapFiberPerPackage', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Protein(g)/Package', id     : 'mapProteinPerPackage', calc     : function(f) { return checkBadNum(f['Protein - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Sat Fat(g)/Package', id   : 'mapSatFatPerPackage', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, cat: 'Package', name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])*checkBadNum(f['Servings Per Container'])}},
 
-	{ cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Cholesterol(mg)/Calorie', id     : 'mapChPerCalorie', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Fiber(g)/Calorie', id     : 'mapFiberPerCalorie', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Protein(g)/Calorie', id     : 'mapProteinPerCalorie', calc     : function(f) { return checkBadNum(f['Protein - Grams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Salt(mg)/Calorie', id     : 'mapSaltPerCalorie', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Sat Fat(g)/Calorie', id   : 'mapSatFatPerCalorie', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Sugar(g)/Calorie', id     : 'mapSugarPerCalorie', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])/checkBadNum(f.Calories)}},
-	{ cat: 'Calorie', name : 'Total Fat(g)/Calorie', id : 'mapFatPerCalorie', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Cholesterol(mg)/Calorie', id     : 'mapChPerCalorie', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Fiber(g)/Calorie', id     : 'mapFiberPerCalorie', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Protein(g)/Calorie', id     : 'mapProteinPerCalorie', calc     : function(f) { return checkBadNum(f['Protein - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Salt(mg)/Calorie', id     : 'mapSaltPerCalorie', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Sat Fat(g)/Calorie', id   : 'mapSatFatPerCalorie', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Sugar(g)/Calorie', id     : 'mapSugarPerCalorie', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: true, cat: 'Calorie', name : 'Total Fat(g)/Calorie', id : 'mapFatPerCalorie', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])/checkBadNum(f.Calories)}},
+
+	{ forUser: false, cat: 'Package', type: 'Carbs', name : 'Carbs(%)/Package', id     : 'mapCarbsPerPercentPackage', calc    : function(f) { 
+                                                                                                            //console.log($.sprintf('ttl cars = %s (%s) for servings %s - %s',checkBadNum(f['Total Carbohydrate - Percent']),f['Total Carbohydrate - Percent'],checkBadNum(f['Servings Per Container']),f['Description']));
+                                                                                                            return checkBadNum(f['Total Carbohydrate - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: false, cat: 'Package', type: 'Cholest.', name : 'Cholesterol(%)/Package', id     : 'mapChPerPercentPackage', calc     : function(f) { return checkBadNum(f['Cholesterol - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: false, cat: 'Package', type: 'Fiber', name : 'Fiber(%)/Package', id     : 'mapFiberPerPercentPackage', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: false, cat: 'Package', type: 'Salt', name : 'Salt(%)/Package', id     : 'mapSaltPerPercentPackage', calc     : function(f) { return checkBadNum(f['Sodium - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: false, cat: 'Package', type: 'Sat Fat', name : 'Sat Fat(%)/Package', id   : 'mapSatFatPerPercentPackage', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Percent'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: false, cat: 'Package', type: 'Total Fat', name : 'Total Fat(%)/Package', id : 'mapFatPerPercentPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Percent'])*checkBadNum(f['Servings Per Container'])}},
 
 	// TODO gotta cleanup the ounces before I can do this:
 	//{ name: 'Ounces/Package', id:'mapServings', calc: function(f) { return parseInt(f['Servings Per Container'])}},
 ];
 
-nonUserOptions = [ // computations used internally but not explicitly selected by the user:
-	{ cat: 'Package', type: 'Carbs', name : 'Carbs(%)/Package', id     : 'mapCarbsPerPercentPackage', calc    : function(f) { 
-                                                                                                             //console.log($.sprintf('ttl cars = %s (%s) for servings %s - %s',checkBadNum(f['Total Carbohydrate - Percent']),f['Total Carbohydrate - Percent'],checkBadNum(f['Servings Per Container']),f['Description']));
-                                                                                                             return checkBadNum(f['Total Carbohydrate - Percent'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', type: 'Cholest.', name : 'Cholesterol(%)/Package', id     : 'mapChPerPercentPackage', calc     : function(f) { return checkBadNum(f['Cholesterol - Percent'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', type: 'Fiber', name : 'Fiber(%)/Package', id     : 'mapFiberPerPercentPackage', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Percent'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', type: 'Salt', name : 'Salt(%)/Package', id     : 'mapSaltPerPercentPackage', calc     : function(f) { return checkBadNum(f['Sodium - Percent'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', type: 'Sat Fat', name : 'Sat Fat(%)/Package', id   : 'mapSatFatPerPercentPackage', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Percent'])*checkBadNum(f['Servings Per Container'])}},
-	{ cat: 'Package', type: 'Total Fat', name : 'Total Fat(%)/Package', id : 'mapFatPerPercentPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Percent'])*checkBadNum(f['Servings Per Container'])}},
-];
+function findOption(option) {
+  var index = -1;
+  $.each(buttonOptions,function(i,v) {
+    if (v.id == option) {
+      index = i;
+    }
+  });
+  return index;
+}
 
 // }}}
 // table functions {{{
@@ -246,15 +256,15 @@ function addFoodStats(eater,element,bo) {
   // edible vs inedible foods
   // edible vs inedible calorie/types?? or is this already taken care of?
   var toAppend = '';
-	//toAppend = '<ul class="unstyled">';
-  var bopt = buttonOptions.filter(function(v) { return v.id=='mapCaloriesPerPackage' })[0];
-  var denied = computeCount(eater.denied,bopt.calc);
-  var edible = computeCount(eater.eaten,bopt.calc) + computeCount(eater.toEat,bopt.calc);
+  toAppend = '<ul class="unstyled">';
+  var bopt = findOption('mapCaloriesPerPackage');
+  var denied = computeCount(eater.denied,bopt);
+  var edible = computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt);
   var total = denied + edible;
   var days = edible/2000;
-  //toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
-  //toAppend += $.sprintf("<li>%2.2f days for %d calories</li>",days,edible);
-	//toAppend += "</ul>";
+  toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
+  toAppend += $.sprintf("<li>%2.1f days</li>",days,edible);
+  toAppend += "</ul>";
   var toShow = ['mapCarbsPerPercentPackage','mapFiberPerPercentPackage','mapSaltPerPercentPackage','mapSatFatPerPercentPackage','mapFatPerPercentPackage','mapChPerPercentPackage'];
   //var toShow = ['mapFiberPerPercentPackage','mapFatPerPercentPackage'];
   $.each(toShow,function(i,boname) {
@@ -262,11 +272,11 @@ function addFoodStats(eater,element,bo) {
   });
 	$(element).append(toAppend);
   $.each(toShow,function(i,boname) {
-    bopt = nonUserOptions.filter(function(v) { return v.id==boname})[0];
-    var usable = computeCount(eater.eaten,bopt.calc) + computeCount(eater.toEat,bopt.calc);
+    bopt = findOption(boname);
+    var usable = computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt);
     //toAppend += $.sprintf("<li>%s: %2.2f%%</li>",boname,usable/days);
     //toAppend += $.sprintf("<li>%s: %2.2f%%</li>",boname,usable);
-    paintPercentage(bopt.type,usable/days/100,element +" #"+ boname);
+    paintPercentage(buttonOptions[bopt].type,usable/days/100,element +" #"+ boname);
   });
 }
 
@@ -274,10 +284,12 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
 	 Draws a litmus bar showing categories that the eater can eat, and what they can't
 	*/
-	var height = 10
-	var litmusWidth = computeCount(eater.eaten,bo.calc);
-	litmusWidth += computeCount(eater.toEat,bo.calc);
-	litmusWidth += computeCount(eater.denied,bo.calc);
+	var height = 10;
+  var boi = findOption(bo.id);
+  bo = buttonOptions[boi];
+	var litmusWidth = computeCount(eater.eaten,boi);
+	litmusWidth += computeCount(eater.toEat,boi);
+	litmusWidth += computeCount(eater.denied,boi);
 	var elementWidth = $(element).width();
 
 	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,elementWidth]);
@@ -290,7 +302,7 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	;
 	var xOffset=0;
 	$.each(eater.eatingSessions,function (i,v) {
-		v.boxWidth = computeCount(v);
+		v.boxWidth = computeCount(v,findOption('mapCaloriesPerPackage'));
 		v.xOffset = xOffset;
 		xOffset += v.boxWidth;
 	})
@@ -440,7 +452,7 @@ function computeXOffset(parts,cluster,calc) {
 	return checkBadNum(xOffset);
 }
 
-function drawTreeMap(foodMap,element,bo) {//{{{
+function drawTreeMap(foods,element,bo) {//{{{
 /*
 
 TreeMap:
@@ -457,9 +469,13 @@ Each cluster can be sized in the following ways:
 	var w = 600;
 	var h = 500;
 
+  foodMap = makeFoodMap(foods);
+  console.log("treemap = "+ JSON.stringify(foodMap));
+
 	var treemap = d3.layout.treemap()
 		.size([w, h])
     .sticky(true)
+		//.value(function(d) { return countForFood(foods[d.idx],findOption(bo.id)); })
 		.value(function(d) { return d[bo.id]; })
 	;
 
@@ -498,9 +514,9 @@ Each cluster can be sized in the following ways:
     return
   }
   */
-  console.log("BEFORE: "+ $(element).children().size());
+  //console.log("BEFORE: "+ $(element).children().size());
   $(element).empty();
-  console.log("AFTER: "+ $(element).children().size());
+  //console.log("AFTER: "+ $(element).children().size());
 
 	var div = d3.select(element).append("div")
 		.style("position", "relative")
@@ -624,7 +640,7 @@ function combineIngredientsAndRanks(food) {//{{{
 	newfood = {};
 	uniqueClusters = $.map(food.clusters, function(v) { return v.cluster }).unique();
 	$.each(uniqueClusters, function(i,v) { newfood[v] = { cluster: v, children: [] } });
-	for (k in food.clusters) {
+	for (k in food.clusters) { // look back over the old clusters, and match by their name.
 		newfood[food.clusters[k].cluster].children.push(food.clusters[k]);
 	}
 	food.clusters = newfood;
@@ -636,42 +652,56 @@ function combineIngredientsAndRanks(food) {//{{{
 		//console.log($.sprintf("%30s = %s",k.Description,JSON.stringify(matches)));
 		k.Ranks = matches;
 		k.Categories = justRanks;
-		$.each(food.clusters,function(i,v) {
-			//console.log("children = "+ JSON.stringify(v.children));
-			$.each(v.children,function(i,c) {
-				//console.log("c = "+ JSON.stringify(c) +" looking for "+ k.Description);
-				if (k.Description == c.productName) {
-					k.cluster = v.cluster;
+		$.each(food.clusters,function(i,cluster) {
+			//console.log("children = "+ JSON.stringify(cluster.children));
+			$.each(cluster.children,function(i,child) {
+				//console.log("c = "+ JSON.stringify(child) +" looking for "+ k.Description);
+				if (k.Description == child.productName) {
+					k.cluster = cluster.cluster;
 				}
 			});
 		});
+    k.buttonOptions = {}
+    // TODO delete this
+    /*
+    $.each(buttonOptions,function(i,bo) {
+      k.buttonOptions[bo.id] = 0;
+      k.buttonOptions[bo.id] += bo.calc(k);
+    });
+    */
 	});
 	delete food.ingredientRanks;
-	foodMap = { name:'top', children: [] }
-	for (k in food.clusters) { // for each cluster, compute its value for easy switching later on.
-		el = {};
-		el.cluster = food.clusters[k].cluster;
-		el.name = el.cluster;
-		el.children = [];
-		$.each(food.clusters[k].children,function(i,v) {
-      var f = findFoodFromFoodName(food.ingredients,v.productName);
-			ch = {
-        idx: f.idx,
-				cluster: el.cluster,
-				name: v.productName,
-			};
-			$.each(buttonOptions,function(i,bo) {
-				ch[bo.id] = 0;
-				ch[bo.id] += bo.calc(f);
-			});
-			el.children.push(ch);
-		});
-		foodMap.children.push(el);
-	}
-  food.foodMap = foodMap;
-
 	return food;
 }//}}}
+
+function makeFoodMap(foods) {
+  uniqueClusters = [];
+  $.each(foods,function(i,v) { uniqueClusters.push(v.cluster); });
+  uniqueClusters = uniqueClusters.unique();
+	foodMap = { name:'top', children: [] }
+  $.each(uniqueClusters,function(i,k) {
+		el = {};
+		el.name = k;
+		el.children = [];
+		$.each(foods,function(i,food) {
+      //console.log("looking "+ food.Description +" for "+ food.cluster +" ?= "+ k);
+      if (food.cluster == k) {
+        //console.log("f "+ food.Description +" = "+ k);
+        ch = {
+          idx: food.idx,
+          cluster: k,
+          name: food.Description,
+        };
+        $.each(buttonOptions,function(i,bo) {
+          ch[bo.id] = countForFood(food,findOption(bo.id));
+        });
+        el.children.push(ch);
+      }
+		});
+		foodMap.children.push(el);
+	});
+  return foodMap;
+}
 
 /*
  * Checks an array of data for existance called via function. when they all exist the
@@ -846,20 +876,32 @@ function findFoodFromFoodName(foods,foodName) {
 }
 
 // given a list of foods, computer the calories * servings
-function computeCount(foods,method) {
-	method = method || function (v) { return v['Servings Per Container'] * v.Calories; }
+function computeCount(foods,methodIndex) {
 	cals = 0;
-	$.each(foods,function(i,v) { cals += method(v); });
+  //console.log("eater to eat = "+ foods.length);
+  //console.log("starting with = "+ JSON.stringify(methodIndex));
+  //console.log("eater to bopt = "+ JSON.stringify(method));
+	$.each(foods,function(i,v) { cals += countForFood(v,methodIndex); });
 	return cals;
 }
+function countForFood(food,methodIndex) {
+  var method = buttonOptions[methodIndex];
+  if (!(method.id in food.buttonOptions)) {
+    food.buttonOptions[method.id] = 0;
+    //console.log("looking into "+ JSON.stringify(method));
+    food.buttonOptions[method.id] = method.calc(food);
+  }
+  return food.buttonOptions[method.id]; 
+}
+
 Eater.prototype.calsAte = function() {
-	return computeCount(this.eaten);
+	return computeCount(this.eaten,findOption('mapCaloriesPerPackage'));
 }
 Eater.prototype.calsDenied = function() {
-	return computeCount(this.denied);
+	return computeCount(this.denied,findOption('mapCaloriesPerPackage'));
 }
 Eater.prototype.calsToEat = function() {
-	return computeCount(this.toEat);
+	return computeCount(this.toEat,findOption('mapCaloriesPerPackage'));
 }//}}}
 //}}}
 // vim: set fdm=marker ai:

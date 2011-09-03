@@ -120,8 +120,8 @@ rect.border {
 */
 
 .arc .bordered {
-  stroke: #000;
   fill: #ddd;
+  stroke: #999;
 }
 
 .arc .nopaint {

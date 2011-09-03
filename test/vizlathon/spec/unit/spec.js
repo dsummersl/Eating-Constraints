@@ -56,6 +56,18 @@ describe 'Util.js - utils'
         result.clusters.cluster0.children.length.should.eql 2
         result.clusters.cluster1.children.length.should.eql 1
     end
+
+    it 'makeFoodMap function'
+        result = combineIngredientsAndRanks(foods)
+        foodMap = makeFoodMap(result.ingredients)
+        foodMap.children.length.should.eql 2
+        foodMap.children[0].name.should.eql 'cluster0'
+        foodMap.children[1].name.should.eql 'cluster1'
+    end
+
+    it 'findOption function'
+        findOption('mapCaloriesPerPackage').should.eql 15
+    end
 end
 
 describe 'Util.js - Eater'
@@ -69,7 +81,8 @@ describe 'Util.js - Eater'
                     Description: 'Food with nuts',
                     IngredientCategory: ['Eggs','Nuts']
                 }],
-            Categories: ['Eggs','Nuts']
+            Categories: ['Eggs','Nuts'],
+            buttonOptions: {}
         }, {
             Description: 'Licorice',
             'Servings Per Container': 3,
@@ -78,7 +91,8 @@ describe 'Util.js - Eater'
                 Description: 'Licorice',
                 IngredientCategory: ['Salt','Spice','Sugar','Coloring']
                 }],
-            Categories: ['Salt','Spice','Sugar','Coloring']
+            Categories: ['Salt','Spice','Sugar','Coloring'],
+            buttonOptions: {}
         }]
 	end
 
@@ -104,8 +118,8 @@ describe 'Util.js - Eater'
         eater.toEat.length.should.eql 0
         meal = eater.eat()
         meal.length.should.eql 0
-        computeCount(eater.eatingSessions[0]).should.eql 1800
-        computeCount(eater.eatingSessions[1]).should.eql 0
+        computeCount(eater.eatingSessions[0],findOption('mapCaloriesPerPackage')).should.eql 1800
+        computeCount(eater.eatingSessions[1],findOption('mapCaloriesPerPackage')).should.eql 0
         eater.calsAte().should.eql 1800
         eater.calsDenied().should.eql 0
         eater.calsToEat().should.eql 0

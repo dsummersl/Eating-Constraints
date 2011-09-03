@@ -56,7 +56,6 @@
 
       // the current selection of data:
       var foodSelection = food;
-      var foodMap = {};
 
       var lastPopup;
       var pages = [ 'graphPage','tablePage' ];
@@ -64,13 +63,12 @@
       function updateUI(dontSwitchPages) {
         try{
         dontSwitchPages = dontSwitchPages == 'no' ? true:false;
-        console.log("Gonna switch tabs? "+ !dontSwitchPages);
         if (!dontSwitchPages) {
           var newPage = 'graphPage';
           if ($('#graphPageTab').hasClass('active')) {
             newPage = 'tablePage';
           }
-            console.log("starting update: "+ newPage);
+          console.log("starting update: "+ newPage);
           $.each(pages,function(i,oldPage) {
               if (newPage != oldPage) {
                   $('#'+ oldPage).fadeOut();
@@ -81,6 +79,7 @@
         }
         if (!$('#refreshingNote').is(':visible')) { // if the note is visible, we're doing some udpates already, ignore:
           $('#refreshingNote').show();
+          console.log("refreshing based on these foods that were selected: "+ foodSelection.length);
           populateTable(foodSelection,currentArrangeBy,'#tableresults');
           $.each(eaters,function(i,v) {
               eater = new Eater(v.id,v.constraints);
@@ -90,7 +89,7 @@
               drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
               addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
           });
-          drawTreeMap(foodMap,'#mapresults',currentArrangeBy);
+          drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
           if (!dontSwitchPages) {
             $('#'+newPage).fadeIn(1000,function() {
               $('#refreshingNote').fadeOut();
@@ -110,17 +109,12 @@
         // setup data functions<!--{{{-->
         startupWithData(function() {
           foodSelection = food.ingredients;
-          foodMap = food.foodMap
           try {
             $.each(d3.keys(clusterDefinitions),function(i,cluster) { // setup colorkey
               $('#colorKey').append($.sprintf('<a id="keyBtn%s" class="btn %s">%s</a>',cluster,cluster,clusterDefinitions[cluster]));
               $('#keyBtn'+cluster).click(function() {
                 // filter the current set of data to just the cluster.
                 foodSelection = food.ingredients.filter(function (v){ return v.cluster == cluster });
-                foodMap = { name:'top', children: [] }
-                $.map(food.foodMap.children,function(v) {
-                  if (v.cluster == cluster) { foodMap.children.push(v) }
-                });
                 updateUI('no');
               });
             });
@@ -150,7 +144,6 @@
             });
             $('#menuReset').click(function() {
               foodSelection = food.ingredients;
-              foodMap = food.foodMap;
               updateUI('no');
               return false;
             });
@@ -161,13 +154,12 @@
 
             // initial arrangement.
             $('#graphPageTab a').text("Arranged by "+ currentArrangeBy.name); // update the graph tab whenever the arrange by changes
-            drawTreeMap(foodMap,'#mapresults',currentArrangeBy);
+            drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
             $.each(eaters,function(i,v) {
               eater = new Eater(v.id,v.constraints);
               eater.setupFoodStore(foodSelection);
               $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
-              //$('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></a></div></div><div class="row"><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
               drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
               addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
             });
