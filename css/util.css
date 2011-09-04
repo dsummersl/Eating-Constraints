@@ -106,10 +106,6 @@ rect.border {
   stroke: #999;
 }
 
-.arcbody rect {
-  fill: #aaa;
-}
-
 .arc .nopaint {
   fill-opacity: 0;
 }

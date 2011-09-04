@@ -482,7 +482,7 @@ function paintHistogram(description,unit,value,element,roundedness) {//{{{
     .enter()
     .append('svg:rect')
     .attr('transform','translate(-'+ y(roundVal) +',10)')
-    .attr('class','rect')
+    .attr('class','rect bordered')
     .attr('x',x(0))
     .attr('y',y(0))
     .attr('rx',y(roundVal))
