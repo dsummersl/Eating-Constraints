@@ -412,6 +412,9 @@ function paintPercentage(description,percent,element) {//{{{
     }
     $.each(data,function (i,v) { data[i] = reDomain(v) });
   }
+  if (data.length == 0) {
+    data.push(0);
+  }
 
   var r = 0.3;
   var separation = (.55 - r)/data.length;
