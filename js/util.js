@@ -643,8 +643,16 @@ function cell() {
   this
       .style("left", function(d) { return d.x + "px"; })
       .style("top", function(d) { return d.y + "px"; })
-      .style("width", function(d) { return d.dx - 1 + "px"; })
-      .style("height", function(d) { return d.dy - 1 + "px"; });
+      .style("width", function(d) {
+        var val = d.dx - 1;
+        if (val < 0) { val = 0; }
+        return val + "px"; 
+      })
+      .style("height", function(d) {
+        var val = d.dy - 1;
+        if (val < 0) { val = 0; }
+        return val + "px"; 
+      });
 }
 
 //}}}
