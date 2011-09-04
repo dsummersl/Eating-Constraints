@@ -132,3 +132,14 @@ svg {
   border-width: 1px;
   border-color: black;
 }
+
+/* fix for dropdown menus so that they apear above the treemap */
+.dropdown {
+  z-index: 1000;
+}
+
+#menuReset {
+  float: right;
+  font-size: 10pt;
+  color: hsl(0,40%,55%);
+}

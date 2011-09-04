@@ -4,7 +4,7 @@
     <title>Eating Constraints</title>
 <!-- scripts and css includes {{{-->
     <link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap-1.1.1.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-1.2.0.css">
     <link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
     <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
 
@@ -137,15 +137,15 @@
               options = "";
               if (i == 0) { options = "first active" }
               if (i == buttonOptions.length-1) { options = "last" }
-              var toAppend = $.sprintf('<li class="menu"><a class="menu" href="#">%s</a>',cat);
-              toAppend += '<ul class="menu-dropdown">';
+              var toAppend = $.sprintf('<li class="dropdown"><a class="dropdown-toggle" href="#">Arrange by %s...</a>',cat);
+              toAppend += '<ul class="dropdown-menu">';
               $.each(buttonOptions,function(i,bo) {
                 if (bo.cat == cat) {
                   toAppend += $.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name);
                 }
               });
               toAppend += '</ul></li>';
-              $(toAppend).insertAfter('#arrangeByMenu');
+              $('#tabBar').append(toAppend);
               $.each(buttonOptions,function(i,bo) {
                 $('#'+bo.id).click(function() {
                   $('#'+bo.id).parent().parent().parent().removeClass('open');
@@ -197,9 +197,9 @@
         // <!--}}}-->
         // bootstrap menu<!--{{{-->
                 $("body").bind("click", function (e) {
-                    $('a.menu').parent("li").removeClass("open");
+                    $('a.dropdown-toggle').parent("li").removeClass("open");
                 });
-        $("a.menu").click(function (e) {
+        $("a.dropdown-toggle").click(function (e) {
                     if ($(this).parent("li").hasClass('open')) {
                         var $li = $(this).parent("li").removeClass('open');
                     }
@@ -246,25 +246,15 @@
     </script>
   </head>
   <body>
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <h3><a href="#">Eating Constraints</a></h3>
-          <ul class="nav secondary-nav">
-            <li id="arrangeByMenu"><a class="menu" onclick="return false;" href="#">Arrange By:</a></li>
-            <li class="active"><a id="menuReset" href="#">Reset</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <div class="container">
       <h1>Eating Constraints
           <small>How food restrictions affect the diet</small>
+          <a id="menuReset" href="#">Reset</a>
       </h1>
       <hr/>
       <div class="row">
         <div class="span16 columns">
-          <ul class="tabs">
+          <ul id="tabBar" class="tabs">
             <li class="active" id="graphPageTab"><a href="#">Graphic</a></li>
             <li id="tablePageTab"><a href="#">Tabular Form</a></li>
           </ul>
