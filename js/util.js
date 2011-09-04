@@ -464,46 +464,66 @@ function paintPercentage(description,percent,element) {//{{{
 }//}}}
 
 function paintHistogram(description,unit,value,element,roundedness) {//{{{
-  var width = 200;
+  var width = 150;
   var height = 20;
   var x = d3.scale.linear().domain([0,500]).range([0,width]);
   var y = d3.scale.linear().domain([0,1]).range([0,height]);
-
   var graphH = d3.scale.linear().domain([0,500]).range([0,width]);
   var graphY = d3.scale.linear().domain([0,500]).range([0,width]);
 
+  if (roundedness == 0) {
+    x = d3.scale.linear().domain([0,500]).range([width,0]);
+    graphH = d3.scale.linear().domain([0,500]).range([width,0]);
+    graphY = d3.scale.linear().domain([0,500]).range([width,0]);
+  }
+
   var chart = d3.selectAll(element)
     .append('svg:svg')
-    .attr('width',width+100)
+    .attr('width',width)
     .attr('height',height+20)
     .attr('class','arcbody')
     ;
 
   var roundVal = roundedness;
-  chart.selectAll('rect')
-    .data([value])
-    .enter()
-    .append('svg:rect')
-    .attr('transform','translate(-'+ y(roundVal) +',10)')
-    .attr('class','rect bordered')
-    .attr('x',x(0))
-    .attr('y',y(0))
-    .attr('rx',y(roundVal))
-    .attr('ry',y(roundVal))
-    .attr('width',graphH(value+roundVal))
-    .attr('height',y(1))
-    ;
+  if (roundedness == 0) {
+    chart.selectAll('rect')
+      .data([value])
+      .enter()
+      .append('svg:rect')
+      .attr('transform','translate(0,10)')
+      .attr('class','rect bordered')
+      .attr('x',x(value))
+      .attr('y',y(0))
+      .attr('width',graphH(value))
+      .attr('height',y(1))
+      ;
+  }
+  else {
+    chart.selectAll('rect')
+      .data([value])
+      .enter()
+      .append('svg:rect')
+      .attr('transform','translate(-'+ y(roundVal) +',10)')
+      .attr('class','rect bordered')
+      .attr('x',x(0))
+      .attr('y',y(0))
+      .attr('rx',y(roundVal))
+      .attr('ry',y(roundVal))
+      .attr('width',graphH(value+roundVal))
+      .attr('height',y(1))
+      ;
+  }
 
   width = 100;
   x = d3.scale.linear().domain([0,1]).range([0,width]);
   chart.append("svg:text")
-    .attr("transform", "translate(" + graphH(50+value) + "," + (10+y(.45)) + ")")
+    .attr("transform", "translate(" + graphH(60+value) + "," + (10+y(.45)) + ")")
     .attr("text-anchor", "middle")
     .attr("class","percentdesc")
     .text(description)
     ;
   chart.append("svg:text")
-    .attr("transform", "translate(" + graphH(50+value) + "," + (10+y(.95)) + ")")
+    .attr("transform", "translate(" + graphH(60+value) + "," + (10+y(.95)) + ")")
     .attr("text-anchor", "middle")
     .attr("class","percenttext")
     .text(value +" "+ unit)
