@@ -54,8 +54,8 @@ rect.border {
 }
 .cluster3 {
     /* orange */
-    fill: hsl(25,80%,85%);
-    background: hsl(25,80%,85%);
+    fill: hsl(25,80%,90%);
+    background: hsl(25,80%,90%);
 }
 .cluster4 {
     /*fill: black;*/
@@ -140,6 +140,10 @@ svg {
 
 #menuReset {
   float: right;
-  font-size: 10pt;
+  font-size: 12pt;
+  color: #ddd;
+}
+
+#menuReset.active {
   color: hsl(0,40%,55%);
 }

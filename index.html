@@ -47,7 +47,7 @@
  //       { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
         { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
         { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
-        { id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
+        //{ id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
         /*
         new Eater('Vegan',['Meat','Dairy']),
         new Eater('CornFree',['Corn']),
@@ -93,7 +93,15 @@
           populateTable(foodSelection,currentArrangeBy,'#tableresults');
           drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
           setupEaters();
-          $('#remainingKey').text($.sprintf('Arranged by %s - %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
+          if (foodSelection.length < food.ingredients.length) {
+            $('#menuReset').text($.sprintf('(%s/%s shown) RESET',foodSelection.length,food.ingredients.length));
+            $('#menuReset').addClass('active');
+          }
+          else {
+            $('#menuReset').text('Reset');
+            $('#menuReset').removeClass('active');
+          }
+          $('#remainingKey').text($.sprintf('Sized by %s',currentArrangeBy.name));
         }
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));
@@ -103,10 +111,18 @@
       }<!--}}}-->
       function setupEaters() {<!--{{{-->
         $('#eaterresults').empty();
+        $('#customMades').empty();
         $.each(eaters,function(i,v) {
           eater = new Eater(v.id,v.constraints);
           eater.setupFoodStore(foodSelection);
-          $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
+          /*
+          if (v.handmade) {
+            $('#customMades').append($.sprintf('<div class="span5 columns"><div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
+          }
+          else {
+          */
+            $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
+          //}
           drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
           addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
           $('#'+ v.id +'Link').click(function() {
@@ -168,10 +184,19 @@
             });
 
             // initial arrangement.
-            $('#remainingKey').text($.sprintf('Arranged by %s - %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
+            $('#remainingKey').text($.sprintf('Sized by %s',currentArrangeBy.name));
             drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
             setupEaters();
+            // make selectDiffernt fire the arrangeByCalorie tab:
+            $('#selectDifferent').click(function() {
+                $('.dropdown-toggle').first().click();
+                return false;
+            });
+            $('#tabularForm').click(function() {
+                $('#tablePageTab a').click();
+                return false;
+            });
             // the eater drill down popup:
             $('#eaterDrillDownCancel').click(function() {
               $('#eaterDrillDown').fadeOut();
@@ -204,12 +229,15 @@
                 $('#neweaterform').fadeOut();
                 var name=$('#eatername').val();
                 var values=$('#alergies').val();
+                if (values == null) { values = []; }
                 eaters.push({
                   id: name.replace(/ /g,""),
                   name: name,
                   subtitle: 'No ... '+ values,
-                  constraints: values
+                  constraints: values,
+                  handmade: true
                 });
+                $('#eatername').val('');
                 updateUI('no');
                 return false;
             });
@@ -277,25 +305,7 @@
           <a id="menuReset" href="#">Reset</a>
       </h1>
       <hr/>
-      <div class="row">
-        <div class="span16 columns">
-          <ul id="tabBar" class="tabs">
-            <li class="active" id="graphPageTab"><a href="#">Graphic</a></li>
-            <li id="tablePageTab"><a href="#">Tabular Form</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="row" id="graphPage">
-        <div class="span11 columns">
-          <h4 id="remainingKey"></h4>
-        </div>
-        <div class="span11 columns" id="mapresults"> </div>
-        <div class="span5 columns" id="eaterresults"> </div>
-      </div>
-      <div class="row" id="tablePage" style="display: none;">
-        <div class="span16 columns" id="tableresults"></div>
-      </div>
-      <div class="row">
+      <div class="row"><!-- Instructions and description {{{-->
         <div class="span5 columns">
           <h3>Motivation</h3>
           <p>
@@ -323,15 +333,35 @@
           <p>
           There are lots of ways to compare diets and compare foods. Try out some of these:
           <ul>
-            <li>Select different nutritional values to see how foods and diets compare.</li>
+            <li><a href="#" id="selectDifferent">Select different</a> nutritional sizing to see how foods and diets compare.</li>
             <li><a href="#" id="addeaterLink">Add your own</a> dietary restrictions, and see how they stack up.</li>
-            <li>Click on the 'Tabular Form' tab to explore in more detail.</li>
+            <li>Click on the <a href="#" id="tabularForm">Tabular Form</a> tab to explore in more detail.</li>
             <li>Select a food in the 'food pile' in the middle of the screen for more details on that food.</li>
             <li>Click on a diet's food strip to drill into that food's accessable or inaccessible details.</li>
-            <li>Get confused? Start over! Click on the 'Reset' button at the top of the screen.</li>
+            <li>Lost? Start over! Click on the 'Reset' button at the top right of the screen.</li>
           </ul>
           </p>
         </div>
+      </div><!--}}}-->
+      <div class="row">
+        <div class="span16 columns">
+          <ul id="tabBar" class="tabs">
+            <li class="active" id="graphPageTab"><a href="#">Graphic</a></li>
+            <li id="tablePageTab"><a href="#">Tabular Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" id="graphPage">
+        <div class="span11 columns">
+          <h4 id="remainingKey"></h4>
+        </div>
+        <div class="span11 columns" id="mapresults"> </div>
+        <div class="span5 columns" id="eaterresults"> </div>
+      </div>
+      <div class="row" id="tablePage" style="display: none;">
+        <div class="span16 columns" id="tableresults"></div>
+      </div>
+      <div class="row" id="customMades">
       </div>
       <div class="row">
         <div class="span16 columns">
@@ -341,8 +371,7 @@
         </div>
       </div>
     </div>
-    <!-- popups and forms -->
-    <!--{{{-->
+    <!-- popups and forms {{{-->
     <div class="modal" id="startupLoading">
       <div class="modal-header"><h3>Loading...</h3></div>
       <div class="modal-body"><p>Please wait while some data is loaded...</p></div>
