@@ -14,7 +14,7 @@ clusterDescriptions = {
 	cluster3: 'Not much, but what there is are carb/salt.',
 	cluster4: 'Significant saltiness: dips, sauces and beans.',
 	cluster5: 'Weighty food: heavy on salt, carbs, and fat.',
-	cluster6: 'Hi in sugar, high in carbs.',
+	cluster6: 'High in sugar, high in carbohydrates.',
 	cluster7: 'Saturated fats and salt: Dairy and meat.',
 	cluster2: 'Some things just do not have any calories at all.',
 };
@@ -705,12 +705,15 @@ function startupWithData(onstarted) { //<!--{{{-->
 	})
 	checkData(function() {return [food['ingredientRanks'],food['ingredients'],food['clusters']]},500,function() { 
 		food = combineIngredientsAndRanks(food);
-		$.each(['#alergies','#favorites'],function(i,field) {
+		$.each(['#alergies'],function(i,field) {
 			$(field).empty()
-			$(field).append($.sprintf('<option value="%s">%s</option>',"none","none"))
 			$.each(food['uniqueRankCategories'],function(i,v) {
-				$(field).append($.sprintf('<option value="%s">%s</option>',v,v))
+        if (v != 'Water' && v != 'Spice' && v != 'Flavoring' && v != 'Coloring') {
+          $(field).append($.sprintf('<option value="%s">%s</option>',v,v))
+        }
 			})
+      //$(field).trigger('liszt:updated');
+      $(field).chosen();
 		})
 		$('#startupLoading').fadeOut()
 		onstarted();

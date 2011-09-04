@@ -3,7 +3,6 @@
   <head>
     <title>Eating Constraints</title>
 <!-- scripts and css includes {{{-->
-    <link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap-1.2.0.css">
     <link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
     <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
@@ -21,6 +20,9 @@
     <script type="text/javascript" language="JavaScript" src="js/util.js"></script>
     <script type="text/javascript" language="JavaScript" src="js/stacktrace.js"></script>
     <script type="text/javascript" language="JavaScript" src="js/jquery.tablesorter.min.js"></script>
+
+    <script type="text/javascript" language="JavaScript" src="js/chosen/chosen.jquery.js"></script>
+    <link rel="stylesheet" href="js/chosen/chosen.css" />
 <!--}}}-->
     <script type="text/javascript"><!-- google analytics {{{-->
 
@@ -37,7 +39,7 @@
 
     </script><!--}}}-->
     <script type="text/javascript">
-      var debug = true;
+      var debug = false;
       var selectedEaterIndex = -1;
       var food = {};
       var eaters = [
@@ -170,6 +172,7 @@
             drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
             setupEaters();
+            // the eater drill down popup:
             $('#eaterDrillDownCancel').click(function() {
               $('#eaterDrillDown').fadeOut();
               return false;
@@ -187,6 +190,28 @@
               foodSelection = eater.toEat;
               updateUI();
               return false;
+            });
+            // the make a new eater popup;
+            $('#addeaterLink').click(function() {
+                $('#neweaterform').fadeIn();
+                return false;
+            });
+            $('#neweatercancel').click(function() {
+                $('#neweaterform').fadeOut();
+                return false;
+            });
+            $('#neweateradd').click(function() {
+                $('#neweaterform').fadeOut();
+                var name=$('#eatername').val();
+                var values=$('#alergies').val();
+                eaters.push({
+                  id: name.replace(/ /g,""),
+                  name: name,
+                  subtitle: 'No ... '+ values,
+                  constraints: values
+                });
+                updateUI('no');
+                return false;
             });
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));
@@ -291,14 +316,6 @@
           contribution it provides per Calorie. The categories are:
           </p>
           <div id="colorKey"></div>
-          <!--
-          <div>
-            <div class="clearfix"> 
-              <label><a class="btn">Thing</a></label>
-              <div class="input"> the input </div>
-            </div>
-          </div>
-          -->
           <br/>
         </div>
         <div class="span5 columns">
@@ -307,15 +324,12 @@
           There are lots of ways to compare diets and compare foods. Try out some of these:
           <ul>
             <li>Select different nutritional values to see how foods and diets compare.</li>
+            <li><a href="#" id="addeaterLink">Add your own</a> dietary restrictions, and see how they stack up.</li>
             <li>Click on the 'Tabular Form' tab to explore in more detail.</li>
             <li>Select a food in the 'food pile' in the middle of the screen for more details on that food.</li>
             <li>Click on a diet's food strip to drill into that food's accessable or inaccessible details.</li>
             <li>Get confused? Start over! Click on the 'Reset' button at the top of the screen.</li>
           </ul>
-          <!--
-          TODO a more detailed description of a restriction.
-          TODO add your own custom restriction
-          -->
           </p>
         </div>
       </div>
@@ -348,24 +362,25 @@
         <a id="eaterDrillDownInedible" class="btn">Inedible</a>
       </div>
     </div>
-    <div style="display:none;" id="eatingFood">
+    <div class="modal" style="display:none;" id="eatingFood">
       <p>Please wait while I eat some food...</p>
     </div>
-    <div style="display:none;" id='neweaterform'>
-      <form>
-        Description:
-        <input id="eatername" type="text">
-        <br/>
-        Alergies:
-        <select multiple id="alergies"></select>
-        <br/>
-        Favorites:
-        <select multiple id="favorites"></select>
-        <br/>
-        Submit:
-        <input type="submit" href="#" />
-        <br/>
-      </form>
+    <div class="modal" style="display:none;" id='neweaterform'>
+      <div class="modal-header"><h3>New Dieter</h3></div>
+      <div class="modal-body">
+        <div class="clearfix">
+          <label>Description:</label>
+          <div class="input"> <input id="eatername" type="text"></input></div>
+        </div>
+        <div class="clearfix">
+          <label>Restrictions:</label>
+          <div class="input"><select multiple id="alergies"></select></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn primary" id="neweatercancel">Cancel</a>
+        <a class="btn" id="neweateradd">Add</a>
+      </div>
     </div><!--}}}-->
   </body>
   <!-- vim: set fdm=marker ai: -->
