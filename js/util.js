@@ -2,14 +2,22 @@
 
 // description of the clusters
 clusterDefinitions = {
-	cluster1: 'Salt & Sugar',
-	cluster3: 'Fiber',
+	cluster3: 'Carbs',
 	cluster4: 'Salt',
-	cluster5: 'Fiber & Salt',
+	cluster5: 'Carbs & Salt',
 	cluster6: 'Sugary',
-	cluster0: 'Fat',
-	cluster7: 'Fat & Salt',
-}
+	cluster7: 'Fatty',
+	cluster2: 'No Cal',
+};
+
+clusterDescriptions = {
+	cluster3: 'Not much, but what there is are carb/salt.',
+	cluster4: 'Significant saltiness: dips, sauces and beans.',
+	cluster5: 'Weighty food: heavy on salt, carbs, and fat.',
+	cluster6: 'Hi in sugar, high in carbs.',
+	cluster7: 'Saturated fats and salt: Dairy and meat.',
+	cluster2: 'Some things just do not have any calories at all.',
+};
 
 // filter functions
 buttonOptions = [
@@ -35,11 +43,11 @@ buttonOptions = [
 	{ forUser: true, cat: 'Package', name : 'Carbs(g)/Package', id     : 'mapCarbsPerPackage', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])*checkBadNum(f['Servings Per Container'])}},
 	{ forUser: true, cat: 'Package', name : 'Cholesterol(mg)/Package', id     : 'mapChPerPackage', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
 	{ forUser: true, cat: 'Package', name : 'Fiber(g)/Package', id     : 'mapFiberPerPackage', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ forUser: true, cat: 'Package', name : 'Protein(g)/Package', id     : 'mapProteinPerPackage', calc     : function(f) { return checkBadNum(f['Protein - Grams'])*checkBadNum(f['Servings Per Container'])}},
-	{ forUser: true, cat: 'Package', name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, unit: 'g', type: 'Protein', cat: 'Package', name : 'Protein(g)/Package', id     : 'mapProteinPerPackage', calc     : function(f) { return checkBadNum(f['Protein - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, unit: 'mg', type: 'Salt', cat: 'Package', name : 'Salt(mg)/Package', id     : 'mapSaltPerPackage', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])*checkBadNum(f['Servings Per Container'])}},
 	{ forUser: true, cat: 'Package', name : 'Sat Fat(g)/Package', id   : 'mapSatFatPerPackage', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])*checkBadNum(f['Servings Per Container'])}},
 	{ forUser: true, cat: 'Package', name : 'Servings/Package', id     : 'mapServings', calc           : function(f) { return checkBadNum(f['Servings Per Container'])}},
-	{ forUser: true, cat: 'Package', name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])*checkBadNum(f['Servings Per Container'])}},
+	{ forUser: true, unit: 'g', type:'Sugar', cat: 'Package', name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])*checkBadNum(f['Servings Per Container'])}},
 	{ forUser: true, cat: 'Package', name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])*checkBadNum(f['Servings Per Container'])}},
 
 	{ forUser: true, cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])/checkBadNum(f.Calories)}},
@@ -120,7 +128,7 @@ function makeRanksPopup(food,anchorElement) {
   var aFood = food.filter(function (v) { return idx == v.idx })[0];
   console.log("aFood = "+ aFood);
 	var toAppend = "";
-	toAppend += $.sprintf('<div id="%sPopover" class="popover right" style="display: none;"><div class="arrow"></div><div class="inner">',anchorElement);
+	toAppend += $.sprintf('<div id="%sPopover" class="popover below" style="display: none;"><div class="arrow"></div><div class="inner">',anchorElement);
 	toAppend += $.sprintf('<h3 class="title">%s</h3><div class="content">',aFood.Description);
 	toAppend += '<table class="zebra-striped"><thead><tr>';
 	toAppend += $.sprintf('<th class="header">%s</th>','Nutrient');
@@ -278,6 +286,8 @@ function addFoodStats(eater,element,bo) {//{{{
   $.each(toShow,function(i,boname) {
     toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>',boname);
   });
+  toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>','mapProteinPerPackage');
+  toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>','mapSugarPerPackage');
 	$(element).append(toAppend);
   //toAppend = "<ul>";
   $.each(toShow,function(i,boname) {
@@ -286,6 +296,12 @@ function addFoodStats(eater,element,bo) {//{{{
     //toAppend += $.sprintf("<li>%s: days %s usable %s result %2.2f</li>",boname,days,usable,usable/days);
     paintPercentage(buttonOptions[bopt].type,parseInt(usable/days),element +" #"+ boname);
   });
+  bopt = findOption('mapProteinPerPackage');
+  var amount = parseInt((computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt))/days);
+  paintHistogram(buttonOptions[bopt].type,buttonOptions[bopt].unit, amount,element +" #mapProteinPerPackage",0);
+  bopt = findOption('mapSugarPerPackage');
+  amount = parseInt((computeCount(eater.eaten,bopt) + computeCount(eater.toEat,bopt))/days);
+  paintHistogram(buttonOptions[bopt].type,buttonOptions[bopt].unit, amount,element +" #mapSugarPerPackage",.2);
   //toAppend += "</ul>";
 	//$(element).append(toAppend);
 }//}}}
@@ -294,7 +310,7 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
 	 Draws a litmus bar showing categories that the eater can eat, and what they can't
 	*/
-	var height = 10;
+	var height = 20;
   var boi = findOption(bo.id);
   bo = buttonOptions[boi];
 	var litmusWidth = computeCount(eater.eaten,boi);
@@ -442,6 +458,53 @@ function paintPercentage(description,percent,element) {//{{{
       .text($.sprintf('%2.0f%%',percent))
       ;
   });
+}//}}}
+
+function paintHistogram(description,unit,value,element,roundedness) {//{{{
+  var width = 200;
+  var height = 20;
+  var x = d3.scale.linear().domain([0,500]).range([0,width]);
+  var y = d3.scale.linear().domain([0,1]).range([0,height]);
+
+  var graphH = d3.scale.linear().domain([0,500]).range([0,width]);
+  var graphY = d3.scale.linear().domain([0,500]).range([0,width]);
+
+  var chart = d3.selectAll(element)
+    .append('svg:svg')
+    .attr('width',width+100)
+    .attr('height',height+20)
+    .attr('class','arcbody')
+    ;
+
+  var roundVal = roundedness;
+  chart.selectAll('rect')
+    .data([value])
+    .enter()
+    .append('svg:rect')
+    .attr('transform','translate(-'+ y(roundVal) +',10)')
+    .attr('class','rect')
+    .attr('x',x(0))
+    .attr('y',y(0))
+    .attr('rx',y(roundVal))
+    .attr('ry',y(roundVal))
+    .attr('width',graphH(value+roundVal))
+    .attr('height',y(1))
+    ;
+
+  width = 100;
+  x = d3.scale.linear().domain([0,1]).range([0,width]);
+  chart.append("svg:text")
+    .attr("transform", "translate(" + graphH(50+value) + "," + (10+y(.45)) + ")")
+    .attr("text-anchor", "middle")
+    .attr("class","percentdesc")
+    .text(description)
+    ;
+  chart.append("svg:text")
+    .attr("transform", "translate(" + graphH(50+value) + "," + (10+y(.95)) + ")")
+    .attr("text-anchor", "middle")
+    .attr("class","percenttext")
+    .text(value +" "+ unit)
+    ;
 }//}}}
 
 function computeFoodClusterWidth(cluster,calc) {

@@ -101,9 +101,13 @@ rect.border {
 */
 
 /* Pie parts for the each individual eater's details */
-.arc .bordered {
+.arcbody .bordered {
   fill: #ddd;
   stroke: #999;
+}
+
+.arcbody rect {
+  fill: #aaa;
 }
 
 .arc .nopaint {

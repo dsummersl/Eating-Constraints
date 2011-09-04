@@ -43,8 +43,8 @@
       var eaters = [
         { id: 'omnivore', name: 'Omnivore', subtitle:'No restrictions', constraints: [] },
  //       { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
-//        { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
- //       { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
+        { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
+        { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
         { id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
         /*
         new Eater('Vegan',['Meat','Dairy']),
@@ -91,7 +91,7 @@
           populateTable(foodSelection,currentArrangeBy,'#tableresults');
           drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
           setupEaters();
-          $('#remainingKey').text($.sprintf('Arranged by %s: %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
+          $('#remainingKey').text($.sprintf('Arranged by %s - %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
         }
           } catch(e) {
             console.log(printStackTrace({e:e}).join('\n'));
@@ -125,7 +125,7 @@
           foodSelection = food.ingredients;
           try {
             $.each(d3.keys(clusterDefinitions),function(i,cluster) { // setup colorkey
-              $('#colorKey').append($.sprintf('<a id="keyBtn%s" class="btn %s">%s</a>',cluster,cluster,clusterDefinitions[cluster]));
+              $('#colorKey').append($.sprintf('<div class="clearfix"><label><a id="keyBtn%s" class="btn %s">%s</a></label><div class="input">%s</div></div>',cluster,cluster,clusterDefinitions[cluster],clusterDescriptions[cluster]));
               $('#keyBtn'+cluster).click(function() {
                 // filter the current set of data to just the cluster.
                 foodSelection = food.ingredients.filter(function (v){ return v.cluster == cluster });
@@ -166,7 +166,7 @@
             });
 
             // initial arrangement.
-            $('#remainingKey').text($.sprintf('Arranged by %s: %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
+            $('#remainingKey').text($.sprintf('Arranged by %s - %s/%s included:',currentArrangeBy.name,foodSelection.length,food.ingredients.length));
             drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
             setupEaters();
@@ -257,58 +257,82 @@
         </div>
       </div>
     </div>
-        <div class="container">
-            <h1>Eating Constraints
-                <small>How food restrictions affect the diet</small>
-            </h1>
-            <hr/>
+    <div class="container">
+      <h1>Eating Constraints
+          <small>How food restrictions affect the diet</small>
+      </h1>
+      <hr/>
       <div class="row">
-        <div class="span8 columns">
-          <h3>Colors</h3>
-          <p> Foods are colored/grouped if they have similar nutritional content: </p>
-          <div id="colorKey"></div>
-          <br/>
-          <p>Use the menu bar to drill down by different values. Click on the 'Tabular Form' to explore numbers in depth.</p>
+        <div class="span16 columns">
+          <ul class="tabs">
+            <li class="active" id="graphPageTab"><a href="#">Graphic</a></li>
+            <li id="tablePageTab"><a href="#">Tabular Form</a></li>
+          </ul>
         </div>
-        <div class="span8 columns">
+      </div>
+      <div class="row" id="graphPage">
+        <div class="span11 columns">
+          <h4 id="remainingKey"></h4>
+        </div>
+        <div class="span11 columns" id="mapresults"> </div>
+        <div class="span5 columns" id="eaterresults"> </div>
+      </div>
+      <div class="row" id="tablePage" style="display: none;">
+        <div class="span16 columns" id="tableresults"></div>
+      </div>
+      <div class="row">
+        <div class="span5 columns">
           <h3>Motivation</h3>
           <p>
-          When it comes to food in the US we've got a whole variety of packaged foods to choose from. But in this 
-          sea of food, is it all accessible? What if you are allergic to soy, or wheat? What if you're vegetarian?
+          In the US we have a whole variety of packaged foods to choose from. But is it all accessible? 
+          What if you are allergic to soy, or wheat? What if you're vegetarian?
           </p>
-
           <p>
-          This page explores the topic of food access. Given a random sampling of foods commonly found in the 
-          supermarket, what would various dietary restrictions be able to eat?
+          This page lets <i>you</i> explore the topic of food access. Given a random sampling of foods commonly found in the 
+          supermarket, how do different dietary restrictions affect a diet?
           </p>
-
+          <ul>
+            <li>Use the menu bar to examine this food by different values.</li>
+            <li>Click on the 'Tabular Form' to explore numbers in depth.</li>
+            <li>Select different foods listed in the 'food pile' in the middle of the screen to see whats 'on the back' of the package.</li>
+            <li>Select a specific diet's accessible food strip to drill into that food's accessable or inaccessible details.</li>
+            <li>Get confused? Start over! Click on the 'Reset' button at the top of the screen.</li>
+          </ul>
           <br/>
-          This page was designed for the <a href="http://www.stratavizathlon.com/" target="_blank">VizLathon</a> contest in August, 2011. The datasources: <a href="https://www.google.com/fusiontables/DataSource?dsrcid=1258150" target="_blank">products</a>, and their <a href="https://www.google.com/fusiontables/DataSource?snapid=S236599YfGS" target="_blank">ingredients</a>.
+          This page was designed for the <a href="http://www.stratavizathlon.com/" target="_blank">VizLathon</a> contest in August, 2011. The datasources are: <a href="https://www.google.com/fusiontables/DataSource?dsrcid=1258150" target="_blank">products</a>, and their <a href="https://www.google.com/fusiontables/DataSource?snapid=S236599YfGS" target="_blank">ingredients</a>.
         </div>
-                <div class="span16 columns">
-                    <ul class="tabs">
-                        <li class="active" id="graphPageTab"><a href="#">Graphic</a></li>
-                        <li id="tablePageTab"><a href="#">Tabular Form</a></li>
-                    </ul>
-                </div>
+        <div class="span6 columns">
+          <h3>Colors</h3>
+          <p>All of the foods have been put into one of the following categories, based upon the nutrional
+          contribution it provides per Calorie. The categories are:
+          </p>
+          <div id="colorKey"></div>
+          <!--
+          <div>
+            <div class="clearfix"> 
+              <label><a class="btn">Thing</a></label>
+              <div class="input"> the input </div>
             </div>
-            <div class="row" id="graphPage">
-                <div class="span11 columns" id="remainingKey"></div>
-                <div class="span11 columns" id="mapresults"> </div>
-                <div class="span5 columns" id="eaterresults"> </div>
-            </div>
-            <div class="row" id="tablePage" style="display: none;">
-                <div class="span16 columns" id="tableresults">
-                </div>
-            </div>
-            <div class="row">
-                <div class="span16 columns">
-                    <hr />
-                    Copyright 2011 <a href="mailto:dsummersl@yahoo.com">Dane Summers</a>
-                    <div id="testresults"></div>
-                </div>
-            </div>
+          </div>
+          -->
+          <br/>
         </div>
+        <div class="span5 columns">
+          <h3>Restrictions</h3>
+          <p>
+          TODO a more detailed description of a restriction.
+          TODO add your own custom restriction
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span16 columns">
+          <hr />
+          Copyright 2011 <a href="mailto:dsummersl@yahoo.com">Dane Summers</a>
+          <div id="testresults"></div>
+        </div>
+      </div>
+    </div>
     <!-- popups and forms -->
     <!--{{{-->
     <div class="modal" id="startupLoading">
