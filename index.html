@@ -155,23 +155,27 @@
               options = "";
               if (i == 0) { options = "first active" }
               if (i == buttonOptions.length-1) { options = "last" }
-              var toAppend = $.sprintf('<li class="dropdown"><a class="dropdown-toggle" href="#">Arrange by %s...</a>',cat);
-              toAppend += '<ul class="dropdown-menu">';
-              $.each(buttonOptions,function(i,bo) {
-                if (bo.cat == cat) {
-                  toAppend += $.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name);
-                }
-              });
-              toAppend += '</ul></li>';
-              $('#tabBar').append(toAppend);
-              $.each(buttonOptions,function(i,bo) {
-                $('#'+bo.id).click(function() {
-                  $('#'+bo.id).parent().parent().parent().removeClass('open');
-                  currentArrangeBy = bo;
-                  updateUI('no');
-                  return false;
+              var cnt = 0;
+              $.each(buttonOptions,function(i,bo) { if (bo.cat == cat && bo.forUser) { cnt++; } });
+              if (cnt > 0) {
+                var toAppend = $.sprintf('<li class="dropdown"><a class="dropdown-toggle" href="#">Arrange by %s...</a>',cat);
+                toAppend += '<ul class="dropdown-menu">';
+                $.each(buttonOptions,function(i,bo) {
+                  if (bo.cat == cat && bo.forUser) {
+                    toAppend += $.sprintf('<li><a id="%s" class="%s" href="#">%s</a></li>',bo.id,options,bo.name);
+                  }
                 });
-              });
+                toAppend += '</ul></li>';
+                $('#tabBar').append(toAppend);
+                $.each(buttonOptions,function(i,bo) {
+                  $('#'+bo.id).click(function() {
+                    $('#'+bo.id).parent().parent().parent().removeClass('open');
+                    currentArrangeBy = bo;
+                    updateUI('no');
+                    return false;
+                  });
+                });
+              }
             });
             $('#menuReset').click(function() {
               foodSelection = food.ingredients;
@@ -302,7 +306,6 @@
     <div class="container">
       <h1>Eating Constraints
           <small>How food restrictions affect the diet</small>
-          <a id="menuReset" href="#">Reset</a>
       </h1>
       <hr/>
       <div class="row"><!-- Instructions and description {{{-->
@@ -336,6 +339,7 @@
             <li><a href="#" id="selectDifferent">Select different</a> nutritional sizing to see how foods and diets compare.</li>
             <li><a href="#" id="addeaterLink">Add your own</a> dietary restrictions, and see how they stack up.</li>
             <li>Click on the <a href="#" id="tabularForm">Tabular Form</a> tab to explore in more detail.</li>
+            <li>Click one of the colored buttons to the left to filter by food category.</li>
             <li>Select a food in the 'food pile' in the middle of the screen for more details on that food.</li>
             <li>Click on a diet's food strip to drill into that food's accessable or inaccessible details.</li>
             <li>Lost? Start over! Click on the 'Reset' button at the top right of the screen.</li>
@@ -351,10 +355,15 @@
           </ul>
         </div>
       </div>
-      <div class="row" id="graphPage">
+      <div class="row">
         <div class="span11 columns">
           <h4 id="remainingKey"></h4>
         </div>
+        <div class="span5 columns">
+          <a id="menuReset" href="#">Reset</a>
+        </div>
+      </div>
+      <div class="row" id="graphPage">
         <div class="span11 columns" id="mapresults"> </div>
         <div class="span5 columns" id="eaterresults"> </div>
       </div>

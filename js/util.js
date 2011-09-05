@@ -50,14 +50,14 @@ buttonOptions = [
 	{ forUser: true, unit: 'g', type:'Sugar', cat: 'Package', name : 'Sugar(g)/Package', id     : 'mapSugarPerPackage', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])*checkBadNum(f['Servings Per Container'])}},
 	{ forUser: true, cat: 'Package', name : 'Total Fat(g)/Package', id : 'mapFatPerPackage', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])*checkBadNum(f['Servings Per Container'])}},
 
-	{ forUser: true, cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Cholesterol(mg)/Calorie', id     : 'mapChPerCalorie', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Fiber(g)/Calorie', id     : 'mapFiberPerCalorie', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Protein(g)/Calorie', id     : 'mapProteinPerCalorie', calc     : function(f) { return checkBadNum(f['Protein - Grams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Salt(mg)/Calorie', id     : 'mapSaltPerCalorie', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Sat Fat(g)/Calorie', id   : 'mapSatFatPerCalorie', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Sugar(g)/Calorie', id     : 'mapSugarPerCalorie', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])/checkBadNum(f.Calories)}},
-	{ forUser: true, cat: 'Calorie', name : 'Total Fat(g)/Calorie', id : 'mapFatPerCalorie', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Carbs(g)/Calorie', id     : 'mapCarbsPerCalorie', calc    : function(f) { return checkBadNum(f['Total Carbohydrate - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Cholesterol(mg)/Calorie', id     : 'mapChPerCalorie', calc     : function(f) { return checkBadNum(f['Cholesterol - Milligrams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Fiber(g)/Calorie', id     : 'mapFiberPerCalorie', calc    : function(f) { return checkBadNum(f['Dietary Fiber  - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Protein(g)/Calorie', id     : 'mapProteinPerCalorie', calc     : function(f) { return checkBadNum(f['Protein - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Salt(mg)/Calorie', id     : 'mapSaltPerCalorie', calc     : function(f) { return checkBadNum(f['Sodium - Milligrams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Sat Fat(g)/Calorie', id   : 'mapSatFatPerCalorie', calc      : function(f) { return checkBadNum(f['Saturated Fat  - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Sugar(g)/Calorie', id     : 'mapSugarPerCalorie', calc    : function(f) { return checkBadNum(f['Sugars  - Grams'])/checkBadNum(f.Calories)}},
+	{ forUser: false, cat: 'Calorie', name : 'Total Fat(g)/Calorie', id : 'mapFatPerCalorie', calc      : function(f) { return checkBadNum(f['Total Fat - Grams'])/checkBadNum(f.Calories)}},
 
 	{ forUser: false, cat: 'Package', type: 'Carbs', name : 'Carbs(%)/Package', id     : 'mapCarbsPerPercentPackage', calc    : function(f) { 
                                                                                                             //console.log($.sprintf('ttl cars = %s (%s) for servings %s - %s',checkBadNum(f['Total Carbohydrate - Percent']),f['Total Carbohydrate - Percent'],checkBadNum(f['Servings Per Container']),f['Description']));
@@ -85,6 +85,54 @@ function findOption(option) {
 // }}}
 // table functions {{{
 // data that would show up in the table page
+
+function drawBreakoutByContents(foods,allFoods,element,currentArrangeBy) {
+  var combos = { };
+  $.each(foods,function(i,v) {
+    key = v.Categories.sort().join('-');
+    if (!combos[key]) {
+      combos[key] = [];
+    }
+    combos[key].push(v);
+  });
+  var allCombos = { };
+  $.each(allFoods,function(i,v) {
+    key = v.Categories.sort().join('-');
+    if (!allCombos[key]) {
+      allCombos[key] = [];
+    }
+    allCombos[key].push(v);
+  });
+  // TODO find the difference between the two sets
+  /*
+  $.each(d3.keys(combos).sort(),function(i,v) {
+    console.log($.sprintf('%s = %s',combos[v].length,v));
+  });
+  */
+  var headerHeight = 50;
+  var height = 500;
+  var width = 600;
+
+  var x=d3.scale.linear().domain([0,food.uniqueRankCategories.length]).range([0,width]);
+  var y=d3.scale.linear().domain([0,d3.keys(allCombos).length]).range([0,height]);
+
+  var chart = d3.selectAll(element)
+    .append('svg:svg')
+    .attr('width',width)
+    .attr('height',height)
+    .attr('class','breakout')
+    ;
+  var rules = chart.selectAll('line')
+    .data(food.uniqueRankCategories)
+    .enter()
+    .append('svg:line')
+    .attr('x1',x)
+    .attr('x2',x)
+    .attr('y1',y(0))
+    .attr('y2',y(d3.keys(allCombos).length))
+    .attr('stroke','black')
+  ;
+}
 
 function positionPopoversNextOver(anchorElement,popoverElement) { // NOTE: has to be VISIBLE to get this info correctly
 	/*
@@ -310,7 +358,7 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	/*
 	 Draws a litmus bar showing categories that the eater can eat, and what they can't
 	*/
-	var height = 20;
+	var height = 35;
   var boi = findOption(bo.id);
   bo = buttonOptions[boi];
 	var litmusWidth = computeCount(eater.eaten,boi);
@@ -319,7 +367,7 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	var elementWidth = $(element).width();
 
 	var widths = d3.scale.linear().domain([0,litmusWidth]).range([0,elementWidth]);
-	var heights = d3.scale.linear().domain([0,1]).range([0,50]);
+	var heights = d3.scale.linear().domain([0,1]).range([0,height]);
 
 	var vis = d3.select(element)
 		.append("svg:svg")
@@ -352,26 +400,50 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
 	$.each([edible,inedible],function(i,v) {
 		theType = 'eaten';
 		if (i == 1) { theType = 'denied' }
-		vis.selectAll(element +"."+ theType)
+		sections = vis.selectAll(element +"."+ theType)
 			.data(d3.values(v))
 			.enter()
 			.append("svg:rect")
 			.attr('class',function(d) { return d.foodCat +" "+ d.cluster})
-			.attr('x', function(d) { 
-						if (element == '#OmnivoreLitmus') {
-							console.log('cluster = '+ d.cluster)
-							console.log('x = '+ computeXOffset([edible,inedible],d,bo.calc));
-							console.log('d = '+ d.index);
-							console.log("inedible = "+ d3.keys(inedible).length);
-					//		console.log('xn = '+ widths(computeXOffset([edible,inedible],d,bo.calc)));
-						}
-				return widths(computeXOffset([edible,inedible],d,bo.calc)) 
-			})
-			.attr('y', heights(.05))
+			.attr('x', function(d) { return widths(computeXOffset([edible,inedible],d,bo.calc)) })
+			.attr('y', heights(0))
 			.attr('width',function(d) {return widths(computeFoodClusterWidth(d,bo.calc))})
-			.attr('height',heights(1))
+			.attr('height',heights(.5))
 		;
 	});
+  stickSpots = [computeXOffset([edible],{index: 99},bo.calc),litmusWidth];
+  if (reDomain(stickSpots[0]) < reDomain(stickSpots[1])) {
+    /*
+    vis.selectAll('line')
+      .data(stickSpots)
+      .enter()
+      .append('svg:line')
+      .attr('stroke','black')
+      .attr('x1', widths)
+      .attr('x2', widths)
+      .attr('y1',heights(.5))
+      .attr('y2',heights(1))
+      ;
+      */
+    vis.selectAll('text')
+      .data([0])
+      .enter()
+      .append('svg:text')
+      .attr("transform", "translate(" + widths(stickSpots[0] + (stickSpots[1]-stickSpots[0])/2) + "," + heights(.8) + ")")
+      .attr("class","percentdesc")
+      .attr("text-anchor", "middle")
+      .text($.sprintf('%2.1f%%',100*(1-stickSpots[0]/stickSpots[1])))
+      ;
+    vis.selectAll('texty')
+      .data([0])
+      .enter()
+      .append('svg:text')
+      .attr("transform", "translate(" + widths(stickSpots[0] + (stickSpots[1]-stickSpots[0])/2) + "," + heights(1) + ")")
+      .attr("class","percentdesc")
+      .attr("text-anchor", "middle")
+      .text('Inedible')
+      ;
+  }
 	return vis;
 }//}}}
 
@@ -728,9 +800,7 @@ function startupWithData(onstarted) { //<!--{{{-->
 		$.each(['#alergies'],function(i,field) {
 			$(field).empty()
 			$.each(food['uniqueRankCategories'],function(i,v) {
-        if (v != 'Water' && v != 'Spice' && v != 'Flavoring' && v != 'Coloring') {
-          $(field).append($.sprintf('<option value="%s">%s</option>',v,v))
-        }
+        $(field).append($.sprintf('<option value="%s">%s</option>',v,v))
 			})
       //$(field).trigger('liszt:updated');
       $(field).chosen();
@@ -742,8 +812,11 @@ function startupWithData(onstarted) { //<!--{{{-->
 	$('#neweaterform').submit(processEaterForm)
 } //<!--}}}-->
 
+function removeUnusedCategories(arr) {
+  return arr.filter(function(v) { return v != '' && v != 'Pig' && v != 'Chicken' && v != 'Flavoring' && v != 'Coloring' && v != 'Spice' && v != 'Water'}).unique().sort();
+}
 function combineIngredientsAndRanks(food) {//{{{
-	food.uniqueRankCategories = $.map(food.ingredientRanks, function (v) { return v.IngredientCategory }).filter(function(v) { return v != ''}).unique().sort()
+	food.uniqueRankCategories = removeUnusedCategories($.map(food.ingredientRanks, function (v) { return v.IngredientCategory }))
 	// make all the food ingredients be an array, and each element of the array is a dictionary of the food details.
 	var newfood = [];
   var idx = 0;
@@ -780,7 +853,7 @@ function combineIngredientsAndRanks(food) {//{{{
 		var justRanks = $.map(matches, function(v) { return v.IngredientCategory }).filter(function(v) { return v != ''}).unique().sort()
 		//console.log($.sprintf("%30s = %s",k.Description,JSON.stringify(matches)));
 		k.Ranks = matches;
-		k.Categories = justRanks;
+		k.Categories = removeUnusedCategories(justRanks);
 		$.each(food.clusters,function(i,cluster) {
 			//console.log("children = "+ JSON.stringify(cluster.children));
 			$.each(cluster.children,function(i,child) {
