@@ -332,7 +332,7 @@ function addFoodStats(eater,element,bo) {//{{{
   //toAppend += $.sprintf("<li>Inedible: %2.2f%%</li>",100*(denied/total));
   //toAppend += $.sprintf("<li>%2.1f days</li>",days,edible);
   //toAppend += "</ul>";
-  toAppend += $.sprintf('<br/><p class="ingredientItem">On 2kCal/day you could eat for <font class="ingredientCategory">%2.1f days</font> with average daily nutrion:<p>',days);
+  toAppend += $.sprintf('<br/><p class="ingredientItem">On 2kCal/day you could eat for <font class="ingredientCategory">%2.1f days</font> and maintain the average daily nutrion listed below:<p>',days);
   var toShow = ['mapCarbsPerPercentPackage','mapFiberPerPercentPackage','mapSaltPerPercentPackage','mapSatFatPerPercentPackage','mapFatPerPercentPackage','mapChPerPercentPackage'];
   //var toShow = ['mapFiberPerPercentPackage','mapFatPerPercentPackage'];
   $.each(toShow,function(i,boname) {

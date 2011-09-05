@@ -46,8 +46,8 @@
         { id: 'omnivore', name: 'Omnivore', subtitle:'No restrictions', constraints: [] },
  //       { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
         { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
-        //{ id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
-        //{ id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'] },
+        { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
+        //{ id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'], target: '#customMades' },
         /*
         new Eater('Vegan',['Meat','Dairy']),
         new Eater('CornFree',['Corn']),
@@ -121,14 +121,12 @@
         $.each(eaters,function(i,v) {
           eater = new Eater(v.id,v.constraints);
           eater.setupFoodStore(foodSelection);
-          /*
-          if (v.handmade) {
-            $('#customMades').append($.sprintf('<div class="span5 columns"><div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
+          if (v.target) {
+            $(v.target).append($.sprintf('<div class="span5 columns"><div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
           }
           else {
-          */
             $('#eaterresults').append($.sprintf('<div class="row"><h3>%s  <small>%s</small></h3><hr/><a id="%sLink" href="#"><div id="%sLitmus" class="litmus"></div></a><div id="%sStats"></div></div>',v.name,v.subtitle,v.id,v.id,v.id));
-          //}
+          }
           drawFoodOverviewLitmus(eater,'#'+ v.id +'Litmus',currentArrangeBy);
           addFoodStats(eater,'#'+ v.id +'Stats',currentArrangeBy);
           $('#'+ v.id +'Link').click(function() {
@@ -250,8 +248,7 @@
                   id: name.replace(/ /g,""),
                   name: name,
                   subtitle: 'No ... '+ values,
-                  constraints: values,
-                  handmade: true
+                  constraints: values
                 });
                 $('#eatername').val('');
                 updateUI('no');
@@ -349,7 +346,7 @@
           There are lots of ways to compare diets and compare foods. Try out some of these:
           <ul>
             <li><a href="#" id="selectDifferent">Select different</a> nutritional sizing to see how foods and diets compare.</li>
-            <li><a href="#" id="addeaterLink">Add your own</a> dietary restrictions, and see how they stack up.</li>
+            <li><a href="#" id="addeaterLink" class="btn">Add your own</a> dietary restrictions, and see how they stack up.</li>
             <li>Click on the <a href="#" id="tabularForm">Tabular Form</a> tab to explore in more detail.</li>
             <li>Click one of the colored buttons to the left to filter by food category.</li>
             <li>Select a food in the 'food pile' in the middle of the screen for more details on that food.</li>
@@ -405,7 +402,7 @@
     </div>
     <div class="modal" id="eaterDrillDown" style="display:none;">
       <div class="modal-header"><h3>Filter?</h3></div>
-      <div class="modal-body"><p>Which foods do you want to see?</p></div>
+      <div class="modal-body"><p>Do you want to look at foods that this person can eat (edible), or the ones that they consider edible?</p></div>
       <div class="modal-footer">
         <a id="eaterDrillDownCancel" class="btn primary">Cancel</a>
         <a id="eaterDrillDownEdible" class="btn">Edible</a>
