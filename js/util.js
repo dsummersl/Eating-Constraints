@@ -249,11 +249,12 @@ function populateTable(food,arrangeBy,element) {
 	toAppend += $.sprintf('<th class="header">%s</th>',arrangeBy.name);
 	toAppend += $.sprintf('<th class="header">%s</th>','Category');
 	toAppend += $.sprintf('<th class="header">%s</th>','Contains');
+	toAppend += $.sprintf('<th class="header">%s</th>','Exclude?');
 	toAppend += '</tr></thead><tbody>';
 
 	$.each(food,function(i,aFood) {
 		toAppend += '<tr>';
-		$.each(['Description','PackageWeight','Servings Per Container','Calories','arrangeby','cluster','Categories'],function(i,v) {
+		$.each(['Description','PackageWeight','Servings Per Container','Calories','arrangeby','cluster','Categories','Exclude?'],function(i,v) {
 			// TODO for the header link to its URL
 			if (v == 'cluster') {
 				toAppend += $.sprintf('<td><a class="btn %s">%s</a></td>',aFood[v],clusterDefinitions[aFood[v]]);
@@ -274,6 +275,9 @@ function populateTable(food,arrangeBy,element) {
 			}
 			else if (v == 'arrangeby') {
 				toAppend += $.sprintf('<td>%s</td>',$.sprintf("%1.2f",arrangeBy.calc(aFood)));
+			}
+			else if (v == 'Exclude?') {
+				toAppend += $.sprintf('<td><input type="checkbox" id="Exclude-%s" class="excludeit"></input></td>',aFood.idx);
 			}
 			else {
 				toAppend += $.sprintf('<td>%s</td>',aFood[v]);

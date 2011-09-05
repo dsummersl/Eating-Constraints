@@ -91,6 +91,12 @@
             $('#refreshingNote').fadeOut();
           }
           populateTable(foodSelection,currentArrangeBy,'#tableresults');
+          $('.excludeit').click(function() {
+            var idx = $(this).attr('id').split('-')[1];
+            foodSelection = foodSelection.filter(function (v) { return v.idx != idx});
+            updateUI('no');
+            return false;
+          });
           drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
           setupEaters();
           if (foodSelection.length < food.ingredients.length) {
@@ -192,6 +198,12 @@
             drawTreeMap(foodSelection,'#mapresults',currentArrangeBy);
             populateTable(foodSelection,currentArrangeBy,'#tableresults');
             setupEaters();
+            $('.excludeit').click(function() {
+              var idx = $(this).attr('id').split('-')[1];
+              foodSelection = foodSelection.filter(function (v) { return v.idx != idx});
+              updateUI('no');
+              return false;
+            });
             // make selectDiffernt fire the arrangeByCalorie tab:
             $('#selectDifferent').click(function() {
                 $('.dropdown-toggle').first().click();
