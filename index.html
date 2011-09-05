@@ -102,10 +102,12 @@
           if (foodSelection.length < food.ingredients.length) {
             $('#menuReset').text($.sprintf('(%s/%s shown) RESET',foodSelection.length,food.ingredients.length));
             $('#menuReset').addClass('active');
+            $('#menuInvert').addClass('active');
           }
           else {
             $('#menuReset').text('Reset');
             $('#menuReset').removeClass('active');
+            $('#menuInvert').removeClass('active');
           }
           $('#remainingKey').text($.sprintf('Sized by %s',currentArrangeBy.name));
         }
@@ -183,6 +185,23 @@
             });
             $('#menuReset').click(function() {
               foodSelection = food.ingredients;
+              updateUI('no');
+              return false;
+            });
+            $('#menuInvert').click(function() {
+              var newSelection = [];
+              $.each(food.ingredients,function(i,allF) {
+                var hasFood = false;
+                $.each(foodSelection,function(i,oldF) {
+                  if (oldF.idx == allF.idx) {
+                    hasFood = true;
+                  }
+                });
+                if (!hasFood) {
+                  newSelection.push(allF);
+                }
+              });
+              foodSelection = newSelection;
               updateUI('no');
               return false;
             });
@@ -370,6 +389,8 @@
         </div>
         <div class="span5 columns">
           <a id="menuReset" href="#">Reset</a>
+          <br/>
+          <a id="menuInvert" href="#">Invert</a>
         </div>
       </div>
       <div class="row" id="graphPage">

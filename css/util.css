@@ -138,12 +138,12 @@ svg {
   z-index: 1000;
 }
 
-#menuReset {
+#menuReset,#menuInvert {
   float: right;
   font-size: 12pt;
   color: #ddd;
 }
 
-#menuReset.active {
+#menuReset.active,#menuInvert.active {
   color: hsl(0,40%,55%);
 }
