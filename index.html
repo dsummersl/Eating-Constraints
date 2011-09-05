@@ -103,11 +103,15 @@
             $('#menuReset').text($.sprintf('(%s/%s shown) RESET',foodSelection.length,food.ingredients.length));
             $('#menuReset').addClass('active');
             $('#menuInvert').addClass('active');
+            $('#menuReset').fadeIn();
+            $('#menuInvert').fadeIn();
           }
           else {
             $('#menuReset').text('Reset');
             $('#menuReset').removeClass('active');
             $('#menuInvert').removeClass('active');
+            $('#menuReset').fadeOut();
+            $('#menuInvert').fadeOut();
           }
           $('#remainingKey').text($.sprintf('Sized by %s',currentArrangeBy.name));
         }
@@ -388,9 +392,9 @@
           <h4 id="remainingKey"></h4>
         </div>
         <div class="span5 columns">
-          <a id="menuReset" href="#">Reset</a>
+          <a id="menuReset" href="#" style="display: none;">Reset</a>
           <br/>
-          <a id="menuInvert" href="#">Invert</a>
+          <a id="menuInvert" href="#" style="display: none;">Invert List</a>
         </div>
       </div>
       <div class="row" id="graphPage">
