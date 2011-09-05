@@ -476,6 +476,9 @@ function paintPercentage(description,percent,element) {//{{{
     ;
 
   // the data will be a number of circle datas:
+  if (isNaN(percent)) {
+    percent = 0;
+  }
   var remainingPercent = percent;
   var data = [];
   while (remainingPercent > 0) {
