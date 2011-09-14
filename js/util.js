@@ -1002,11 +1002,9 @@ function checkBadNum(result) {
 }
 
 
-var eaterMethods = {
-	'default': function(eater) {
-		foods = eater.toEat;
-		return foods.shift()
-	}
+defaultEaterMethod = function(eater) {
+  foods = eater.toEat;
+  return foods.shift();
 }
 
 // Eater class - holds the state and specific strategy of an eater//{{{
@@ -1020,7 +1018,7 @@ function Eater(description,alergies,favorites,pickFood) {
 	this.description = description;
 	this.alergies = alergies || [];
 	this.favorites = favorites || [];
-	this.pickFood = pickFood || eaterMethods.default;
+	this.pickFood = pickFood || defaultEaterMethod; // TODO support a custom eater method.
 	this.denyFood = function(foods,alergies) {
 		alergies = alergies.sort();
 		//console.log("alergies = "+ alergies);
