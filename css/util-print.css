@@ -152,10 +152,10 @@ svg {
 
 /* POSTER SIZES (24x34):
 h1,ul,hr,.row,.clearfix,.tabs {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 p {
-  margin-bottom: 0px;
+  margin-bottom: 2px;
 }
 .cell {
   border: solid 1px white;
@@ -167,8 +167,10 @@ p {
 }
 */
 
+/* letter size:
+ */
 h1,ul,hr,.row,.clearfix,.tabs {
-  margin-bottom: 4px; /* instead of 18px */
+  margin-bottom: 4px;
 }
 p {
   margin-bottom: 0px;

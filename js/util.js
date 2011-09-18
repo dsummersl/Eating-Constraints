@@ -442,7 +442,7 @@ function drawFoodOverviewLitmus(eater,element,bo) { //{{{
       .data([0])
       .enter()
       .append('svg:text')
-      .attr("transform", "translate(" + widths(stickSpots[0] + (stickSpots[1]-stickSpots[0])/2) + "," + heights(1) + ")")
+      .attr("transform", "translate(" + widths(stickSpots[0] + (stickSpots[1]-stickSpots[0])/2) + "," + heights(.99) + ")")
       .attr("class","percentdesc")
       .attr("text-anchor", "middle")
       .text('Inedible')
