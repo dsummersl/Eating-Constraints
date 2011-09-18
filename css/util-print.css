@@ -1,0 +1,186 @@
+body {
+    padding-top: 40px;
+}
+
+/* treemap related links */
+.cell {
+  border: solid 1px white;
+  font: 10px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+a.treeMapLink {
+  text-decoration: none;
+  color: #888;
+}
+
+/* Related to the popup ingredients */
+.ingredientItem {
+  font: 8pt sans-serif;
+}
+
+.ingredientCategory {
+  font-weight: bold;
+  color: #777;
+}
+
+.graphic {
+}
+
+rect.border {
+    fill: #eeeeee;
+    fill-opacity: .5;
+    stroke: #dddddd;
+    stroke-width: 2px;
+}
+
+.cluster0 {
+    /*fill: cyan;*/
+    fill: hsl(180,80%,85%);
+    background: hsl(180,80%,85%);
+}
+.cluster1 {
+    /* green */
+    fill: hsl(120,80%,85%);
+    background: hsl(120,80%,85%);
+}
+.cluster2 {
+    /*fill: yellow;*/
+    fill: hsl(65,80%,85%);
+    background: hsl(65,80%,85%);
+}
+.cluster3 {
+    /* orange */
+    fill: hsl(25,80%,90%);
+    background: hsl(25,80%,90%);
+}
+.cluster4 {
+    /*fill: black;*/
+    fill: hsl(0,0%,85%);
+    background: hsl(0,0%,85%);
+}
+.cluster5 {
+    /*fill: white;*/
+    fill: hsl(0,0%,95%);
+    background: hsl(0,0%,95%);
+}
+.cluster6 {
+    /*fill: pink;*/
+    fill: hsl(310,80%,85%);
+    background: hsl(310,80%,85%);
+}
+.cluster7 {
+    /*fill: blue;*/
+    fill: hsl(210,80%,85%);
+    background: hsl(210,80%,85%);
+}
+
+.toEat {
+    fill-opacity: .05;
+}
+
+.denied {
+    fill: gray;
+}
+
+/* try to make the popover scrollable. To no avail.
+.popover .inner {
+    width: 370px;
+    height: 220px;
+    overflow: auto;
+}
+
+.popover .content {
+    width: 350px;
+    height: 200px;
+    overflow: auto;
+}
+*/
+
+/* Pie parts for the each individual eater's details */
+.arcbody .bordered {
+  fill: #ddd;
+  stroke: #999;
+}
+
+.arc .nopaint {
+  fill-opacity: 0;
+}
+
+.percentdesc {
+  //font-weight: bold;
+  font-size: 8pt;
+}
+
+.percenttext {
+  fill: #999;
+  text-style: italic;
+  font-size: 8pt;
+}
+
+svg {
+  fill: #999;
+  text-style: italic;
+  font-size: 8pt;
+}
+
+.breakout {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+/* fix for dropdown menus so that they apear above the treemap */
+.dropdown {
+  z-index: 1000;
+}
+
+#menuReset,#menuInvert {
+  float: right;
+  font-size: 12pt;
+  color: #ddd;
+}
+
+#menuReset.active,#menuInvert.active {
+  color: hsl(0,40%,55%);
+}
+
+/* For printing */
+
+/* POSTER SIZES (24x34):
+h1,ul,hr,.row,.clearfix,.tabs {
+  margin-bottom: 10px;
+}
+p {
+  margin-bottom: 0px;
+}
+.cell {
+  border: solid 1px white;
+  font: 6px sans-serif;
+  line-height: 7px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+*/
+
+h1,ul,hr,.row,.clearfix,.tabs {
+  margin-bottom: 4px; /* instead of 18px */
+}
+p {
+  margin-bottom: 0px;
+}
+h3 {
+  line-height: 25px;
+}
+.cell {
+  border: solid 1px white;
+  font: 6px sans-serif;
+  line-height: 7px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
