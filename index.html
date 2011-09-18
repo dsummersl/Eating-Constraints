@@ -5,7 +5,8 @@
 <!-- scripts and css includes {{{-->
     <link type="text/css" rel="stylesheet" href="css/bootstrap-1.2.0.css">
     <link type="text/css" rel="stylesheet" href="test/vizlathon/spec/lib/jspec.css" />
-    <link rel="stylesheet" rel="stylesheet" href="css/util.css"/>
+    <link rel="stylesheet" rel="stylesheet" href="css/util.css" media="screen"/>
+    <link rel="stylesheet" rel="stylesheet" href="css/util-print.css" media="print"/>
 
     <script type="text/javascript" language="JavaScript" src="js/jquery-1.6.2.min.js"></script>
 
@@ -47,7 +48,6 @@
  //       { id: 'vegetarian', name: 'Vegetarian', subtitle:'No meat', constraints: ['Meat'] },
         { id: 'flourfree', name: 'Celiac Disease', subtitle:'No gluten', constraints: ['Wheat'] },
         { id: 'dairyfree', name: 'Lactose Intolerant', subtitle:'No dairy', constraints: ['Dairy'] },
-        //{ id: 'sugarfree', name: 'Sugar Free', subtitle:'No sugar', constraints: ['Sugar'], target: '#customMades' },
         /*
         new Eater('Vegan',['Meat','Dairy']),
         new Eater('CornFree',['Corn']),
@@ -123,7 +123,6 @@
       }<!--}}}-->
       function setupEaters() {<!--{{{-->
         $('#eaterresults').empty();
-        $('#customMades').empty();
         $.each(eaters,function(i,v) {
           eater = new Eater(v.id,v.constraints);
           eater.setupFoodStore(foodSelection);
@@ -367,6 +366,7 @@
           <h3>Instructions</h3>
           <p>
           There are lots of ways to compare diets and compare foods. Try out some of these:
+          </p>
           <ul>
             <li><a href="#" id="selectDifferent">Select different</a> nutritional sizing to see how foods and diets compare.</li>
             <li><a href="#" id="addeaterLink" class="btn">Add your own</a> dietary restrictions, and see how they stack up.</li>
@@ -376,7 +376,6 @@
             <li>Click on a diet's food strip to drill into that food's accessable or inaccessible details.</li>
             <li>Lost? Start over! Click on the 'Reset' button at the top right of the screen.</li>
           </ul>
-          </p>
         </div>
       </div><!--}}}-->
       <div class="row">
@@ -404,12 +403,11 @@
       <div class="row" id="tablePage" style="display: none;">
         <div class="span16 columns" id="tableresults"></div>
       </div>
-      <div class="row" id="customMades">
-      </div>
       <div class="row">
         <div class="span16 columns">
           <hr />
           Copyright 2011 <a href="mailto:dsummersl@yahoo.com">Dane Summers</a>
+          <div style="float: right;">http://vizathlon.pinedesk.biz</div>
           <div id="testresults"></div>
         </div>
       </div>

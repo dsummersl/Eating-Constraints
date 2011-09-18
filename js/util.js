@@ -193,7 +193,7 @@ function makeRanksPopup(food,anchorElement) {
   toAppend += $.sprintf('<tr><td>%s</td><td>%s %s (%s%%)</td></tr>','Salt',checkBadNum(aFood['Sodium - Milligrams']),'mg',checkBadNum(aFood['Sodium - Percent']));
   toAppend += $.sprintf('<tr><td>%s</td><td>%s %s (%s%%)</td></tr>','Cholesterol',checkBadNum(aFood['Cholesterol - Milligrams']),'mg',checkBadNum(aFood['Cholesterol - Percent']));
 	toAppend += "</tbody></table>";
-  toAppend += '<p class="ingredientItem"><b>Ingredients:</b>';
+  toAppend += '<p class="ingredientItem"><b>Ingredients:</b></p>';
   $.each(aFood.Ranks,function(i,v) {
     toAppend += v.Ingredient;
     if (v.IngredientCategory.length > 0) {
@@ -203,7 +203,6 @@ function makeRanksPopup(food,anchorElement) {
       toAppend += ", ";
     }
   });
-  toAppend += "</p>";
   toAppend += "</div></div>";
 
 	$('#'+anchorElement).parent().find('.popover').remove();
@@ -338,8 +337,8 @@ function addFoodStats(eater,element,bo) {//{{{
   $.each(toShow,function(i,boname) {
     toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>',boname);
   });
-  toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>','mapProteinPerPackage');
-  toAppend += $.sprintf('<div style="width: 50; float: right;" id="%s"></div>','mapSugarPerPackage');
+  toAppend += $.sprintf('<div style="width: 150; float: right;" id="%s"></div>','mapProteinPerPackage');
+  toAppend += $.sprintf('<div style="width: 150; float: right;" id="%s"></div>','mapSugarPerPackage');
 	$(element).append(toAppend);
   //toAppend = "<ul>";
   $.each(toShow,function(i,boname) {
@@ -459,6 +458,7 @@ function paintPercentage(description,percent,element) {//{{{
   // nopaint
   // percentdesc = svg text stylings
   // percenttext = svg text stylings
+  // TODO define height via CSS?
   var width = 40;
   var height = 55;
   var x = d3.scale.linear().domain([0,1]).range([0,width]);
@@ -535,7 +535,7 @@ function paintPercentage(description,percent,element) {//{{{
       .text(description)
       ;
     arcSpot.data([0]).append("svg:text")
-      .attr("transform", "translate(" + x(.5) + "," + y(0) + ")")
+      .attr("transform", "translate(" + x(.5) + "," + y(.01) + ")")
       .attr("text-anchor", "middle")
       .attr("class","percenttext")
       .text($.sprintf('%2.0f%%',percent))
@@ -544,7 +544,7 @@ function paintPercentage(description,percent,element) {//{{{
 }//}}}
 
 function paintHistogram(description,unit,value,element,roundedness) {//{{{
-  var width = 150;
+  var width = 149;
   var height = 20;
   var x = d3.scale.linear().domain([0,500]).range([0,width]);
   var y = d3.scale.linear().domain([0,1]).range([0,height]);
